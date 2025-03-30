@@ -29,6 +29,14 @@ a {
   font-family: 'Outfit', sans-serif;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 
 /* body {
   margin: 0;

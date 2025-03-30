@@ -3,6 +3,10 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [
-    tailwindcss(),
+    tailwindcss({
+      config: {
+        safelist: ['bg-indigo-200', 'bg-white', 'bg-gray-50'],
+      },
+    }),
   ],
 })

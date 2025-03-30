@@ -1,6 +1,6 @@
 import React from 'react'
-import CardAbout from './CardAbout'
-import ButtonAbout from './ButtonAbout';
+import CardAbout from './components/CardAbout'
+import ButtonAbout from './components/ButtonAbout';
 import Header from '../Header/Header';
 
 const AboutUs = ({ handlerScrollSection }) => {
@@ -32,53 +32,48 @@ const AboutUs = ({ handlerScrollSection }) => {
   ];
 
   return (
-    <section className='h-full w-full bg-gray-50 items-center flex justify-center'>
-      <div className="max-w-screen-xl px-4 py-12 w-full
-      sm:px-6 sm:py-12 
-      lg:px-8 
-      xl:py-24">
-        <Header
-          title={"Sobre Nosotros"}
-          description={
-            <>
-              Sumérgete en el mundo de los auténticos <span className="font-semibold">Baos al vapor</span>. Hechos con los <span className="font-semibold">mejores ingredientes</span>, su suavidad y sabor te transportarán a <span className="font-semibold">Tailandia</span> con cada bocado.
-            </>
-          }
-        />
+    <>
+      <Header
+        title={"Sobre Nosotros"}
+        description={
+          <>
+            Sumérgete en el mundo de los auténticos <span className="font-semibold">Baos al vapor</span>. Hechos con los <span className="font-semibold">mejores ingredientes</span>, su suavidad y sabor te transportarán a <span className="font-semibold">Tailandia</span> con cada bocado.
+          </>
+        }
+      />
 
-        <div>
-          <div className='flex justify-center space-x-10 mt-10'>
-            {dataAbout.map((item) => (
-              <ButtonAbout
+      <div>
+        <div className='flex justify-center space-x-10 mt-10 sm:mt-0 sm:space-x-0'>
+          {dataAbout.map((item) => (
+            <ButtonAbout
+              key={item.id}
+              header={item.header}
+              id={item.id}
+              activeID={activeId}
+              setActiveId={setActiveId}
+            />
+          ))}
+        </div>
+
+        <div className='mt-16 sm:mt-8'>
+          {dataAbout
+            .filter((item) => item.id === activeId)
+            .map((item) => (
+              <CardAbout
                 key={item.id}
-                header={item.header}
-                id={item.id}
-                activeID={activeId}
-                setActiveId={setActiveId}
+                image={item.image}
+                title={item.title}
+                description={item.description}
+                description2={item.description2}
+                description3={item.description3}
+                buttonText={item.buttonText}
+                handlerScrollSection={handlerScrollSection}
+                idRef={item.idRef}
               />
             ))}
-          </div>
-
-          <div className='mt-16'>
-            {dataAbout
-              .filter((item) => item.id === activeId)
-              .map((item) => (
-                <CardAbout
-                  key={item.id}
-                  image={item.image}
-                  title={item.title}
-                  description={item.description}
-                  description2={item.description2}
-                  description3={item.description3}
-                  buttonText={item.buttonText}
-                  handlerScrollSection={handlerScrollSection}
-                  idRef={item.idRef}
-                />
-              ))}
-          </div>
         </div>
       </div>
-    </section>
+    </>
   )
 }
 
