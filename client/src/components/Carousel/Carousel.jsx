@@ -5,7 +5,7 @@ import { carouselHandlers } from './logic/handlers';
 import { useKeenSlider } from "keen-slider/react";
 import 'keen-slider/keen-slider.min.css';
 
-const Carousel = ({ data }) => {
+const Carousel = ({ data, handlerScrollSection }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loaded, setLoaded] = useState(false);
 
@@ -17,6 +17,12 @@ const Carousel = ({ data }) => {
     loop: true,
     created() {
       setLoaded(true);
+    },
+    mode: "snap", // Mejor para SEO que free-scroll
+    slides: {
+      origin: "center", // Mejor visibilidad del slide actual
+      perView: 1,
+      spacing: 0,
     },
   });
 
@@ -33,29 +39,55 @@ const Carousel = ({ data }) => {
   const { handlePrev, handleNext } = carouselHandlers(event, instanceRef);
 
   return (
-    <div className="h-screen w-screen flex justify-center items-center bg-black overflow-hidden z-50">
-      <div id="default-carousel" className="relative w-full h-full overflow-hidden">
+    <section
+      aria-label="Carrusel de presentación"
+      className="h-screen w-screen flex justify-center items-center bg-black overflow-hidden z-50"
+      itemScope
+      itemType="https://schema.org/ItemList"
+    >
+      <div id="default-carousel" className="relative w-full h-full overflow-hidden" role="group">
         <div ref={sliderRef} className="keen-slider w-full h-full">
           {data.map((item, index) => (
-            <div key={index} className="keen-slider__slide w-full h-full flex-shrink-0">
+            <div
+              key={index}
+              className="keen-slider__slide w-full h-full flex-shrink-0"
+              itemScope
+              itemProp="itemListElement"
+              itemType="https://schema.org/ListItem"
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`Slide ${index + 1} de ${data.length}`}
+            >
               <SliderCarousel
                 title={item.title}
                 subtitle={item.subtitle}
                 image={item.image}
                 currentIndex={currentIndex}
+                handlerScrollSection={handlerScrollSection}
+                position={index + 1}
               />
             </div>
           ))}
         </div>
         {loaded && instanceRef.current && (
           <div>
-            <ButtonsCarousel handle={(e) => handlePrev(e, instanceRef)} span='Anterior' direction='left' />
-            <ButtonsCarousel handle={(e) => handleNext(e, instanceRef)} span='Siguiente' direction='right' />
+            <ButtonsCarousel
+              handle={(e) => handlePrev(e, instanceRef)}
+              span='Anterior'
+              direction='left'
+              aria-label="Slide anterior"
+            />
+            <ButtonsCarousel
+              handle={(e) => handleNext(e, instanceRef)}
+              span='Siguiente'
+              direction='right'
+              aria-label="Slide siguiente"
+            />
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Carousel;
+export default React.memo(Carousel);

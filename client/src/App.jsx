@@ -83,27 +83,57 @@ function App() {
       <NavBar handlerScrollSection={handlerScrollSection} activeSection={activeSection} />
 
       <section id='sectionCarousel'>
-        <Carousel data={data} />
+        <Carousel data={data} handlerScrollSection={handlerScrollSection} />
       </section>
 
-      <SectionContainer id='sectionInfo' contain={<InfoSection />} bgColor={'white'} styles={"xl:pb-0 xl:pt-24"} />
+      <SectionContainer
+        id='sectionInfo'
+        contain={<InfoSection />}
+        bgColor={'white'}
+        styles={"xl:pb-0 xl:pt-24 sm:pb-0"}
+        ariaLabel="Información sobre nuestros productos"
+        itemType="https://schema.org/ItemList"
+      />
 
-      <SectionContainer id='sectionAboutUs' contain={<AboutUs handlerScrollSection={handlerScrollSection} />} bgColor={'white'} />
+      <SectionContainer
+        id='sectionAboutUs'
+        contain={<AboutUs handlerScrollSection={handlerScrollSection} />}
+        bgColor={'white'}
+        ariaLabel="Sobre nuestra empresa"
+        itemType="https://schema.org/AboutPage"
+      />
 
-      <SectionContainer contain={<FeatureSection />} bgColor={'gray-50'} />
+      <SectionContainer
+        contain={<FeatureSection />}
+        bgColor={'gray-50'}
+        ariaLabel="Nuestras características destacadas"
+        itemType="https://schema.org/ItemList"
+      />
 
-      <SectionContainer id='sectionProductsCollection' contain={<ProductsCollection />} bgColor={'white'} />
+      <SectionContainer
+        id='sectionProductsCollection'
+        contain={<ProductsCollection />}
+        bgColor={'white'}
+        ariaLabel="Nuestra colección de productos"
+        itemType="https://schema.org/ProductCollection"
+      />
 
-      <SectionContainer contain={<Incetives />} bgColor={'gray-50'} />
+      <SectionContainer
+        contain={<Incetives />}
+        bgColor={'gray-50'}
+        ariaLabel="Nuestros beneficios y ventajas"
+        itemType="https://schema.org/ItemList"
+      />
 
-      <SectionContainer id='sectionContactUs' contain={<ContactUs />} bgColor={'white'} />
+      <SectionContainer
+        id='sectionContactUs'
+        contain={<ContactUs />}
+        bgColor={'white'}
+        ariaLabel="Información de contacto"
+        itemType="https://schema.org/ContactPage"
+      />
 
       <Footer />
-
-      {/* 
-        <SectionContainer id='sectionTestimonials' contain={<Testimonials />} bgColor={'indigo-50'} />
-        <SectionContainer id='sectionLayoutImages' contain={<LayoutImages images={images} />} bgColor={'gray-50'} /> 
-      */}
     </>
   );
 }
