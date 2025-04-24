@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import NavBar from './components/Navbar/NavBar';
+import { NavBar } from './components/Navbar';
 import Carousel from './components/Carousel/Carousel';
 import FeatureSection from './components/FeatureSection/FeatureSection';
 import ProductsCollection from './components/ProductsCollection/ProductsCollection';
@@ -38,7 +38,7 @@ function App() {
 
       let currentSection = 'sectionCarousel'; // Por defecto
       const windowCenter = window.innerHeight / 2; // Centro de la ventana gráfica
-      const tolerance = 120; // Margen de tolerancia para la detección
+      const tolerance = 300; // Margen de tolerancia para la detección
 
       sections.forEach((sectionId) => {
         const section = document.getElementById(sectionId);
@@ -90,7 +90,8 @@ function App() {
         id='sectionInfo'
         contain={<InfoSection />}
         bgColor={'white'}
-        styles={"xl:pb-0 xl:pt-24 sm:pb-0"}
+        darkBg={'gray-950'}
+        styles={"xl:pb-0 xl:pt-24 sm:pb-0 "}
         ariaLabel="Información sobre nuestros productos"
         itemType="https://schema.org/ItemList"
       />
@@ -99,13 +100,15 @@ function App() {
         id='sectionAboutUs'
         contain={<AboutUs handlerScrollSection={handlerScrollSection} />}
         bgColor={'white'}
+        darkBg={'gray-950'}
         ariaLabel="Sobre nuestra empresa"
         itemType="https://schema.org/AboutPage"
       />
 
       <SectionContainer
         contain={<FeatureSection />}
-        bgColor={'gray-50'}
+        bgColor={'indigo-50'}
+        darkBg={'slate-900'}
         ariaLabel="Nuestras características destacadas"
         itemType="https://schema.org/ItemList"
       />
@@ -114,13 +117,15 @@ function App() {
         id='sectionProductsCollection'
         contain={<ProductsCollection />}
         bgColor={'white'}
+        darkBg={'gray-950'}
         ariaLabel="Nuestra colección de productos"
         itemType="https://schema.org/ProductCollection"
       />
 
       <SectionContainer
         contain={<Incetives />}
-        bgColor={'gray-50'}
+        bgColor={'white'}
+        darkBg={'slate-900'}
         ariaLabel="Nuestros beneficios y ventajas"
         itemType="https://schema.org/ItemList"
       />
@@ -128,7 +133,9 @@ function App() {
       <SectionContainer
         id='sectionContactUs'
         contain={<ContactUs />}
-        bgColor={'white'}
+        bgColor={'gray-50'}
+        darkBg={'gray-950'}
+
         ariaLabel="Información de contacto"
         itemType="https://schema.org/ContactPage"
       />

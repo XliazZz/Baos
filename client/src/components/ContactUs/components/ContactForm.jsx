@@ -62,6 +62,7 @@ const ContactForm = React.memo(({ onSubmit, ref }) => (
         type="submit"
         className="w-full bg-indigo-800 text-white px-6 py-3 font-xl rounded-sm font-semibold border border-indigo-800 cursor-pointer
           hover:bg-white hover:text-indigo-800 hover:border-indigo-800 transition-all duration-500 ease-in-out
+          dark:hover:bg-gray-900 dark:hover:text-indigo-50 
           sm:mb-0 sm:text-base sm:py-3 sm:px-4
           md:text-base 
           lg:text-lg lg:py-2 

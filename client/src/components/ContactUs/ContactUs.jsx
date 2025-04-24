@@ -18,8 +18,8 @@ const CONTACT_DATA = [
   {
     icon: "icon-[mynaui--telephone]",
     title: "Contáctanos",
-    subtitle: "Teléfono: +1 (123) 456-7890",
-    optional: "Correo: tailnext@gmail.com",
+    subtitle: "Teléfono: +54 11 4888 5405",
+    optional: "Correo: panificadoraandinasa@gmail.com",
     schemaType: "ContactPoint",
     itemProp: "contactPoint"
   },
@@ -123,12 +123,11 @@ const ContactUs = () => {
         </div>
       </div>
 
-      {/* Schema Markup */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
-          "name": "Nombre de tu Negocio",
+          "name": "Panificadora Andina S.A.",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Villa Luro",
@@ -138,8 +137,8 @@ const ContactUs = () => {
           },
           "contactPoint": {
             "@type": "ContactPoint",
-            "telephone": "+1 (123) 456-7890",
-            "email": "tailnext@gmail.com",
+            "telephone": "+54 11 4888 4304",
+            "email": "panificadoraandinasa@gmail.com",
             "contactType": "customer service"
           },
           "openingHoursSpecification": {

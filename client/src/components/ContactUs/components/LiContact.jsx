@@ -3,7 +3,7 @@ import React from 'react'
 const LiContact = ({ icon, title, subtitle, optional, schemaType, itemProp }) => {
   return (
     <li className="flex" itemScope itemType={`https://schema.org/${schemaType}`} itemProp={itemProp}>
-      <div className="flex h-10 w-10 items-center justify-center rounded text-indigo-900
+      <div className="flex h-10 w-10 items-center justify-center rounded text-indigo-900 dark:text-indigo-300
         sm:h-8 sm:w-8 
         md:h-10 md:w-10
         lg:h-12 lg:w-12 

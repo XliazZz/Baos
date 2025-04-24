@@ -13,7 +13,7 @@ const IconCard = ({ icon, unit, itemProp }) => {
         role="img"
         aria-hidden="true"
       />
-      <span className='text-gray-500 my-auto font-semibold 
+      <span className='text-gray-500 dark:text-gray-400 my-auto font-semibold 
         sm:text-base 
         lg:text-lg 
         xl:text-base

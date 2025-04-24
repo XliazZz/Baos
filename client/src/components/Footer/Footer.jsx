@@ -22,7 +22,7 @@ const Footer = () => {
             aria-label="Logo El Bao Bailarín"
             itemProp="logo"
           />
-          <h3 className='my-auto font-bold 2xl:text-2xl' itemProp="name">EL BAO BAILARIN</h3>
+          <h3 className='my-auto font-bold 2xl:text-2xl' itemProp="name">El bao bailarin</h3>
         </div>
 
         <p

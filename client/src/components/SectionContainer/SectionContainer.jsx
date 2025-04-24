@@ -1,22 +1,10 @@
 import React from 'react'
 
-const SectionContainer = ({ id, contain, bgColor, styles, ariaLabel, itemType }) => {
-  // Mapeo de colores de fondo a clases CSS para evitar problemas con PurgeCSS
-  const bgColorClasses = {
-    white: 'bg-white',
-    gray: 'bg-gray-100',
-    dark: 'bg-gray-900',
-    indigo: 'bg-indigo-600',
-    // Agrega más colores según necesites
-  }
-
-  // Selecciona la clase de color o usa el valor por defecto (white)
-  const selectedBgColor = bgColorClasses[bgColor] || bgColorClasses.white
-
+const SectionContainer = ({ id, contain, bgColor, styles, ariaLabel, itemType, darkBg }) => {
   return (
     <section
       id={id}
-      className={`h-full w-full ${selectedBgColor} items-center flex justify-center dark:bg-gray-900`}
+      className={`h-full w-full bg-${bgColor} items-center flex justify-center dark:bg-${darkBg}`}
       aria-label={ariaLabel || 'Sección de contenido'}
       itemScope={itemType ? true : false}
       itemType={itemType || undefined}

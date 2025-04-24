@@ -4,6 +4,7 @@ const Header = ({ title, subtitle, description }) => {
   return (
     <header className="text-start" role="banner">
       <h2 className="text-4xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-indigo-900 to-purple-500 
+      dark:from-purple-300 dark:to-indigo-50000 dark:bg-gradient-to-r dark:bg-clip-text
         sm:text-2xl 
         md:text-3xl
         lg:text-3xl 
@@ -13,10 +14,10 @@ const Header = ({ title, subtitle, description }) => {
         {title}
       </h2>
 
-      <div className="w-16 h-0.5 bg-indigo-900 mt-2" aria-hidden="true"></div>
+      <div className="w-16 h-0.5 bg-indigo-900 dark:bg-indigo-400 mt-2" aria-hidden="true"></div>
 
       <div
-        className="mt-5 w-[60%] text-lg text-gray-700 dark:text-slate-400 
+        className="mt-5 w-[60%] text-lg text-gray-700 dark:text-gray-300 
         sm:text-lg sm:w-full 
         md:text-xl
         lg:text-xl lg:w-[65%]

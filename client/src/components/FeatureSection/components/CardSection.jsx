@@ -17,7 +17,7 @@ const CardSection = ({ title, description, icon, itemProp, schemaType, position 
         itemType={`https://schema.org/${schemaType}`}
       >
         <span
-          className={`${icon} w-10 h-10 mb-0 text-indigo-500 dark:text-indigo-500
+          className={`${icon} w-10 h-10 mb-0 text-indigo-500 dark:text-indigo-400
           sm:w-10 sm:h-10
           md:w-12 md:h-12
           lg:w-11 lg:h-11
@@ -40,7 +40,7 @@ const CardSection = ({ title, description, icon, itemProp, schemaType, position 
         </h3>
       </div>
       <p
-        className="font-light text-gray-500 dark:text-gray-400 
+        className="font-light text-gray-500 dark:text-gray-300 
         sm:text-lg sm:font-medium 
         md:text-center md:text-lg
         lg:font-light lg:text-lg lg:text-gray-600

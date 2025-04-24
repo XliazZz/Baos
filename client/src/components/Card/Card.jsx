@@ -10,7 +10,8 @@ const Card = ({ image, title, description, gr, size, schemaType }) => {
         sm:shadow-sm sm:shadow-black/20
         md:shadow-md md:shadow-black/20
         lg:shadow-lg lg:shadow-black/20
-        xl:shadow-lg xl:shadow-black/20"
+        xl:shadow-lg xl:shadow-black/20
+        dark:bg-slate-800"
       itemScope
       itemType={`https://schema.org/${schemaType}`}
     >
@@ -33,7 +34,7 @@ const Card = ({ image, title, description, gr, size, schemaType }) => {
 
       <div className="p-4 flex flex-col flex-grow sm:w-full">
         <h3
-          className="text-lg font-medium mb-2 text-black 
+          className="text-lg font-medium mb-2 text-black dark:text-white
             sm:text-lg 
             lg:text-xl 
             xl:text-lg
@@ -43,7 +44,7 @@ const Card = ({ image, title, description, gr, size, schemaType }) => {
           {title}
         </h3>
         <p
-          className="text-gray-600 text-base mb-4 
+          className="text-gray-600 text-base mb-4 dark:text-gray-200
             sm:text-base sm:w-full
             md:text-[15px] 
             lg:text-[17px] 
@@ -54,7 +55,7 @@ const Card = ({ image, title, description, gr, size, schemaType }) => {
           {description}
         </p>
 
-        <div className="flex items-start justify-between mt-4 text-gray-500 sm:mt-auto">
+        <div className="flex items-start justify-between mt-4 text-gray-500 dark:text-gray-400 sm:mt-auto">
           <IconCard icon={iconClass[0]} unit={gr} itemProp="weight" />
           <IconCard icon={iconClass[1]} unit={size} itemProp="size" />
         </div>

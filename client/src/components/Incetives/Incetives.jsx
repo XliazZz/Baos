@@ -29,13 +29,13 @@ const Incentives = () => {
   return (
     <section
       aria-labelledby="incentives-heading"
-      className="mx-auto py-0 flex flex-col sm:flex-row justify-center"
+      className="mx-auto py-0 flex flex-col sm:flex-row justify-center bg-transparent border-0"
       itemScope
       itemType="https://schema.org/ItemList"
     >
       <h2 id="incentives-heading" className="sr-only">Beneficios y ventajas</h2>
 
-      <div className="flex flex-col sm:flex-row flex-1 divide-y sm:divide-y-0 sm:divide-x divide-gray-200 [&>*:last-child]:border-b-0 sm:[&>*:last-child]:border-b sm:[&>*:last-child]:border-r-0">
+      <div className="flex flex-col sm:flex-row flex-1 divide-y sm:divide-y-0 sm:divide-x divide-gray-200 [&>*:last-child]:border-b-0 sm:[&>*:last-child]:border-b-0 sm:[&>*:last-child]:border-r-0">
         {incentiveData.map((item, index) => (
           <CardIncentive
             key={index}

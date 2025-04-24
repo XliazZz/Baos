@@ -16,6 +16,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.dark\:bg-gray-900 {
+  @media (prefers-color-scheme: light) {
+      background-color: var(--color-gray-900);
+  }
+}
 /* Fuentes base */
 h1 {
   font-family: 'Mulish', sans-serif;

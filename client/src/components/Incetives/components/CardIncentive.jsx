@@ -3,7 +3,7 @@ import React from 'react'
 const CardIncentive = ({ icon, title, description, schemaType, itemProp, position }) => {
   return (
     <div
-      className="lg:py-0 lg:w-1/3 lg:flex-none sm:my-5 sm:w-full md:w-full"
+      className="lg:py-0 lg:w-1/3 lg:flex-none sm:my-5 sm:w-full md:w-full bg-transparent "
       itemScope
       itemProp={itemProp}
       itemType="https://schema.org/ListItem"
@@ -19,7 +19,7 @@ const CardIncentive = ({ icon, title, description, schemaType, itemProp, positio
         itemType={`https://schema.org/${schemaType}`}
       >
         <span
-          className={`${icon} flex-shrink-0 h-8 w-8 text-indigo-600 
+          className={`${icon} flex-shrink-0 h-8 w-8 text-indigo-600 dark:text-indigo-400 
             sm:w-9 sm:h-9
             md:w-7 md:h-7
             xl:w-10 xl:h-10`}
@@ -30,13 +30,13 @@ const CardIncentive = ({ icon, title, description, schemaType, itemProp, positio
 
         <div className="ml-4 flex-auto flex flex-col-reverse">
           <p
-            className="text-sm text-gray-500 xl:text-base sm:text-[15px] 2xl:text-lg"
+            className="text-sm text-gray-500 xl:text-base sm:text-[15px] 2xl:text-lg dark:text-gray-300"
             itemProp="description"
           >
             {description}
           </p>
           <h3
-            className="font-medium text-gray-900 
+            className="font-medium text-gray-900 dark:text-white
               sm:text-lg 
               md:text-base 
               xl:text-lg 

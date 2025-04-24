@@ -34,7 +34,7 @@ const CardAbout = ({ image, title, description, description2, description3, butt
         itemProp="description"
       >
         <div>
-          <h2 className="text-xl font-bold text-black cursor-default 
+          <h2 className="text-xl font-bold text-black cursor-default dark:text-white
             sm:text-xl 
             md:text-2xl
             lg:text-2xl 
@@ -44,7 +44,7 @@ const CardAbout = ({ image, title, description, description2, description3, butt
           >
             {title}
           </h2>
-          <div className="mt-2 text-slate-600 text-base 
+          <div className="mt-2 text-slate-600 text-base dark:text-slate-400
             sm:text-lg sm:mt-1 sm:font-medium sm:text-slate-500
             md:mt-2 md:font-semibold md:text-slate-500
             lg:mt-4 lg:text-lg lg:text-slate-600
