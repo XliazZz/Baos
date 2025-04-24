@@ -19,7 +19,7 @@ const CONTACT_DATA = [
     icon: "icon-[mynaui--telephone]",
     title: "Contáctanos",
     subtitle: "Teléfono: +54 11 4888 5405",
-    optional: "Correo: panificadoraandinasa@gmail.com",
+    optional: "Mail: panificadoraandinasa@gmail.com",
     schemaType: "ContactPoint",
     itemProp: "contactPoint"
   },
@@ -77,7 +77,7 @@ const ContactUs = () => {
       />
 
       <div className="flex items-stretch justify-center">
-        <div className="grid md:grid-cols-2 items-end gap-20 sm:gap-4">
+        <div className="grid md:grid-cols-2 items-end gap-5 sm:gap-4">
           <div className="h-full pr-6 text-start">
             <p className="mt-3 mb-12 text-lg text-gray-600 dark:text-slate-400 
               sm:my-auto sm:mb-6 sm:text-[17px] sm:font-light sm:text-gray-800

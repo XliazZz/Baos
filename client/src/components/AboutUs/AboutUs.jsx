@@ -8,7 +8,7 @@ const AboutUs = ({ handlerScrollSection }) => {
 
   const dataAbout = [
     {
-      header: "Descubre la Magia de Nuestros Baos",
+      header: "La Magia de Nuestros Baos",
       image: "https://i.pinimg.com/originals/5b/0f/b1/5b0fb11010e4c97f24bb65ede1090f43.jpg",
       title: "Baos Artesanales - Tailandeses Gua Bao (กัวเปา)",
       description: "Panecillos tailandeses Gua Bao, también conocidos simplemente como Bao ('envolver').",
@@ -46,7 +46,7 @@ const AboutUs = ({ handlerScrollSection }) => {
         <h2 id="about-tabs-title" className="sr-only">Secciones sobre nuestros Baos</h2>
 
         <div role="tablist" aria-label="Secciones de información sobre la empresa">
-          <div className='flex justify-center space-x-10 mt-10 sm:mt-0 sm:space-x-0'>
+          <div className='flex justify-center space-x-10 mt-0 sm:mt-0 sm:space-x-0'>
             {dataAbout.map((item) => (
               <ButtonAbout
                 key={item.id}
@@ -68,7 +68,7 @@ const AboutUs = ({ handlerScrollSection }) => {
               id={`panel-${item.id}`}
               aria-labelledby={`tab-${item.id}`}
               tabIndex="0"
-              className='mt-16 sm:mt-8'
+              className='mt-5 sm:mt-8'
             >
               <CardAbout
                 image={item.image}

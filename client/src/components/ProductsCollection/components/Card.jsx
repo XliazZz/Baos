@@ -15,7 +15,7 @@ const Card = ({ image, title, description, gr, size, schemaType }) => {
       itemScope
       itemType={`https://schema.org/${schemaType}`}
     >
-      <div className="relative h-72 rounded-lg 
+      <div className="relative h-56 rounded-lg 
         sm:h-52
         md:h-48 
         lg:h-[15.5rem]
@@ -32,10 +32,10 @@ const Card = ({ image, title, description, gr, size, schemaType }) => {
         />
       </div>
 
-      <div className="p-4 flex flex-col flex-grow sm:w-full">
+      <div className="p-2 sm:p-4 flex flex-col flex-grow sm:w-full">
         <h3
-          className="text-lg font-medium mb-2 text-black dark:text-white
-            sm:text-lg 
+          className="text-[16px] font-medium mb-0 text-black dark:text-white
+            sm:text-lg sm:mb-2
             lg:text-xl 
             xl:text-lg
             2xl:text-xl"
@@ -44,8 +44,8 @@ const Card = ({ image, title, description, gr, size, schemaType }) => {
           {title}
         </h3>
         <p
-          className="text-gray-600 text-base mb-4 dark:text-gray-200
-            sm:text-base sm:w-full
+          className="text-gray-600 text-[14.5px] mb-2 dark:text-gray-200
+            sm:text-base sm:w-full sm:mb-4
             md:text-[15px] 
             lg:text-[17px] 
             xl:text-base xl:text-gray-700
@@ -55,7 +55,7 @@ const Card = ({ image, title, description, gr, size, schemaType }) => {
           {description}
         </p>
 
-        <div className="flex items-start justify-between mt-4 text-gray-500 dark:text-gray-400 sm:mt-auto">
+        <div className="flex items-start justify-between mt-auto text-gray-500 dark:text-gray-400 sm:mt-auto">
           <IconCard icon={iconClass[0]} unit={gr} itemProp="weight" />
           <IconCard icon={iconClass[1]} unit={size} itemProp="size" />
         </div>

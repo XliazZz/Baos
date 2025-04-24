@@ -91,7 +91,7 @@ function App() {
         contain={<InfoSection />}
         bgColor={'white'}
         darkBg={'gray-950'}
-        styles={"xl:pb-0 xl:pt-24 sm:pb-0 "}
+        styles={"xl:pb-0 xl:pt-24 sm:pb-0 pb-0"}
         ariaLabel="Información sobre nuestros productos"
         itemType="https://schema.org/ItemList"
       />

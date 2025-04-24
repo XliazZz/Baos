@@ -11,7 +11,7 @@ const LiContact = ({ icon, title, subtitle, optional, schemaType, itemProp }) =>
         2xl:w-12 2xl:h-12"
       >
         <span
-          className={`${icon} h-6 w-6 
+          className={`${icon} h-full w-full 
             sm:w-8 sm:h-8 sm:my-auto 
             md:w-10 md:h-10 md:mt-1
             lg:w-8 lg:h-8
@@ -24,7 +24,7 @@ const LiContact = ({ icon, title, subtitle, optional, schemaType, itemProp }) =>
       </div>
 
       <div className="ml-4 mb-4">
-        <h3 className="mb-1 text-lg font-medium leading-6 text-gray-900 dark:text-white 
+        <h3 className="mb-1 text-xl font-medium leading-6 text-gray-900 dark:text-white 
           sm:text-lg
           md:m-0
           lg:text-lg
@@ -35,12 +35,12 @@ const LiContact = ({ icon, title, subtitle, optional, schemaType, itemProp }) =>
         </h3>
         {schemaType === "PostalAddress" ? (
           <>
-            <p className="text-gray-600 dark:text-slate-400 sm:text-base md:m-0 lg:text-base 2xl:text-lg"
+            <p className="text-gray-600 dark:text-slate-400 text-[17px] sm:text-base md:m-0 lg:text-base 2xl:text-lg"
               itemProp="addressLocality"
             >
               {subtitle}
             </p>
-            {optional && <p className="text-gray-600 dark:text-slate-400 sm:text-base md:m-0 lg:text-base 2xl:text-lg"
+            {optional && <p className="text-gray-600 dark:text-slate-400 text-[17px] sm:text-base md:m-0 lg:text-base 2xl:text-lg"
               itemProp="addressRegion"
             >
               {optional}
@@ -48,13 +48,13 @@ const LiContact = ({ icon, title, subtitle, optional, schemaType, itemProp }) =>
           </>
         ) : schemaType === "ContactPoint" ? (
           <>
-            <a href={`tel:${subtitle.replace(/\D/g, '')}`} className="text-gray-600 dark:text-slate-400 sm:text-base md:m-0 lg:text-base 2xl:text-lg block "
+            <a href={`tel:${subtitle.replace(/\D/g, '')}`} className="text-gray-600 text-[17px] dark:text-slate-400 sm:text-base md:m-0 lg:text-base 2xl:text-lg block "
               itemProp="telephone"
             >
               Teléfono: <span className='hover:text-indigo-500'>+54 11 4888 4304</span>
             </a>
             {optional &&
-              <a className="text-gray-600 dark:text-slate-400 sm:text-base md:m-0 lg:text-base 2xl:text-lg block"
+              <a className="text-gray-600 dark:text-slate-400 text-[17px] sm:text-base md:m-0 lg:text-base 2xl:text-lg block"
                 itemProp="email"
               >
                 {optional}
@@ -62,12 +62,12 @@ const LiContact = ({ icon, title, subtitle, optional, schemaType, itemProp }) =>
           </>
         ) : (
           <>
-            <p className="text-gray-600 dark:text-slate-400 sm:text-base md:m-0 lg:text-base 2xl:text-lg"
+            <p className="text-gray-600 dark:text-slate-400 text-[17px] sm:text-base md:m-0 lg:text-base 2xl:text-lg"
               itemProp="dayOfWeek"
             >
               {subtitle}
             </p>
-            <p className="text-gray-600 dark:text-slate-400 sm:text-base md:m-0 lg:text-base 2xl:text-lg"
+            <p className="text-gray-600 dark:text-slate-400 text-[17px] sm:text-base md:m-0 lg:text-base 2xl:text-lg"
               itemProp="opens closes"
             >
               {optional}

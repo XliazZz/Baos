@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import Card from '../Card/Card'
+import Card from './components/Card'
 import Header from '../Header/Header'
 
 const ProductsCollection = () => {
@@ -58,7 +58,7 @@ const ProductsCollection = () => {
         }
         subtitle="¡Descubre tu favorito y disfruta la experiencia!"
       />
-      <ul className='mt-10 grid gap-4 
+      <ul className='mt-5 sm:mt-10 grid gap-4 grid-cols-2
         sm:grid-cols-2 sm:gap-9 
         md:mt-8 md:grid-cols-3
         lg:grid-cols-3

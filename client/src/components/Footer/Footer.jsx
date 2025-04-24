@@ -22,11 +22,11 @@ const Footer = () => {
             aria-label="Logo El Bao Bailarín"
             itemProp="logo"
           />
-          <h3 className='my-auto font-bold 2xl:text-2xl' itemProp="name">El bao bailarin</h3>
+          <h3 className='my-auto font-bold 2xl:text-2xl text-xl' itemProp="name">El bao bailarin</h3>
         </div>
 
         <p
-          className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500 dark:text-gray-400 
+          className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500 dark:text-gray-400 text-lg
             sm:text-base 
             lg:text-lg lg:max-w-lg
             2xl:text-xl"
@@ -39,7 +39,7 @@ const Footer = () => {
           <ul className="mt-5 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
             <li>
               <a
-                className="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75 
+                className="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75 text-lg
                   sm:text-base
                   lg:text-lg
                   2xl:text-xl"

@@ -10,7 +10,7 @@ const CardSection = ({ title, description, icon, itemProp, schemaType, position 
     >
       <meta itemProp="position" content={position} />
 
-      <div className='sm:flex sm:items-center 
+      <div className='flex sm:flex sm:items-center 
         md:justify-center
         lg:justify-center'
         itemProp="item"
@@ -28,8 +28,8 @@ const CardSection = ({ title, description, icon, itemProp, schemaType, position 
           itemProp="image"
         />
         <h3
-          className="mb-2 text-2xl font-bold dark:text-white text-black 
-          sm:mb-0 sm:text-center sm:text-xl sm:text-gray-800
+          className="ml-2 my-auto py-auto text-2xl font-bold dark:text-white text-black 
+          sm:mb-0 sm:ml-0 sm:text-center sm:text-xl sm:text-gray-800
           md:text-gray-900 md:font-semibold md:text-center
           lg:font-bold lg:text-2xl 
           xl:text-2xl
@@ -40,7 +40,7 @@ const CardSection = ({ title, description, icon, itemProp, schemaType, position 
         </h3>
       </div>
       <p
-        className="font-light text-gray-500 dark:text-gray-300 
+        className="font-light text-gray-500 dark:text-gray-300 text-[17px]
         sm:text-lg sm:font-medium 
         md:text-center md:text-lg
         lg:font-light lg:text-lg lg:text-gray-600

@@ -43,7 +43,7 @@ const FeatureSection = () => {
       itemType="https://schema.org/ItemList"
     >
       <div className="col-span-2 mb-8">
-        <p className="text-lg font-medium text-indigo-500 dark:text-indigo-300 
+        <p className="text-xl font-medium text-indigo-500 dark:text-indigo-300 
           sm:text-xl 
           md:text-xl
           lg:text-xl
@@ -65,7 +65,7 @@ const FeatureSection = () => {
           Esponjosidad, frescura y tradición en cada bocado
         </h2>
 
-        <p className="font-light text-gray-500 dark:text-gray-300 
+        <p className="font-light text-gray-500 dark:text-gray-300 text-[17px]
           sm:text-lg sm:font-light sm:text-gray-800 
           md:w-[95%] md:mx-auto md:font-light md:text-gray-800 
           lg:w-full lg:font-light

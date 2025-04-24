@@ -35,7 +35,9 @@ const Incentives = () => {
     >
       <h2 id="incentives-heading" className="sr-only">Beneficios y ventajas</h2>
 
-      <div className="flex flex-col sm:flex-row flex-1 divide-y sm:divide-y-0 sm:divide-x divide-gray-200 [&>*:last-child]:border-b-0 sm:[&>*:last-child]:border-b-0 sm:[&>*:last-child]:border-r-0">
+      <div className="flex flex-col flex-1 divide-y divide-gray-200 dark:divide-gray-950 [&>*:last-child]:border-b- [&>*:last-child]:mb-0 [&>*:last-child]:pb-0
+        sm:flex-row sm:divide-y-0 sm:divide-x sm:[&>*:last-child]:border-b-0 sm:[&>*:last-child]:border-r-0"
+      >
         {incentiveData.map((item, index) => (
           <CardIncentive
             key={index}

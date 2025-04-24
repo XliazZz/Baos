@@ -16,18 +16,18 @@ const CardInfo = ({ title, description1, description2, icon, schemaType, itemPro
           itemProp="image"
         />
         <div className="space-y-2 text-center text-black dark:text-white">
-          <h3 className="font-bold text-xl md:text-lg lg:text-lg 2xl:text-xl" itemProp="name">
+          <h3 className="font-bold text-[22px] md:text-lg lg:text-lg 2xl:text-xl" itemProp="name">
             {title}
           </h3>
 
           {schemaType === "ContactPoint" ? (
             <>
-              <a className="text-md text-muted-foreground font-semibold text-gray-600 dark:text-gray-300 sm:text-lg md:text-base lg:text-base 2xl:text-lg select-text">
+              <a className="text-lg text-muted-foreground font-semibold text-gray-600 dark:text-gray-300 sm:text-lg md:text-base lg:text-base 2xl:text-lg select-text">
                 {description1}
               </a>
               <a
                 href={`tel:${description2.replace(/\D/g, '')}`}
-                className="text-md text-muted-foreground font-semibold text-gray-600 dark:text-gray-300 sm:text-lg md:text-base lg:text-base 2xl:text-lg block hover:text-indigo-500"
+                className="text-lg text-muted-foreground font-semibold text-gray-600 dark:text-gray-300 sm:text-lg md:text-base lg:text-base 2xl:text-lg block hover:text-indigo-500"
                 itemProp="telephone"
               >
                 {description2}
@@ -36,13 +36,13 @@ const CardInfo = ({ title, description1, description2, icon, schemaType, itemPro
           ) : schemaType === "PostalAddress" ? (
             <>
               <p
-                className="text-md text-muted-foreground font-semibold text-gray-600 dark:text-gray-300 sm:text-lg md:text-base lg:text-base 2xl:text-lg"
+                className="text-lg text-muted-foreground font-semibold text-gray-600 dark:text-gray-300 sm:text-lg md:text-base lg:text-base 2xl:text-lg"
                 itemProp="streetAddress"
               >
                 {description1}
               </p>
               <p
-                className="text-md text-muted-foreground font-semibold text-gray-600 dark:text-gray-300 sm:text-lg md:text-base lg:text-base 2xl:text-lg"
+                className="text-lg text-muted-foreground font-semibold text-gray-600 dark:text-gray-300 sm:text-lg md:text-base lg:text-base 2xl:text-lg"
                 itemProp="addressLocality"
               >
                 {description2}
@@ -51,13 +51,13 @@ const CardInfo = ({ title, description1, description2, icon, schemaType, itemPro
           ) : (
             <>
               <p
-                className="text-md text-muted-foreground font-semibold text-gray-600 dark:text-gray-300 sm:text-lg md:text-base lg:text-base 2xl:text-lg"
+                className="text-lg text-muted-foreground font-semibold text-gray-600 dark:text-gray-300 sm:text-lg md:text-base lg:text-base 2xl:text-lg"
                 itemProp="dayOfWeek"
               >
                 {description1}
               </p>
               <p
-                className="text-md text-muted-foreground font-semibold text-gray-600 dark:text-gray-300 sm:text-lg md:text-base lg:text-base 2xl:text-lg"
+                className="text-lg text-muted-foreground font-semibold text-gray-600 dark:text-gray-300 sm:text-lg md:text-base lg:text-base 2xl:text-lg"
                 itemProp="opens closes"
               >
                 {description2}

@@ -4,7 +4,7 @@ const IconCard = ({ icon, unit, itemProp }) => {
   return (
     <div className='flex' itemProp={itemProp}>
       <p
-        className={`${icon} my-auto size-6 
+        className={`${icon} my-auto size-5 
         sm:size-6 
         md:size-6 
         lg:size-7 
@@ -13,7 +13,7 @@ const IconCard = ({ icon, unit, itemProp }) => {
         role="img"
         aria-hidden="true"
       />
-      <span className='text-gray-500 dark:text-gray-400 my-auto font-semibold 
+      <span className='text-gray-500 dark:text-gray-400 my-auto font-semibold text-base
         sm:text-base 
         lg:text-lg 
         xl:text-base

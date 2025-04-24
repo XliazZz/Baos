@@ -1,33 +1,34 @@
 import React from 'react';
 import CardInfo from './components/CardInfo';
 
+const infoData = [
+  {
+    title: "Contacto",
+    description1: "panificadoraandinasa@gmail.com",
+    description2: "+54 11 4888-4304",
+    icon: "icon-[carbon--email]",
+    schemaType: "ContactPoint",
+    itemProp: "contactPoint"
+  },
+  {
+    title: "Horarios de Atención",
+    description1: "Lunes a Viernes",
+    description2: "De 8:00 a 17:00 horas",
+    icon: "icon-[carbon--time]",
+    schemaType: "OpeningHoursSpecification",
+    itemProp: "openingHoursSpecification"
+  },
+  {
+    title: "Ubicación",
+    description1: "Villa Luro, Calle Milton 409",
+    description2: "Buenos Aires, Argentina",
+    icon: "icon-[carbon--location]",
+    schemaType: "PostalAddress",
+    itemProp: "address"
+  },
+];
+
 const InfoSection = () => {
-  const infoData = [
-    {
-      title: "Contacto",
-      description1: "panificadoraandinasa@gmail.com",
-      description2: "+54 11 4888-4304",
-      icon: "icon-[carbon--email]",
-      schemaType: "ContactPoint",
-      itemProp: "contactPoint"
-    },
-    {
-      title: "Horarios de Atención",
-      description1: "Lunes a Viernes",
-      description2: "De 8:00 a 17:00 horas",
-      icon: "icon-[carbon--time]",
-      schemaType: "OpeningHoursSpecification",
-      itemProp: "openingHoursSpecification"
-    },
-    {
-      title: "Ubicación",
-      description1: "Villa Luro, Calle Milton 409",
-      description2: "Buenos Aires, Argentina",
-      icon: "icon-[carbon--location]",
-      schemaType: "PostalAddress",
-      itemProp: "address"
-    },
-  ];
 
   return (
     <section

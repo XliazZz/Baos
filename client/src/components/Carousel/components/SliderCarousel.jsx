@@ -24,7 +24,7 @@ const SliderCarousel = ({ title, subtitle, image, handlerScrollSection, position
         itemProp="description"
       >
         <h1
-          className="text-6xl font-bold 
+          className="text-3xl font-bold 
             sm:text-[2.7rem]
             md:text-[3.5rem]
             lg:text-[4rem]
@@ -35,7 +35,7 @@ const SliderCarousel = ({ title, subtitle, image, handlerScrollSection, position
           {title}
         </h1>
         <p
-          className="text-xl text-gray-300 italic mt-4 w-[30%]
+          className="text-xl text-gray-300 italic mt-4 w-[98%]
             sm:text-lg sm:w-[80%] sm:mt-4
             md:text-2xl
             lg:text-2xl lg:mt-6 lg:w-[60%]
@@ -46,7 +46,7 @@ const SliderCarousel = ({ title, subtitle, image, handlerScrollSection, position
           {subtitle}
         </p>
         <button
-          className="mt-8 border-2 cursor-pointer border-indigo-500 hover:border-white hover:text-white text-white text-lg font-semibold px-6 py-3 rounded-sm transition
+          className="mt-10 border-2 cursor-pointer border-indigo-500 hover:border-white hover:text-white text-white text-lg font-semibold px-4.5 py-2.5 rounded-sm transition
             sm:px-6 sm:py-2 sm:mt-6 sm:text-lg
             md:px-8 md:py-2.5 md:text-lg md:mt-7 md:bg-indigo-900/30
             lg:px-7 lg:py-2 lg:text-lg lg:mt-6
