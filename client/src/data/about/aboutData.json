@@ -1,0 +1,24 @@
+[
+  {
+    "header": "La Magia de Nuestros Baos",
+    "image": "https://res.cloudinary.com/do5ubt5g0/image/upload/v1745621315/IMG_5532_cg2uwn.jpg",
+    "title": "Baos Artesanales - Tailandeses Gua Bao (กัวเปา)",
+    "description": "Panecillos tailandeses Gua Bao, también conocidos simplemente como Bao ('envolver').",
+    "description2": "Un pan suave y esponjoso diseñado para abrazar una infinidad de sabores, transportándote con cada bocado hasta Tailandia.",
+    "description3": "Elaborados artesanalmente y cocinados al vapor con ingredientes de alta calidad. ¡Una vez que los pruebes, te encantarán!",
+    "id": 0,
+    "buttonText": "Ver Productos",
+    "idRef": "sectionProductsCollection"
+  },
+  {
+    "header": "Conócenos",
+    "image": "https://th.bing.com/th/id/OIP.1YHv4mQVThAYbW0ih787tQHaD0?rs=1&pid=ImgDetMain",
+    "title": "Panificadora Andina SA",
+    "description": "Somos los únicos fabricantes especializados en panes Bao, combinando tradición y calidad en cada uno de nuestros productos.",
+    "description2": "Nuestra fábrica, ubicada en Milton 462, Villa Luro, CABA, nos permite garantizar la frescura y excelencia de nuestros baos.",
+    "description3": "Los entregamos congelados para conservar su textura y sabor, con servicio de delivery disponible en toda CABA.",
+    "id": 1,
+    "buttonText": "Contáctanos",
+    "idRef": "sectionContactUs"
+  }
+]

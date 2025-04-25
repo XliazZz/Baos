@@ -4,8 +4,9 @@ import ButtonsCarousel from './components/ButtonsCarousel';
 import { carouselHandlers } from './logic/handlers';
 import { useKeenSlider } from "keen-slider/react";
 import 'keen-slider/keen-slider.min.css';
+import carouselData from '../../data/carousel/carouselData.json'
 
-const Carousel = ({ data, handlerScrollSection }) => {
+const Carousel = ({ handlerScrollSection }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loaded, setLoaded] = useState(false);
 
@@ -47,7 +48,7 @@ const Carousel = ({ data, handlerScrollSection }) => {
     >
       <div id="default-carousel" className="relative w-full h-full overflow-hidden" role="group">
         <div ref={sliderRef} className="keen-slider w-full h-full">
-          {data.map((item, index) => (
+          {carouselData.map((item, index) => (
             <div
               key={index}
               className="keen-slider__slide w-full h-full flex-shrink-0"
@@ -56,7 +57,7 @@ const Carousel = ({ data, handlerScrollSection }) => {
               itemType="https://schema.org/ListItem"
               role="group"
               aria-roledescription="slide"
-              aria-label={`Slide ${index + 1} de ${data.length}`}
+              aria-label={`Slide ${index + 1} de ${carouselData.length}`}
             >
               <SliderCarousel
                 title={item.title}

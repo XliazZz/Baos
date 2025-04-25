@@ -1,38 +1,8 @@
 import React from 'react'
 import CardSection from './components/CardSection'
+import featureData from '../../data/featureSection/featureData.json';
 
 const FeatureSection = () => {
-  const featureData = [
-    {
-      title: 'Calidad',
-      description: 'Elaborados con los mejores ingredientes, garantizando una textura suave y un sabor auténtico en cada bocado.',
-      icon: 'icon-[prime--star]',
-      itemProp: "itemListElement",
-      schemaType: "Quality"
-    },
-    {
-      title: 'Artesanal',
-      description: 'Cada pan bao es hecho a mano, con dedicación y pasión, asegurando un producto único que destaca por su sabor y calidad.',
-      icon: 'icon-[solar--chef-hat-outline]',
-      itemProp: "itemListElement",
-      schemaType: "Handmade"
-    },
-    {
-      title: 'Confianza',
-      description: 'Nuestros clientes confían en la calidad y frescura de nuestros productos, elaborados con pasión y dedicación.',
-      icon: 'icon-[ph--handshake-light]',
-      itemProp: "itemListElement",
-      schemaType: "Trust"
-    },
-    {
-      title: 'Vendidos',
-      description: 'Mas de 1000 panes bao vendidos a la semana, siendo el favorito de la comunidad local y visitantes.',
-      icon: 'icon-[bx--bar-chart]',
-      itemProp: "itemListElement",
-      schemaType: "Sales"
-    }
-  ]
-
   return (
     <section
       aria-labelledby="features-heading"
@@ -73,7 +43,7 @@ const FeatureSection = () => {
           2xl:text-xl"
           itemProp="disambiguatingDescription"
         >
-          Nuestros panes bao son el favorito de la comunidad, con una textura suave y un sabor auténtico que te transporta a la esencia de nuestra cocina. Hechos con pasión y los mejores ingredientes, cada bocado es una experiencia única.
+          Nuestros panes bao destacan por su textura esponjosa y sabor auténtico, elaborados artesanalmente con ingredientes selectos para ofrecer una experiencia gastronómica única en cada bocado. El preferido de quienes buscan calidad y tradición en panes al vapor.
         </p>
       </div>
 

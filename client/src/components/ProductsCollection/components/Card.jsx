@@ -16,9 +16,9 @@ const Card = ({ image, title, description, gr, size, schemaType }) => {
       itemType={`https://schema.org/${schemaType}`}
     >
       <div className="relative h-56 rounded-lg 
-        sm:h-52
-        md:h-48 
-        lg:h-[15.5rem]
+        sm:h-72
+        md:h-60 
+        lg:h-[20.5rem]
         xl:h-64
         2xl:h-80"
       >

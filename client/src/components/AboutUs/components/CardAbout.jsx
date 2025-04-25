@@ -3,16 +3,16 @@ import React from 'react';
 const CardAbout = ({ image, title, description, description2, description3, buttonText, handlerScrollSection, idRef }) => {
   return (
     <article className="mx-auto overflow-hidden h-full flex max-w-screen-xl w-full flex-col 
-       sm:min-h-full sm:max-h-full
-       lg:mx-auto lg:overflow-hidden lg:min-h-[300px] lg:max-h-[350px] lg:flex-row lg:max-w-screen-xl lg:w-full lg:h-[300px]
-       xl:mx-auto xl:overflow-hidden xl:min-h-[300px] xl:max-h-[350px] xl:flex-row xl:max-w-screen-xl xl:w-full xl:h-[300px]
-       2xl:max-w-screen-2xl 2xl:min-h-[350px] 2xl:max-h-[400px]"
+      sm:min-h-full sm:max-h-full
+      lg:mx-auto lg:overflow-hidden lg:min-h-[300px] lg:max-h-[350px] lg:flex-row lg:max-w-screen-xl lg:w-full lg:h-[300px]
+      xl:mx-auto xl:overflow-hidden xl:min-h-[300px] xl:max-h-[350px] xl:flex-row xl:max-w-screen-xl xl:w-full xl:h-[300px]
+      2xl:max-w-screen-2xl 2xl:min-h-[350px] 2xl:max-h-[400px]"
       itemScope itemType="https://schema.org/Thing"
     >
-      <div className="w-full flex-shrink-0 h-full 
-        sm:w-full sm:h-[12em]
-        md:w-full md:h-[15em]
-        lg:w-[40%] lg:h-full
+      <div className="w-full flex-shrink-0 h-[25em] 
+        sm:w-full sm:h-[28em]
+        md:w-full md:h-[35em] md:mx-auto 
+        lg:w-[40%] lg:h-full lg:mx-0    
         xl:w-[35%] xl:h-full
         2xl:w-[45%] 2xl:h-full"
       >

@@ -2,34 +2,10 @@ import React from 'react'
 import CardAbout from './components/CardAbout'
 import ButtonAbout from './components/ButtonAbout';
 import Header from '../Header/Header';
+import aboutData from '../../data/about/aboutData.json';
 
 const AboutUs = ({ handlerScrollSection }) => {
   const [activeId, setActiveId] = React.useState(0);
-
-  const dataAbout = [
-    {
-      header: "La Magia de Nuestros Baos",
-      image: "https://i.pinimg.com/originals/5b/0f/b1/5b0fb11010e4c97f24bb65ede1090f43.jpg",
-      title: "Baos Artesanales - Tailandeses Gua Bao (กัวเปา)",
-      description: "Panecillos tailandeses Gua Bao, también conocidos simplemente como Bao ('envolver').",
-      description2: "Un pan suave y esponjoso diseñado para abrazar una infinidad de sabores, transportándote con cada bocado hasta Tailandia.",
-      description3: "Elaborados artesanalmente y cocinados al vapor con ingredientes de alta calidad. ¡Una vez que los pruebes, te encantarán!",
-      id: 0,
-      buttonText: "Ver Productos",
-      idRef: 'sectionProductsCollection'
-    },
-    {
-      header: "Conócenos",
-      image: "https://th.bing.com/th/id/OIP.1YHv4mQVThAYbW0ih787tQHaD0?rs=1&pid=ImgDetMain",
-      title: "Panificadora Andina SA",
-      description: "Somos los únicos fabricantes especializados en panes Bao, combinando tradición y calidad en cada uno de nuestros productos.",
-      description2: "Nuestra fábrica, ubicada en Milton 462, Villa Luro, CABA, nos permite garantizar la frescura y excelencia de nuestros baos.",
-      description3: "Los entregamos congelados para conservar su textura y sabor, con servicio de delivery disponible en toda CABA.",
-      id: 1,
-      buttonText: "Contáctanos",
-      idRef: 'sectionContactUs'
-    }
-  ];
 
   return (
     <main>
@@ -47,7 +23,7 @@ const AboutUs = ({ handlerScrollSection }) => {
 
         <div role="tablist" aria-label="Secciones de información sobre la empresa">
           <div className='flex justify-center space-x-10 mt-0 sm:mt-0 sm:space-x-0'>
-            {dataAbout.map((item) => (
+            {aboutData.map((item) => (
               <ButtonAbout
                 key={item.id}
                 header={item.header}
@@ -59,7 +35,7 @@ const AboutUs = ({ handlerScrollSection }) => {
           </div>
         </div>
 
-        {dataAbout
+        {aboutData
           .filter((item) => item.id === activeId)
           .map((item) => (
             <div
@@ -97,7 +73,7 @@ const AboutUs = ({ handlerScrollSection }) => {
             "addressRegion": "CABA",
             "addressCountry": "AR"
           },
-          "image": dataAbout[0].image,
+          "image": aboutData[0].image,
           "url": window.location.href
         })}
       </script>

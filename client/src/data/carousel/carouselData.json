@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Pan Bao Hamburguesa",
+    "subtitle": "Pan bao adaptado para hamburguesas, ofreciendo una alternativa ligera y esponjosa al pan tradicional",
+    "id": 2,
+    "image": "https://res.cloudinary.com/do5ubt5g0/image/upload/v1745620672/9a5da060-6d18-4ea7-a0f9-d82d3ebef3c7_fq1lnr.jpg"
+  },
+  {
+    "title": "Pan Bao Tradicional",
+    "subtitle": "Clásico pan bao al vapor, esponjoso y suave, perfecto para rellenar con tus ingredientes favoritos",
+    "id": 1,
+    "image": "https://res.cloudinary.com/do5ubt5g0/image/upload/v1745620672/ad37054f-94d3-4a48-8589-6d6cc523f254_nnemhj.jpg"
+  },
+  {
+    "title": "Pan Bao Gigante",
+    "subtitle": "Nuestra versión premium tamaño XXL, ideal para rellenos sustanciosos y experiencias gastronómicas únicas",
+    "id": 3,
+    "image": "https://res.cloudinary.com/do5ubt5g0/image/upload/v1745620672/89e45d6b-6754-4d9f-90d6-866ccccf77de_n8tlqj.jpg"
+  }
+]

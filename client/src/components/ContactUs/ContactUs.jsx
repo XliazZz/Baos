@@ -5,33 +5,7 @@ import Swal from "sweetalert2";
 import ContactForm from './components/ContactForm';
 import { validatePhoneShow, loadingMessage, successMessage, errorMessage } from '../../utils/notifications';
 import { sendEmailService } from '../../services/emailService';
-
-const CONTACT_DATA = [
-  {
-    icon: "icon-[mynaui--location]",
-    title: "Ubicación",
-    subtitle: "Villa Luro",
-    optional: "Buenos Aires, Argentina",
-    schemaType: "PostalAddress",
-    itemProp: "address"
-  },
-  {
-    icon: "icon-[mynaui--telephone]",
-    title: "Contáctanos",
-    subtitle: "Teléfono: +54 11 4888 5405",
-    optional: "Mail: panificadoraandinasa@gmail.com",
-    schemaType: "ContactPoint",
-    itemProp: "contactPoint"
-  },
-  {
-    icon: "icon-[mynaui--clock-circle]",
-    title: "Horario de Atención",
-    subtitle: "Lunes a Viernes:",
-    optional: "08:00hs - 17:00hs",
-    schemaType: "OpeningHoursSpecification",
-    itemProp: "openingHoursSpecification"
-  },
-]
+import contactUsData from '../../data/contactUs/contactUsData.json';
 
 const ContactUs = () => {
   const form = useRef();
@@ -94,7 +68,7 @@ const ContactUs = () => {
               md:mb-0 md:grid-cols-1 md:gap-2
               xl:mt-10"
             >
-              {CONTACT_DATA.map((item, index) => (
+              {contactUsData.map((item, index) => (
                 <LiContact
                   key={index}
                   icon={item.icon}
