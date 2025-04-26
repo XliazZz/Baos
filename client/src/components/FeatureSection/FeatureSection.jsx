@@ -1,8 +1,40 @@
-import React from 'react'
-import CardSection from './components/CardSection'
+import React, { useMemo } from 'react';
+import CardSection from './components/CardSection';
 import featureData from '../../data/featureSection/featureData.json';
 
 const FeatureSection = () => {
+  // Memoizar el schema markup para evitar recreación en cada render
+  const schemaMarkup = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": featureData.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.title,
+      "description": item.description,
+      "item": {
+        "@type": item.schemaType,
+        "name": item.title,
+        "description": item.description
+      }
+    }))
+  }), [featureData]);
+
+  // Memoizar la lista de características para evitar rerenders innecesarios
+  const featuresList = useMemo(() => (
+    featureData.map((feature, index) => (
+      <CardSection
+        key={`feature-${index}`}
+        title={feature.title}
+        description={feature.description}
+        icon={feature.icon}
+        itemProp={feature.itemProp}
+        schemaType={feature.schemaType}
+        position={index + 1}
+      />
+    ))
+  ), [featureData]);
+
   return (
     <section
       aria-labelledby="features-heading"
@@ -54,39 +86,16 @@ const FeatureSection = () => {
         2xl:gap-10"
         itemProp="mainEntity"
       >
-        {featureData.map((feature, index) => (
-          <CardSection
-            key={index}
-            title={feature.title}
-            description={feature.description}
-            icon={feature.icon}
-            itemProp={feature.itemProp}
-            schemaType={feature.schemaType}
-            position={index + 1}
-          />
-        ))}
+        {featuresList}
       </div>
 
-      {/* Schema Markup */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "ItemList",
-          "itemListElement": featureData.map((item, index) => ({
-            "@type": "ListItem",
-            "position": index + 1,
-            "name": item.title,
-            "description": item.description,
-            "item": {
-              "@type": item.schemaType,
-              "name": item.title,
-              "description": item.description
-            }
-          }))
-        })}
-      </script>
+      {/* Schema Markup optimizado */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+      />
     </section>
-  )
-}
+  );
+};
 
-export default React.memo(FeatureSection)
+export default React.memo(FeatureSection);

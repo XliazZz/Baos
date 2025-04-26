@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import SliderCarousel from './components/SliderCarousel';
 import ButtonsCarousel from './components/ButtonsCarousel';
 import { carouselHandlers } from './logic/handlers';
@@ -19,9 +19,9 @@ const Carousel = ({ handlerScrollSection }) => {
     created() {
       setLoaded(true);
     },
-    mode: "snap", // Mejor para SEO que free-scroll
+    mode: "snap",
     slides: {
-      origin: "center", // Mejor visibilidad del slide actual
+      origin: "center",
       perView: 1,
       spacing: 0,
     },
@@ -39,6 +39,32 @@ const Carousel = ({ handlerScrollSection }) => {
 
   const { handlePrev, handleNext } = carouselHandlers(event, instanceRef);
 
+  const renderSlides = useCallback(() => (
+    carouselData.map((item, index) => (
+      <div
+        key={`carousel-item-${index}`}
+        className="keen-slider__slide w-full h-full flex-shrink-0"
+        itemScope
+        itemProp="itemListElement"
+        itemType="https://schema.org/ListItem"
+        role="group"
+        aria-roledescription="slide"
+        aria-label={`Slide ${index + 1} de ${carouselData.length}`}
+        aria-hidden={currentIndex !== index}
+      >
+        <SliderCarousel
+          title={item.title}
+          subtitle={item.subtitle}
+          image={item.image}
+          currentIndex={currentIndex}
+          handlerScrollSection={handlerScrollSection}
+          position={index + 1}
+          loading={index === 0 ? 'eager' : 'lazy'} // Optimización de carga de imágenes
+        />
+      </div>
+    ))
+  ), [carouselData, currentIndex, handlerScrollSection]);
+
   return (
     <section
       aria-label="Carrusel de presentación"
@@ -46,40 +72,30 @@ const Carousel = ({ handlerScrollSection }) => {
       itemScope
       itemType="https://schema.org/ItemList"
     >
-      <div id="default-carousel" className="relative w-full h-full overflow-hidden" role="group">
-        <div ref={sliderRef} className="keen-slider w-full h-full">
-          {carouselData.map((item, index) => (
-            <div
-              key={index}
-              className="keen-slider__slide w-full h-full flex-shrink-0"
-              itemScope
-              itemProp="itemListElement"
-              itemType="https://schema.org/ListItem"
-              role="group"
-              aria-roledescription="slide"
-              aria-label={`Slide ${index + 1} de ${carouselData.length}`}
-            >
-              <SliderCarousel
-                title={item.title}
-                subtitle={item.subtitle}
-                image={item.image}
-                currentIndex={currentIndex}
-                handlerScrollSection={handlerScrollSection}
-                position={index + 1}
-              />
-            </div>
-          ))}
+      <div
+        id="default-carousel"
+        className="relative w-full h-full overflow-hidden"
+        role="group"
+        itemProp="mainEntity"
+      >
+        <div
+          ref={sliderRef}
+          className="keen-slider w-full h-full"
+          aria-live="polite"
+        >
+          {renderSlides()}
         </div>
+
         {loaded && instanceRef.current && (
-          <div>
+          <div aria-controls="default-carousel">
             <ButtonsCarousel
-              handle={(e) => handlePrev(e, instanceRef)}
+              handle={handlePrev}
               span='Anterior'
               direction='left'
               aria-label="Slide anterior"
             />
             <ButtonsCarousel
-              handle={(e) => handleNext(e, instanceRef)}
+              handle={handleNext}
               span='Siguiente'
               direction='right'
               aria-label="Slide siguiente"

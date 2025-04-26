@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useMemo } from 'react';
 
-const CardIncentive = ({ icon, title, description, schemaType, itemProp, position }) => {
-  return (
-    <div
-      className="lg:py-0 lg:w-1/3 lg:flex-none sm:my-5 sm:w-full md:w-full bg-transparent pb-5 mb-5"
-      itemScope
-      itemProp={itemProp}
-      itemType="https://schema.org/ListItem"
-    >
+const CardIncentive = ({
+  icon,
+  title,
+  description,
+  schemaType,
+  itemProp,
+  position
+}) => {
+  // Memoizar el contenido del componente para evitar rerenders innecesarios
+  const content = useMemo(() => (
+    <>
       <meta itemProp="position" content={position} />
 
       <div
@@ -24,7 +27,7 @@ const CardIncentive = ({ icon, title, description, schemaType, itemProp, positio
             md:w-7 md:h-7
             xl:w-10 xl:h-10`}
           role="img"
-          aria-label={title}
+          aria-label={`Icono de ${title}`}
           itemProp="image"
         />
 
@@ -47,8 +50,20 @@ const CardIncentive = ({ icon, title, description, schemaType, itemProp, positio
           </h3>
         </div>
       </div>
-    </div>
-  )
-}
+    </>
+  ), [icon, title, description, position, schemaType]);
 
-export default React.memo(CardIncentive)
+  return (
+    <div
+      className="lg:py-0 lg:w-1/3 lg:flex-none sm:my-5 sm:w-full md:w-full bg-transparent pb-5 mb-5"
+      itemScope
+      itemProp={itemProp}
+      itemType="https://schema.org/ListItem"
+      aria-labelledby={`incentive-${position}-title`}
+    >
+      {content}
+    </div>
+  );
+};
+
+export default React.memo(CardIncentive);

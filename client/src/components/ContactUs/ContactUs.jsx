@@ -1,6 +1,6 @@
-import React, { useRef } from 'react'
-import Header from '../Header/Header'
-import LiContact from './components/LiContact'
+import React, { useRef, useMemo, useCallback } from 'react';
+import Header from '../Header/Header';
+import LiContact from './components/LiContact';
 import Swal from "sweetalert2";
 import ContactForm from './components/ContactForm';
 import { validatePhoneShow, loadingMessage, successMessage, errorMessage } from '../../utils/notifications';
@@ -10,34 +10,83 @@ import contactUsData from '../../data/contactUs/contactUsData.json';
 const ContactUs = () => {
   const form = useRef();
 
-  const validatePhone = React.useMemo(() => (phone) => /^\d{10}$/.test(phone), []);
+  const validatePhone = useMemo(() => (phone) => /^\d{10}$/.test(phone), []);
 
-  const sendEmail = async (e) => {
+  const schemaData = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Panificadora Andina S.A.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Villa Luro",
+      "addressLocality": "Buenos Aires",
+      "addressRegion": "Buenos Aires",
+      "addressCountry": "AR"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+54 11 4888 4304",
+      "email": "panificadoraandinasa@gmail.com",
+      "contactType": "customer service"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "17:00"
+    },
+    "url": typeof window !== 'undefined' ? window.location.href : ''
+  }), []);
+
+  const sendEmail = useCallback(async (e) => {
     e.preventDefault();
 
     const phone = form.current.user_phone.value;
     if (!validatePhone(phone)) {
-      validatePhoneShow()
+      validatePhoneShow();
       return;
     }
 
     try {
       await loadingMessage();
 
-      await sendEmailService(form, form.current.user_email.value, form.current.user_name.value, form.current.user_phone.value);
+      await sendEmailService(
+        form,
+        form.current.user_email.value,
+        form.current.user_name.value,
+        form.current.user_phone.value
+      );
 
       Swal.close();
 
-      await successMessage(form.current.user_name.value, form.current.user_phone.value, form.current.user_email.value, form.current);
+      await successMessage(
+        form.current.user_name.value,
+        form.current.user_phone.value,
+        form.current.user_email.value,
+        form.current
+      );
 
       form.current.reset();
 
     } catch (error) {
       console.error('Error al enviar el email:', error);
-
       errorMessage();
     }
-  };
+  }, [validatePhone]);
+
+  const contactList = useMemo(() => (
+    contactUsData.map((item, index) => (
+      <LiContact
+        key={`contact-${index}`}
+        icon={item.icon}
+        title={item.title}
+        subtitle={item.subtitle}
+        optional={item.optional}
+        schemaType={item.schemaType}
+        itemProp={item.itemProp}
+      />
+    ))
+  ), [contactUsData]);
 
   return (
     <section itemScope itemType="https://schema.org/LocalBusiness">
@@ -68,17 +117,7 @@ const ContactUs = () => {
               md:mb-0 md:grid-cols-1 md:gap-2
               xl:mt-10"
             >
-              {contactUsData.map((item, index) => (
-                <LiContact
-                  key={index}
-                  icon={item.icon}
-                  title={item.title}
-                  subtitle={item.subtitle}
-                  optional={item.optional}
-                  schemaType={item.schemaType}
-                  itemProp={item.itemProp}
-                />
-              ))}
+              {contactList}
             </ul>
           </div>
 
@@ -92,40 +131,13 @@ const ContactUs = () => {
               ref={form}
               onSubmit={sendEmail}
             />
-
           </div>
         </div>
       </div>
 
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          "name": "Panificadora Andina S.A.",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Villa Luro",
-            "addressLocality": "Buenos Aires",
-            "addressRegion": "Buenos Aires",
-            "addressCountry": "AR"
-          },
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+54 11 4888 4304",
-            "email": "panificadoraandinasa@gmail.com",
-            "contactType": "customer service"
-          },
-          "openingHoursSpecification": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-            "opens": "08:00",
-            "closes": "17:00"
-          },
-          "url": window.location.href
-        })}
-      </script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
     </section>
-  )
-}
+  );
+};
 
-export default React.memo(ContactUs)
+export default React.memo(ContactUs);

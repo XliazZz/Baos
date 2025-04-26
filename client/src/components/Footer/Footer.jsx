@@ -1,11 +1,43 @@
-import React from 'react'
+import React, { useMemo } from 'react';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const currentYear = useMemo(() => new Date().getFullYear(), []);
+
+  const schemaMarkup = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "El Bao Bailarín",
+    "url": typeof window !== 'undefined' ? window.location.href : '',
+    "logo": "URL_DEL_LOGO",
+    "sameAs": [
+      "https://facebook.com/tupagina",
+      "https://instagram.com/tucuenta",
+      "https://tiktok.com/@tucuenta"
+    ],
+    "description": "Hechos con amor y al vapor 🥢 ¡Disfruta cada bocado!"
+  }), []);
+
+  const socialLinks = useMemo(() => [
+    {
+      href: "https://facebook.com/tupagina",
+      icon: "icon-[mdi--facebook] size-8",
+      label: "Facebook"
+    },
+    {
+      href: "https://instagram.com/tucuenta",
+      icon: "icon-[mdi--instagram] size-8",
+      label: "Instagram"
+    },
+    {
+      href: "https://tiktok.com/@tucuenta",
+      icon: "icon-[ant-design--tik-tok-filled] size-8",
+      label: "TikTok"
+    }
+  ], []);
 
   return (
     <footer
-      className="h-full w-full bg-gray-100 items-center flex justify-center dark:bg-gray-900"
+      className="h-full w-full bg-gray-100 items-center flex justify-center dark:bg-gray-800"
       itemScope
       itemType="https://schema.org/WPFooter"
     >
@@ -22,7 +54,7 @@ const Footer = () => {
             aria-label="Logo El Bao Bailarín"
             itemProp="logo"
           />
-          <h3 className='my-auto font-bold 2xl:text-2xl text-xl' itemProp="name">El bao bailarin</h3>
+          <h3 className='my-auto font-bold 2xl:text-2xl text-xl' itemProp="name">Wow Bao</h3>
         </div>
 
         <p
@@ -35,7 +67,7 @@ const Footer = () => {
           Hechos con amor y al vapor 🥢 ¡Disfruta cada bocado!
         </p>
 
-        <nav aria-label="Enlaces secundarios">
+        {/* <nav aria-label="Enlaces secundarios">
           <ul className="mt-5 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
             <li>
               <a
@@ -50,48 +82,24 @@ const Footer = () => {
               </a>
             </li>
           </ul>
-        </nav>
+        </nav> */}
 
         <nav aria-label="Redes sociales">
           <ul className="mt-5 flex justify-center gap-6 md:gap-8">
-            <li>
-              <a
-                href="https://facebook.com/tupagina"
-                rel="noopener noreferrer"
-                target="_blank"
-                className="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75"
-                aria-label="Facebook"
-                itemProp="sameAs"
-              >
-                <span className="icon-[mdi--facebook] size-8" role="img" aria-hidden="true" />
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="https://instagram.com/tucuenta"
-                rel="noopener noreferrer"
-                target="_blank"
-                className="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75"
-                aria-label="Instagram"
-                itemProp="sameAs"
-              >
-                <span className="icon-[mdi--instagram] size-8" role="img" aria-hidden="true" />
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="https://tiktok.com/@tucuenta"
-                rel="noopener noreferrer"
-                target="_blank"
-                className="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75"
-                aria-label="TikTok"
-                itemProp="sameAs"
-              >
-                <span className="icon-[ant-design--tik-tok-filled] size-8" role="img" aria-hidden="true" />
-              </a>
-            </li>
+            {socialLinks.map((link, index) => (
+              <li key={`social-${index}`}>
+                <a
+                  href={link.href}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  className="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75"
+                  aria-label={link.label}
+                  itemProp="sameAs"
+                >
+                  <span className={link.icon} role="img" aria-hidden="true" />
+                </a>
+              </li>
+            ))}
           </ul>
         </nav>
 
@@ -106,30 +114,18 @@ const Footer = () => {
             </p>
 
             <p className="mt-4 text-sm text-gray-500 sm:order-first sm:mt-0 dark:text-gray-400 lg:text-base 2xl:text-lg">
-              &copy; {currentYear} <span itemProp="name">El Bao Bailarín</span>
+              &copy; {currentYear} <span itemProp="name">Wow Bao</span>
             </p>
           </div>
         </div>
 
-        {/* Schema Markup */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "El Bao Bailarín",
-            "url": window.location.href,
-            "logo": "URL_DEL_LOGO",
-            "sameAs": [
-              "https://facebook.com/tupagina",
-              "https://instagram.com/tucuenta",
-              "https://tiktok.com/@tucuenta"
-            ],
-            "description": "Hechos con amor y al vapor 🥢 ¡Disfruta cada bocado!"
-          })}
-        </script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+        />
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default React.memo(Footer)
+export default React.memo(Footer);

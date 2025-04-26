@@ -1,11 +1,54 @@
-import React from 'react'
-import Card from './components/Card'
-import Header from '../Header/Header'
-import productsData from '../../data/products/productsData.json'
+import React, { useMemo } from 'react';
+import Card from './components/Card';
+import Header from '../Header/Header';
+import productsData from '../../data/products/productsData.json';
 
 const ProductsCollection = () => {
+  const schemaMarkup = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": productsData.map(item => ({
+      "@type": "ListItem",
+      "position": item.id,
+      "item": {
+        "@type": item.schemaType || "Product",
+        "name": item.title,
+        "description": item.description,
+        "image": item.image,
+        "weight": item.gr,
+        "size": item.size
+      }
+    }))
+  }), [productsData]);
+
+  const productsList = useMemo(() => (
+    productsData.map((item) => (
+      <li
+        key={`product-${item.id}`}
+        className='mx-auto'
+        itemProp={item.itemProp}
+        itemScope
+        itemType="https://schema.org/ListItem"
+      >
+        <meta itemProp="position" content={item.id} />
+        <Card
+          title={item.title}
+          description={item.description}
+          image={item.image}
+          gr={item.gr}
+          size={item.size}
+          schemaType={item.schemaType}
+        />
+      </li>
+    ))
+  ), [productsData]);
+
   return (
-    <section itemScope itemType="https://schema.org/ItemList">
+    <section
+      itemScope
+      itemType="https://schema.org/ItemList"
+      aria-labelledby="products-heading"
+    >
       <Header
         title="Menú de Panes"
         description={
@@ -16,6 +59,7 @@ const ProductsCollection = () => {
         }
         subtitle="¡Descubre tu favorito y disfruta la experiencia!"
       />
+
       <ul className='mt-5 sm:mt-10 grid gap-4 grid-cols-2
         sm:grid-cols-2 sm:gap-9 
         md:mt-8 md:grid-cols-3
@@ -23,48 +67,15 @@ const ProductsCollection = () => {
         xl:grid-cols-4 xl:gap-6
         2xl:gap-10'
       >
-        {productsData.map((item) => (
-          <li
-            key={item.id}
-            className='mx-auto'
-            itemProp={item.itemProp}
-            itemScope
-            itemType="https://schema.org/ListItem"
-          >
-            <meta itemProp="position" content={item.id} />
-            <Card
-              title={item.title}
-              description={item.description}
-              image={item.image}
-              gr={item.gr}
-              size={item.size}
-              schemaType={item.schemaType}
-            />
-          </li>
-        ))}
+        {productsList}
       </ul>
 
-      {/* Schema Markup */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "ItemList",
-          "itemListElement": productsData.map(item => ({
-            "@type": "ListItem",
-            "position": item.id,
-            "item": {
-              "@type": "Product",
-              "name": item.title,
-              "description": item.description,
-              "image": item.image,
-              "weight": item.gr,
-              "size": item.size
-            }
-          }))
-        })}
-      </script>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+      />
     </section>
-  )
-}
+  );
+};
 
-export default React.memo(ProductsCollection)
+export default React.memo(ProductsCollection);

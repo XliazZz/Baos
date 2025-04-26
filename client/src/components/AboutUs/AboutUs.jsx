@@ -1,5 +1,5 @@
-import React from 'react'
-import CardAbout from './components/CardAbout'
+import React, { useMemo } from 'react';
+import CardAbout from './components/CardAbout';
 import ButtonAbout from './components/ButtonAbout';
 import Header from '../Header/Header';
 import aboutData from '../../data/about/aboutData.json';
@@ -7,8 +7,29 @@ import aboutData from '../../data/about/aboutData.json';
 const AboutUs = ({ handlerScrollSection }) => {
   const [activeId, setActiveId] = React.useState(0);
 
+  const activeContent = useMemo(() =>
+    aboutData.find(item => item.id === activeId),
+    [activeId]
+  );
+
+  const organizationSchema = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Panificadora Andina SA",
+    "description": "Fabricantes especializados en panes Bao artesanales tailandeses",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Milton 462",
+      "addressLocality": "Villa Luro",
+      "addressRegion": "CABA",
+      "addressCountry": "AR"
+    },
+    "image": aboutData[0].image,
+    "url": typeof window !== 'undefined' ? window.location.href : ''
+  }), []);
+
   return (
-    <main>
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <Header
         title="Sobre Nosotros"
         description={
@@ -18,67 +39,48 @@ const AboutUs = ({ handlerScrollSection }) => {
         }
       />
 
-      <section aria-labelledby="about-tabs-title">
+      <section aria-labelledby="about-tabs-title" className="mt-8">
         <h2 id="about-tabs-title" className="sr-only">Secciones sobre nuestros Baos</h2>
 
-        <div role="tablist" aria-label="Secciones de información sobre la empresa">
-          <div className='flex justify-center space-x-10 mt-0 sm:mt-0 sm:space-x-0'>
-            {aboutData.map((item) => (
-              <ButtonAbout
-                key={item.id}
-                header={item.header}
-                id={item.id}
-                activeID={activeId}
-                setActiveId={setActiveId}
-              />
-            ))}
-          </div>
+        <div
+          role="tablist"
+          aria-label="Secciones de información sobre la empresa"
+          className="flex flex-wrap justify-center gap-4 mt-0 sm:mt-0"
+        >
+          {aboutData.map((item) => (
+            <ButtonAbout
+              key={item.id}
+              header={item.header}
+              id={item.id}
+              activeID={activeId}
+              setActiveId={setActiveId}
+            />
+          ))}
         </div>
 
-        {aboutData
-          .filter((item) => item.id === activeId)
-          .map((item) => (
-            <div
-              key={item.id}
-              role="tabpanel"
-              id={`panel-${item.id}`}
-              aria-labelledby={`tab-${item.id}`}
-              tabIndex="0"
-              className='mt-5 sm:mt-8'
-            >
-              <CardAbout
-                image={item.image}
-                title={item.title}
-                description={item.description}
-                description2={item.description2}
-                description3={item.description3}
-                buttonText={item.buttonText}
-                handlerScrollSection={handlerScrollSection}
-                idRef={item.idRef}
-              />
-            </div>
-          ))}
+        {activeContent && (
+          <div
+            key={activeContent.id}
+            role="tabpanel"
+            id={`panel-${activeContent.id}`}
+            aria-labelledby={`tab-${activeContent.id}`}
+            tabIndex="0"
+            className="mt-8 animate-fadeIn"
+          >
+            <CardAbout
+              {...activeContent}
+              handlerScrollSection={handlerScrollSection}
+            />
+          </div>
+        )}
       </section>
 
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "Panificadora Andina SA",
-          "description": "Fabricantes especializados en panes Bao artesanales",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Milton 462",
-            "addressLocality": "Villa Luro",
-            "addressRegion": "CABA",
-            "addressCountry": "AR"
-          },
-          "image": aboutData[0].image,
-          "url": window.location.href
-        })}
-      </script>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
     </main>
-  )
-}
+  );
+};
 
-export default AboutUs
+export default React.memo(AboutUs);
