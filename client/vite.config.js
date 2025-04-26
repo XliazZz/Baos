@@ -12,5 +12,4 @@ export default defineConfig({
       darkMode: 'class',
     }),
   ],
-  base: '/',
 })
