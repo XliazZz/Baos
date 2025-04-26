@@ -12,5 +12,5 @@ export default defineConfig({
       darkMode: 'class',
     }),
   ],
-  base: '/wow-bao/',
+  base: '/',
 })
