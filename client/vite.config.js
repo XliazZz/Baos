@@ -13,8 +13,4 @@ export default defineConfig({
     }),
   ],
   base: '/wow-bao/',
-  build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
-  },
 })
