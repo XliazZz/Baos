@@ -4,14 +4,14 @@ const CardTestimonial = ({ title, comment, byName, stars }) => {
   return (
     <div className="keen-slider__slide">
       <blockquote
-        className="flex h-full flex-col justify-between bg-white p-6 shadow-xs sm:p-8 lg:p-12"
+        className="flex h-full flex-col justify-between bg-white p-6 shadow-xs sm:p-8 lg:p-12 xl:p-4"
       >
         <div>
           <div className="flex gap-0.5">
             {[...Array(5)].map((_, index) => (
               <svg
                 key={index}
-                className={`size-5 ${index < stars ? 'text-yellow-500' : 'text-gray-300'}`}
+                className={`sm:size-7 size-5 md:size-7 xl:size-5 ${index < stars ? 'text-yellow-500' : 'text-gray-300'}`}
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -24,15 +24,15 @@ const CardTestimonial = ({ title, comment, byName, stars }) => {
           </div>
 
           <div className="mt-4">
-            <p className="text-2xl font-bold text-indigo-600 sm:text-3xl">{title}</p>
+            <p className="text-2xl font-bold text-indigo-600 sm:text-4xl md:text-3xl xl:text-2xl">{title}</p>
 
-            <p className="mt-4 leading-relaxed text-gray-700">
+            <p className="mt-4 leading-relaxed text-gray-700 sm:text-2xl md:text-xl xl:text-lg">
               {comment}
             </p>
           </div>
         </div>
 
-        <footer className="mt-4 text-sm font-medium text-gray-700 sm:mt-6">
+        <footer className="mt-4 text-sm font-medium text-gray-700 sm:mt-6 sm:text-xl md:text-lg xl:text-base">
           &mdash; {byName}
         </footer>
       </blockquote>

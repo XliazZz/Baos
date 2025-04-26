@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Pan Bao Tradicional",
+    "description": "Clásico pan bao esponjoso al vapor, con textura suave y sabor ligeramente dulce. Ideal para rellenos creativos.",
+    "id": 1,
+    "image": "https://res.cloudinary.com/do5ubt5g0/image/upload/v1745619779/IMG_5521_jgidge.jpg",
+    "gr": "40gr",
+    "size": "10cm",
+    "itemProp": "itemListElement",
+    "schemaType": "Product"
+  },
+  {
+    "title": "Pan Bao Vegano",
+    "description": "Versión vegetal del bao tradicional, igual de esponjoso pero con ingredientes 100% de origen vegetal.",
+    "id": 2,
+    "image": "https://res.cloudinary.com/do5ubt5g0/image/upload/v1745619786/IMG_5509_l5pacy.jpg",
+    "gr": "40gr",
+    "size": "10cm",
+    "itemProp": "itemListElement",
+    "schemaType": "Product"
+  },
+  {
+    "title": "Pan Bao Hamburguesa de Sésamo",
+    "description": "Bao especial para hamburguesas, con crujientes semillas de sésamo y tamaño perfecto para tus carnes.",
+    "id": 3,
+    "image": "https://res.cloudinary.com/do5ubt5g0/image/upload/v1745619783/IMG_5513_cpgjyn.jpg",
+    "gr": "60gr",
+    "size": "15cm",
+    "itemProp": "itemListElement",
+    "schemaType": "Product"
+  },
+  {
+    "title": "Pan Bao Hamburguesa de Chía",
+    "description": "Bao para hamburguesas enriquecido con chía, aporta nutrición y textura única a tus creaciones.",
+    "id": 4,
+    "image": "https://res.cloudinary.com/do5ubt5g0/image/upload/v1745619779/IMG_5516_cbo2n7.jpg",
+    "gr": "60gr",
+    "size": "15cm",
+    "itemProp": "itemListElement",
+    "schemaType": "Product"
+  },
+  {
+    "title": "Pan Bao XL",
+    "description": "Versión extra grande de nuestro bao tradicional, perfecto para rellenos abundantes y presentaciones especiales.",
+    "id": 5,
+    "image": "https://res.cloudinary.com/do5ubt5g0/image/upload/v1745619787/IMG_5527_qvhyxl.jpg",
+    "gr": "90gr",
+    "size": "20cm",
+    "itemProp": "itemListElement",
+    "schemaType": "Product"
+  }
+]

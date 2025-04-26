@@ -16,17 +16,74 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.dark\:bg-gray-900 {
+  @media (prefers-color-scheme: light) {
+      background-color: var(--color-gray-900);
+  }
+}
+/* Fuentes base */
 h1 {
   font-family: 'Mulish', sans-serif;
-  /* Negrita */
+  font-weight: 800; /* Extra bold para títulos principales */
 }
 
 h2 {
   font-family: 'Poppins', sans-serif;
+  font-weight: 700; /* Bold para subtítulos */
 }
 
-a {
+h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600; /* Semi-bold para encabezados terciarios */
+}
+
+h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500; /* Medium para encabezados menores */
+}
+
+p {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 400; /* Regular para texto normal */
+}
+
+button, .btn {
   font-family: 'Outfit', sans-serif;
+  font-weight: 500; /* Medium para botones */
+}
+
+a, .link {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500; /* Medium para enlaces */
+}
+
+li {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 400; /* Regular para items de lista */
+}
+
+/* Elementos especiales */
+.label, input::placeholder, textarea::placeholder {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+}
+
+blockquote {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+code, pre {
+  font-family: 'Roboto Mono', monospace;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 

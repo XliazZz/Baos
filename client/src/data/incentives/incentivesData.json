@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Abastecimiento Sin Interrupciones",
+    "description": "Garantizamos entregas puntuales y consistentes para que siempre tengas stock de panes bao frescos.",
+    "icon": "icon-[material-symbols--inventory-2-outline]",
+    "schemaType": "Service",
+    "itemProp": "itemListElement"
+  },
+  {
+    "title": "Precios Competitivos",
+    "description": "Ofrecemos precios al por mayor que te permiten obtener márgenes de ganancia atractivos.",
+    "icon": "icon-[ri--price-tag-3-line]",
+    "schemaType": "Offer",
+    "itemProp": "itemListElement"
+  },
+  {
+    "title": "Aumentá tu Oferta Gastronómica",
+    "description": "Con nuestros panes bao, puedes diversificar tu menú y atraer a más clientes interesados en sabores únicos.",
+    "icon": "icon-[lineicons--stats-up]",
+    "schemaType": "BusinessFunction",
+    "itemProp": "itemListElement"
+  }
+]

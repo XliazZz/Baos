@@ -1,0 +1,26 @@
+[
+  {
+    "icon": "icon-[mynaui--location]",
+    "title": "Ubicación",
+    "subtitle": "Villa Luro",
+    "optional": "Buenos Aires, Argentina",
+    "schemaType": "PostalAddress",
+    "itemProp": "address"
+  },
+  {
+    "icon": "icon-[mynaui--telephone]",
+    "title": "Contáctanos",
+    "subtitle": "Teléfono: +54 11 4888 5405",
+    "optional": "Mail: panificadoraandinasa@gmail.com",
+    "schemaType": "ContactPoint",
+    "itemProp": "contactPoint"
+  },
+  {
+    "icon": "icon-[mynaui--clock-circle]",
+    "title": "Horario de Atención",
+    "subtitle": "Lunes a Viernes:",
+    "optional": "08:00hs - 17:00hs",
+    "schemaType": "OpeningHoursSpecification",
+    "itemProp": "openingHoursSpecification"
+  }
+]

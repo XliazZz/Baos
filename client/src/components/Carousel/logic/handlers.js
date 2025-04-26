@@ -9,13 +9,8 @@ export const carouselHandlers = (e, instanceRef) => {
     instanceRef.current?.next();
   };
 
-  const handleIndicatorClick = (index) => {
-    instanceRef.current?.moveToIdx(index);
-  };
-
   return {
     handlePrev,
     handleNext,
-    handleIndicatorClick,
   };
 }

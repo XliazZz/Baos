@@ -1,77 +1,110 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import SliderCarousel from './components/SliderCarousel';
-import IndicatorCarousel from './components/IndicatorCarousel';
 import ButtonsCarousel from './components/ButtonsCarousel';
 import { carouselHandlers } from './logic/handlers';
-import { useKeenSlider } from "keen-slider/react"
+import { useKeenSlider } from "keen-slider/react";
 import 'keen-slider/keen-slider.min.css';
+import carouselData from '../../data/carousel/carouselData.json'
 
-const Carousel = ({ data }) => {
+const Carousel = ({ handlerScrollSection }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loaded, setLoaded] = useState(false);
 
   const [sliderRef, instanceRef] = useKeenSlider({
     initial: 0,
     slideChanged(slider) {
-      setCurrentIndex(slider.track.details.rel)
+      setCurrentIndex(slider.track.details.rel);
     },
     loop: true,
     created() {
-      setLoaded(true)
+      setLoaded(true);
     },
-  })
+    mode: "snap",
+    slides: {
+      origin: "center",
+      perView: 1,
+      spacing: 0,
+    },
+  });
 
-  const { handlePrev, handleNext, handleIndicatorClick } = carouselHandlers(event, instanceRef);
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      if (instanceRef.current && instanceRef.current.track.details.slides.length > 0) {
+        instanceRef.current.next();
+      }
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [currentIndex, instanceRef]);
+
+  const { handlePrev, handleNext } = carouselHandlers(event, instanceRef);
+
+  const renderSlides = useCallback(() => (
+    carouselData.map((item, index) => (
+      <div
+        key={`carousel-item-${index}`}
+        className="keen-slider__slide w-full h-full flex-shrink-0"
+        itemScope
+        itemProp="itemListElement"
+        itemType="https://schema.org/ListItem"
+        role="group"
+        aria-roledescription="slide"
+        aria-label={`Slide ${index + 1} de ${carouselData.length}`}
+        aria-hidden={currentIndex !== index}
+      >
+        <SliderCarousel
+          title={item.title}
+          subtitle={item.subtitle}
+          image={item.image}
+          currentIndex={currentIndex}
+          handlerScrollSection={handlerScrollSection}
+          position={index + 1}
+          loading={index === 0 ? 'eager' : 'lazy'} // Optimización de carga de imágenes
+        />
+      </div>
+    ))
+  ), [carouselData, currentIndex, handlerScrollSection]);
 
   return (
-    <div className="h-full w-full bg-white items-center flex justify-center text-black">
+    <section
+      aria-label="Carrusel de presentación"
+      className="h-screen w-screen flex justify-center items-center bg-black overflow-hidden z-50"
+      itemScope
+      itemType="https://schema.org/ItemList"
+    >
       <div
         id="default-carousel"
-        data-carousel="static"
-        className="relative flex max-w-screen-xl px-4 py-12 w-full
-        sm:px-6 sm:py-12 
-        lg:px-8 
-        xl:pt-36 xl:pb-24"
+        className="relative w-full h-full overflow-hidden"
+        role="group"
+        itemProp="mainEntity"
       >
-
-        <div className='keen-slider flex w-full' ref={sliderRef}>
-          {
-            data.map((item, index) => (
-              <SliderCarousel
-                key={index}
-                title={item.title}
-                subtitle={item.subtitle}
-                image={item.image}
-                currentIndex={currentIndex}
-              />
-            )
-            )
-          }
-        </div>
-
-        <div className="absolute bottom-[7.5%] left-1/2 transform -translate-x-1/2 flex space-x-2 ">
-          {loaded && instanceRef.current && data.map((_, index) => (
-            <IndicatorCarousel
-              key={index}
-              index={index}
-              currentIndex={currentIndex}
-              handleIndicatorClick={handleIndicatorClick}
-            />
-          ))
-          }
+        <div
+          ref={sliderRef}
+          className="keen-slider w-full h-full"
+          aria-live="polite"
+        >
+          {renderSlides()}
         </div>
 
         {loaded && instanceRef.current && (
-          <div>
-            <ButtonsCarousel handle={(e) => handlePrev(e, instanceRef)} span='Anterior' direction='left' />
-            <ButtonsCarousel handle={(e) => handleNext(e, instanceRef)} span='Siguiente' direction='right' />
+          <div aria-controls="default-carousel">
+            <ButtonsCarousel
+              handle={handlePrev}
+              span='Anterior'
+              direction='left'
+              aria-label="Slide anterior"
+            />
+            <ButtonsCarousel
+              handle={handleNext}
+              span='Siguiente'
+              direction='right'
+              aria-label="Slide siguiente"
+            />
           </div>
-        )
-        }
-
+        )}
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Carousel;
+export default React.memo(Carousel);

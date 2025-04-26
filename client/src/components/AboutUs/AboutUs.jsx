@@ -1,85 +1,86 @@
-import React from 'react'
-import CardAbout from './CardAbout'
-import ButtonAbout from './ButtonAbout';
+import React, { useMemo } from 'react';
+import CardAbout from './components/CardAbout';
+import ButtonAbout from './components/ButtonAbout';
 import Header from '../Header/Header';
+import aboutData from '../../data/about/aboutData.json';
 
 const AboutUs = ({ handlerScrollSection }) => {
   const [activeId, setActiveId] = React.useState(0);
 
-  const dataAbout = [
-    {
-      header: "Descubre la Magia de Nuestros Baos",
-      image: "https://i.pinimg.com/originals/5b/0f/b1/5b0fb11010e4c97f24bb65ede1090f43.jpg",
-      title: "Baos Artesanales - Tailandeses Gua Bao (กัวเปา)",
-      description: "Panecillos tailandeses Gua Bao, también conocidos simplemente como Bao (‘envolver’).",
-      description2: "Un pan suave y esponjoso diseñado para abrazar una infinidad de sabores, transportándote con cada bocado hasta Tailandia.",
-      description3: "Elaborados artesanalmente y cocinados al vapor con ingredientes de alta calidad. ¡Una vez que los pruebes, te encantarán!",
-      id: 0,
-      buttonText: "Ver Productos",
-      idRef: 'sectionProductsCollection'
+  const activeContent = useMemo(() =>
+    aboutData.find(item => item.id === activeId),
+    [activeId]
+  );
+
+  const organizationSchema = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Panificadora Andina SA",
+    "description": "Fabricantes especializados en panes Bao artesanales tailandeses",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Milton 462",
+      "addressLocality": "Villa Luro",
+      "addressRegion": "CABA",
+      "addressCountry": "AR"
     },
-    {
-      header: "Conócenos",
-      image: "https://th.bing.com/th/id/OIP.1YHv4mQVThAYbW0ih787tQHaD0?rs=1&pid=ImgDetMain",
-      title: "Panificadora Andina SA",
-      description: "Somos los únicos fabricantes especializados en panes Bao, combinando tradición y calidad en cada uno de nuestros productos.",
-      description2: "Nuestra fábrica, ubicada en Milton 462, Villa Luro, CABA, nos permite garantizar la frescura y excelencia de nuestros baos.",
-      description3: "Los entregamos congelados para conservar su textura y sabor, con servicio de delivery disponible en toda CABA.",
-      id: 1,
-      buttonText: "Contáctanos",
-      idRef: 'sectionContactUs'
-    }
-  ];
+    "image": aboutData[0].image,
+    "url": typeof window !== 'undefined' ? window.location.href : ''
+  }), []);
 
   return (
-    <section className='h-full w-full bg-gray-50 items-center flex justify-center'>
-      <div className="max-w-screen-xl px-4 py-12 w-full
-      sm:px-6 sm:py-12 
-      lg:px-8 
-      xl:py-24">
-        <Header
-          title={"Sobre Nosotros"}
-          description={
-            <>
-              Sumérgete en el mundo de los auténticos <span className="font-semibold">Baos al vapor</span>. Hechos con los <span className="font-semibold">mejores ingredientes</span>, su suavidad y sabor te transportarán a <span className="font-semibold">Tailandia</span> con cada bocado.
-            </>
-          }
-        />
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Header
+        title="Sobre Nosotros"
+        description={
+          <>
+            Sumérgete en el mundo de los auténticos <span className="font-semibold">Baos al vapor</span>. Hechos con los <span className="font-semibold">mejores ingredientes</span>, su suavidad y sabor te transportarán a <span className="font-semibold">Tailandia</span> con cada bocado.
+          </>
+        }
+      />
 
-        <div>
-          <div className='flex justify-center space-x-10 mt-10'>
-            {dataAbout.map((item) => (
-              <ButtonAbout
-                key={item.id}
-                header={item.header}
-                id={item.id}
-                activeID={activeId}
-                setActiveId={setActiveId}
-              />
-            ))}
-          </div>
+      <section aria-labelledby="about-tabs-title" className="mt-8">
+        <h2 id="about-tabs-title" className="sr-only">Secciones sobre nuestros Baos</h2>
 
-          <div className='mt-16'>
-            {dataAbout
-              .filter((item) => item.id === activeId)
-              .map((item) => (
-                <CardAbout
-                  key={item.id}
-                  image={item.image}
-                  title={item.title}
-                  description={item.description}
-                  description2={item.description2}
-                  description3={item.description3}
-                  buttonText={item.buttonText}
-                  handlerScrollSection={handlerScrollSection}
-                  idRef={item.idRef}
-                />
-              ))}
-          </div>
+        <div
+          role="tablist"
+          aria-label="Secciones de información sobre la empresa"
+          className="flex flex-wrap justify-center gap-4 mt-0 sm:mt-0"
+        >
+          {aboutData.map((item) => (
+            <ButtonAbout
+              key={item.id}
+              header={item.header}
+              id={item.id}
+              activeID={activeId}
+              setActiveId={setActiveId}
+            />
+          ))}
         </div>
-      </div>
-    </section>
-  )
-}
 
-export default AboutUs
+        {activeContent && (
+          <div
+            key={activeContent.id}
+            role="tabpanel"
+            id={`panel-${activeContent.id}`}
+            aria-labelledby={`tab-${activeContent.id}`}
+            tabIndex="0"
+            className="mt-8 animate-fadeIn"
+          >
+            <CardAbout
+              {...activeContent}
+              handlerScrollSection={handlerScrollSection}
+            />
+          </div>
+        )}
+      </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+    </main>
+  );
+};
+
+export default React.memo(AboutUs);
