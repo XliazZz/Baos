@@ -12,9 +12,4 @@ export default defineConfig({
       darkMode: 'class',
     }),
   ],
-  build: {
-    outDir: 'dist',
-    emptyOutDir: true,
-  },
-  base: '/',
 })

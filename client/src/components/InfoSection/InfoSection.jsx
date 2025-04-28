@@ -9,7 +9,7 @@ const InfoSection = () => {
     "name": "Panificadora Andina SA",
     "image": "", // Agrega URL de tu logo
     "email": "panificadoraandinasa@gmail.com",
-    "telephone": "+54 11 4888-4304",
+    "telephone": "+54 11 6457-6321",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Calle Milton 409",
