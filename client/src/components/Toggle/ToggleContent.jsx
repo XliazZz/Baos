@@ -38,8 +38,8 @@ const ToggleContent = ({
               <li key={liSection.id}>
                 <a
                   className={`block py-3 transition-colors ${activeSection === liSection.id
-                      ? 'text-indigo-600 dark:text-indigo-300 font-semibold'
-                      : 'text-gray-900 dark:text-white hover:text-indigo-500 dark:hover:text-indigo-400'
+                    ? 'text-indigo-600 dark:text-indigo-300 font-semibold'
+                    : 'text-gray-900 dark:text-white hover:text-indigo-500 dark:hover:text-indigo-400'
                     }`}
                   onClick={(e) => {
                     e.preventDefault();
@@ -63,9 +63,9 @@ const ToggleContent = ({
         <a
           href="tel:+541148884304"
           className="text-indigo-600 dark:text-indigo-300 hover:underline block mb-3 text-lg transition-colors"
-          aria-label="Llamar al +54 11 4888 4304"
+          aria-label="Llamar al +54 11 6457-6321"
         >
-          +54 11 4888 4304
+          +54 11 6457-6321
         </a>
         <p
           className="text-gray-700 dark:text-gray-300"

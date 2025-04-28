@@ -32,9 +32,9 @@ const NavContent = ({ liSections, activeSection, handlerScrollSection, isAtTop, 
           <a
             href="tel:+541148884304"
             className="hover:underline focus:none"
-            aria-label="Llamar al +54 11 4888 4304"
+            aria-label="Llamar al +54 11 6457-6321"
           >
-            +54 11 4888 4304
+            +54 11 6457-6321
           </a>
         </h2>
       </div>
@@ -77,9 +77,9 @@ const NavContent = ({ liSections, activeSection, handlerScrollSection, isAtTop, 
             <a
               href="tel:+541148884304"
               className="hover:underline focus:none"
-              aria-label="Llamar al +54 11 4888 4304"
+              aria-label="Llamar al +54 11 6457-6321"
             >
-              +54 11 4888 4304
+              +54 11 6457-6321
             </a>
           </h2>
         </div>

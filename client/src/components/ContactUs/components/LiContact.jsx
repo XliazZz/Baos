@@ -51,7 +51,7 @@ const LiContact = ({ icon, title, subtitle, optional, schemaType, itemProp }) =>
             <a href={`tel:${subtitle.replace(/\D/g, '')}`} className="text-gray-600 text-[17px] dark:text-slate-400 sm:text-base md:m-0 lg:text-base 2xl:text-lg block "
               itemProp="telephone"
             >
-              Teléfono: <span className='hover:text-indigo-500'>+54 11 4888 4304</span>
+              Teléfono: <span className='hover:text-indigo-500'>+54 11 6457-6321</span>
             </a>
             {optional &&
               <a className="text-gray-600 dark:text-slate-400 text-[17px] sm:text-base md:m-0 lg:text-base 2xl:text-lg block"

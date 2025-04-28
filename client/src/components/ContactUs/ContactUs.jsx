@@ -25,7 +25,7 @@ const ContactUs = () => {
     },
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+54 11 4888 4304",
+      "telephone": "+54 11 6457-6321",
       "email": "panificadoraandinasa@gmail.com",
       "contactType": "customer service"
     },
