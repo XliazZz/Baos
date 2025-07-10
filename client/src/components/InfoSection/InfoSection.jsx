@@ -7,15 +7,29 @@ const InfoSection = () => {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Panificadora Andina SA",
-    "image": "", // Agrega URL de tu logo
-    "email": "panificadoraandinasa@gmail.com",
+    "description": "Fabricantes especializados en panes Bao artesanales tailandeses",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://res.cloudinary.com/.../TdesignBread_1_tggczo.png",
+      "width": "128",
+      "height": "128"
+    },
+    "url": "https://www.wowbao.com.ar",
+    "priceRange": "$$",
     "telephone": "+54 11 6457-6321",
+    "email": "panificadoraandinasa@gmail.com",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Calle Milton 409",
+      "streetAddress": "Milton 462",
       "addressLocality": "Villa Luro",
-      "addressRegion": "Buenos Aires",
-      "addressCountry": "AR"
+      "addressRegion": "CABA",
+      "addressCountry": "AR",
+      "postalCode": "1407"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "-34.632980",
+      "longitude": "-58.498931"
     },
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
@@ -23,7 +37,10 @@ const InfoSection = () => {
       "opens": "08:00",
       "closes": "17:00"
     },
-    "url": typeof window !== 'undefined' ? window.location.href : ''
+    "sameAs": [
+      "https://facebook.com/wowbao.oficial",
+      "https://instagram.com/wowbao.oficial"
+    ]
   }), []);
 
   const infoCards = useMemo(() => (

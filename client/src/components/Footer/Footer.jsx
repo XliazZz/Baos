@@ -6,15 +6,47 @@ const Footer = () => {
   const schemaMarkup = useMemo(() => ({
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "El Bao Bailarín",
-    "url": typeof window !== 'undefined' ? window.location.href : '',
-    "logo": "URL_DEL_LOGO",
+    "name": "Wow Bao",
+    "url": "https://www.wowbao.com.ar",
+    "description": "Hechos con amor y al vapor 🥢 ¡Disfruta cada bocado!",
+    "foundingDate": "2023",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://res.cloudinary.com/.../TdesignBread_1_tggczo.png",
+      "width": "128",
+      "height": "128"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Milton 462",
+      "addressLocality": "Villa Luro",
+      "addressRegion": "CABA",
+      "addressCountry": "AR",
+      "postalCode": "1407"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "-34.632980",
+      "longitude": "-58.498931"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+54 11 6457-6321",
+      "contactType": "customer service",
+      "email": "panificadoraandinasa@gmail.com.ar",
+      "availableLanguage": "es"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "8:00",
+      "closes": "17:00"
+    },
     "sameAs": [
-      "https://facebook.com/tupagina",
-      "https://instagram.com/tucuenta",
-      "https://tiktok.com/@tucuenta"
-    ],
-    "description": "Hechos con amor y al vapor 🥢 ¡Disfruta cada bocado!"
+      "https://facebook.com/wowbao.oficial",
+      "https://instagram.com/wowbao.oficial",
+      "https://tiktok.com/@wowbao.oficial"
+    ]
   }), []);
 
   const socialLinks = useMemo(() => [

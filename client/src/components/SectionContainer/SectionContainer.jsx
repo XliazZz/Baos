@@ -9,7 +9,6 @@ const SectionContainer = ({
   itemType,
   darkBg = 'gray-800'
 }) => {
-  // Asegurar prefijos correctos para las clases de color
   const normalizedBgColor = bgColor.startsWith('bg-') ? bgColor : `bg-${bgColor}`;
   const normalizedDarkBg = darkBg.startsWith('bg-') ? darkBg : `dark:bg-${darkBg}`;
 

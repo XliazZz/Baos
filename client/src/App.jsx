@@ -10,6 +10,7 @@ import AboutUs from './components/AboutUs/AboutUs';
 import SectionContainer from './components/SectionContainer/SectionContainer';
 import InfoSection from './components/InfoSection/InfoSection';
 import Incetives from './components/Incetives/Incetives';
+import FloatButton from './components/FloatButton/FloatButton';
 
 function App() {
   const [activeSection, setActiveSection] = useState('sectionCarousel');
@@ -123,6 +124,10 @@ function App() {
         contain={<ContactUs />}
         bgColor={'gray-50'}
         darkBg={'gray-950'}
+      />
+
+      <SectionContainer
+        contain={<FloatButton />}
       />
 
       <Footer />

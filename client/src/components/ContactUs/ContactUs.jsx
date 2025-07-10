@@ -16,18 +16,33 @@ const ContactUs = () => {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Panificadora Andina S.A.",
+    "url": "https://www.wowbao.com.ar",
+    "description": "Panadería artesanal. Calidad y sabor en cada producto. 🥖",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://res.cloudinary.com/.../TdesignBread_1_tggczo.png",
+      "width": "128",
+      "height": "128"
+    },
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Villa Luro",
-      "addressLocality": "Buenos Aires",
-      "addressRegion": "Buenos Aires",
-      "addressCountry": "AR"
+      "streetAddress": "Milton 462",
+      "addressLocality": "Villa Luro",
+      "addressRegion": "CABA",
+      "addressCountry": "AR",
+      "postalCode": "1407"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "-34.632980",
+      "longitude": "-58.498931"
     },
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+54 11 6457-6321",
       "email": "panificadoraandinasa@gmail.com",
-      "contactType": "customer service"
+      "contactType": "customer service",
+      "availableLanguage": "es"
     },
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
@@ -35,7 +50,10 @@ const ContactUs = () => {
       "opens": "08:00",
       "closes": "17:00"
     },
-    "url": typeof window !== 'undefined' ? window.location.href : ''
+    "sameAs": [
+      "https://facebook.com/panificadoraandina",
+      "https://instagram.com/panificadoraandina"
+    ]
   }), []);
 
   const sendEmail = useCallback(async (e) => {

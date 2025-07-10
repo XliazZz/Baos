@@ -3,22 +3,38 @@ import CardIncentive from './components/CardIncentive';
 import incentiveData from '../../data/incentives/incentivesData.json';
 
 const Incentives = () => {
-  // Memoizar el schema markup para evitar recreación en cada render
   const schemaMarkup = useMemo(() => ({
     "@context": "https://schema.org",
     "@type": "ItemList",
+    "name": "Beneficios y Ventajas de Wow Bao",
+    "description": "Descubre las ventajas exclusivas de nuestros productos y servicios",
+    "url": "https://www.wowbao.com.ar",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://res.cloudinary.com/.../TdesignBread_1_tggczo.png",
+      "width": "128",
+      "height": "128"
+    },
     "itemListElement": incentiveData.map((item, index) => ({
       "@type": "ListItem",
       "position": index + 1,
+      "name": item.title,
+      "description": item.description,
+      "image": item.image || "https://www.wowbao.com.ar/logo.png",
       "item": {
-        "@type": item.schemaType,
+        "@type": item.schemaType || "Intangible",
         "name": item.title,
-        "description": item.description
+        "description": item.description,
+        "image": item.image,
+        "recognizingAuthority": {
+          "@type": "Organization",
+          "name": "Wow Bao"
+        },
+        "category": item.category || "FoodService"
       }
     }))
   }), [incentiveData]);
 
-  // Memoizar la lista de incentivos
   const incentivesList = useMemo(() => (
     incentiveData.map((item, index) => (
       <CardIncentive
