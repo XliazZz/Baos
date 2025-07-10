@@ -7,16 +7,28 @@ const ProductsCollection = () => {
   const schemaMarkup = useMemo(() => ({
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "itemListElement": productsData.map(item => ({
+    "name": "Nuestra Colección de Productos Wow Bao",
+    "description": "Descubre nuestra variedad de panes Bao artesanales y productos frescos",
+    "url": "https://www.wowbao.com.ar",
+    "numberOfItems": productsData.length,
+    "itemListElement": productsData.map((item, index) => ({
       "@type": "ListItem",
-      "position": item.id,
+      "position": index + 1,
+      "name": item.title,
+      "description": item.description,
+      "image": item.image,
       "item": {
         "@type": item.schemaType || "Product",
         "name": item.title,
         "description": item.description,
         "image": item.image,
-        "weight": item.gr,
-        "size": item.size
+        "sku": item.sku || `WB-${item.id}`,
+        "weight": {
+          "@type": "QuantitativeValue",
+          "value": item.gr,
+          "unitText": "g"
+        },
+        "size": item.size,
       }
     }))
   }), [productsData]);

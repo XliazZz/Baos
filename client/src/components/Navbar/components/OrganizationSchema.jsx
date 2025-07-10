@@ -9,8 +9,8 @@ export const OrganizationSchema = () => (
       "url": typeof window !== 'undefined' ? window.location.href : '',
       "logo": "https://tu-sitio.com/logo.png",
       "sameAs": [
-        "https://facebook.com/tupagina",
-        "https://instagram.com/tucuenta"
+        "https://www.facebook.com/profile.php?id=61577301479995",
+        "https://www.instagram.com/panificadora_andina/",
       ],
       "address": {
         "@type": "PostalAddress",

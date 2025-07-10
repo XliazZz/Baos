@@ -3,24 +3,33 @@ import CardSection from './components/CardSection';
 import featureData from '../../data/featureSection/featureData.json';
 
 const FeatureSection = () => {
-  // Memoizar el schema markup para evitar recreación en cada render
   const schemaMarkup = useMemo(() => ({
     "@context": "https://schema.org",
     "@type": "ItemList",
+    "name": "Nuestros Destacados",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://res.cloudinary.com/.../TdesignBread_1_tggczo.png",
+      "width": "128",
+      "height": "128"
+    },
+    "description": "Descubre los panes Bao y productos especiales de Panificadora Andina",
+    "url": "https://www.wowbao.com.ar",
     "itemListElement": featureData.map((item, index) => ({
       "@type": "ListItem",
       "position": index + 1,
       "name": item.title,
       "description": item.description,
+      "image": item.image,
       "item": {
-        "@type": item.schemaType,
+        "@type": item.schemaType || "Product",
         "name": item.title,
-        "description": item.description
+        "description": item.description,
+        "image": item.image,
       }
     }))
   }), [featureData]);
 
-  // Memoizar la lista de características para evitar rerenders innecesarios
   const featuresList = useMemo(() => (
     featureData.map((feature, index) => (
       <CardSection
