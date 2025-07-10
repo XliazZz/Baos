@@ -38,8 +38,8 @@ const InfoSection = () => {
       "closes": "17:00"
     },
     "sameAs": [
-      "https://facebook.com/wowbao.oficial",
-      "https://instagram.com/wowbao.oficial"
+      "https://www.facebook.com/profile.php?id=61577301479995",
+      "https://www.instagram.com/panificadora_andina/",
     ]
   }), []);
 

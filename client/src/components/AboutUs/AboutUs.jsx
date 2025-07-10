@@ -46,9 +46,8 @@ const AboutUs = ({ handlerScrollSection }) => {
     },
     "foundingDate": "2023",
     "sameAs": [
-      "https://facebook.com/wowbao.oficial",
-      "https://instagram.com/wowbao.oficial",
-      "https://tiktok.com/@wowbao.oficial"
+      "https://www.facebook.com/profile.php?id=61577301479995",
+      "https://www.instagram.com/panificadora_andina/",
     ],
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",

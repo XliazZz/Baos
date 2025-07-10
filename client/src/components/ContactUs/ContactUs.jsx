@@ -51,8 +51,8 @@ const ContactUs = () => {
       "closes": "17:00"
     },
     "sameAs": [
-      "https://facebook.com/panificadoraandina",
-      "https://instagram.com/panificadoraandina"
+      "https://www.facebook.com/profile.php?id=61577301479995",
+      "https://www.instagram.com/panificadora_andina/",
     ]
   }), []);
 

@@ -43,28 +43,27 @@ const Footer = () => {
       "closes": "17:00"
     },
     "sameAs": [
-      "https://facebook.com/wowbao.oficial",
-      "https://instagram.com/wowbao.oficial",
-      "https://tiktok.com/@wowbao.oficial"
+      "https://www.facebook.com/profile.php?id=61577301479995",
+      "https://www.instagram.com/panificadora_andina/",
     ]
   }), []);
 
   const socialLinks = useMemo(() => [
     {
-      href: "https://facebook.com/tupagina",
+      href: "https://www.facebook.com/profile.php?id=61577301479995",
       icon: "icon-[mdi--facebook] size-8",
       label: "Facebook"
     },
     {
-      href: "https://instagram.com/tucuenta",
+      href: "https://www.instagram.com/panificadora_andina/",
       icon: "icon-[mdi--instagram] size-8",
       label: "Instagram"
     },
-    {
-      href: "https://tiktok.com/@tucuenta",
-      icon: "icon-[ant-design--tik-tok-filled] size-8",
-      label: "TikTok"
-    }
+    // {
+    //   href: "https://tiktok.com/@tucuenta",
+    //   icon: "icon-[ant-design--tik-tok-filled] size-8",
+    //   label: "TikTok"
+    // }
   ], []);
 
   return (
