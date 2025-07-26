@@ -39,8 +39,8 @@
 - **Tailwind CSS**  
 - **JavaScript (ES6+)**  
 - **HTML5 & CSS3**  
-- **Iconify
-- **SweetAlert2
+- **Iconify**
+- **SweetAlert2**
 
 ---
 
