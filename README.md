@@ -61,11 +61,6 @@ Este proyecto fue diseñado y desarrollado desde cero, tomando inspiración visu
 - Estética limpia y profesional
 - Adaptabilidad a distintos temas y pantallas
 
----
-
-## 📸 Captura de pantalla
-
-![Vista previa del sitio](https://res.cloudinary.com/do5ubt5g0/image/upload/v1753506458/Captura_de_pantalla_2025-07-26_020621_onexlm.png)
 
 ---
 
