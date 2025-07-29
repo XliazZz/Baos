@@ -1,24 +1,39 @@
 import React from 'react';
 
 const CardAbout = ({ image, title, description, description2, description3, buttonText, handlerScrollSection, idRef }) => {
+  const cloudinaryBase = 'https://res.cloudinary.com';
+  const cloudinaryPath = image?.replace(`${cloudinaryBase}/`, '').split('/upload/')[1];
+
+  const getCloudinaryUrl = (width) =>
+    `${cloudinaryBase}/${image?.split('/upload/')[0].split(cloudinaryBase + '/')[1]}/upload/f_auto,q_auto,w_${width}/${cloudinaryPath}`;
+
   return (
-    <article className="mx-auto overflow-hidden h-full flex max-w-screen-xl w-full flex-col 
-      sm:min-h-full sm:max-h-full
-      lg:mx-auto lg:overflow-hidden lg:min-h-[300px] lg:max-h-[350px] lg:flex-row lg:max-w-screen-xl lg:w-full lg:h-[300px]
-      xl:mx-auto xl:overflow-hidden xl:min-h-[300px] xl:max-h-[350px] xl:flex-row xl:max-w-screen-xl xl:w-full xl:h-[300px]
-      2xl:max-w-screen-2xl 2xl:min-h-[350px] 2xl:max-h-[400px]"
+    <article
+      className="mx-auto overflow-hidden h-full flex max-w-screen-xl w-full flex-col 
+        sm:min-h-full sm:max-h-full
+        lg:mx-auto lg:overflow-hidden lg:min-h-[300px] lg:max-h-[350px] lg:flex-row lg:max-w-screen-xl lg:w-full lg:h-[300px]
+        xl:mx-auto xl:overflow-hidden xl:min-h-[300px] xl:max-h-[350px] xl:flex-row xl:max-w-screen-xl xl:w-full xl:h-[300px]
+        2xl:max-w-screen-2xl 2xl:min-h-[350px] 2xl:max-h-[400px]"
       itemScope itemType="https://schema.org/AboutPage"
     >
-      <div className="w-full h-[25em] flex-shrink-0
-        sm:h-[28em]
-        md:h-[35em] md:mx-auto 
-        lg:w-[40%] lg:h-full lg:mx-0
-        xl:w-[35%]
-        2xl:w-[45%]"
+      <div
+        className="w-full h-[25em] flex-shrink-0
+          sm:h-[28em]
+          md:h-[35em] md:mx-auto 
+          lg:w-[40%] lg:h-full lg:mx-0
+          xl:w-[35%]
+          2xl:w-[45%]"
       >
         <img
           className="w-full h-full object-cover rounded-2xl"
-          src={image}
+          src={getCloudinaryUrl(800)} // fallback
+          srcSet={`
+            ${getCloudinaryUrl(400)} 400w,
+            ${getCloudinaryUrl(600)} 600w,
+            ${getCloudinaryUrl(800)} 800w,
+            ${getCloudinaryUrl(1024)} 1024w
+          `}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           alt={`${title} - Panificadora Andina`}
           itemProp="image"
           width="600"

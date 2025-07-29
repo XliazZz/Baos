@@ -35,7 +35,7 @@ const Carousel = ({ handlerScrollSection }) => {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [currentIndex, instanceRef]);
+  }, [instanceRef]);
 
   const { handlePrev, handleNext } = carouselHandlers(event, instanceRef);
 
@@ -59,11 +59,11 @@ const Carousel = ({ handlerScrollSection }) => {
           currentIndex={currentIndex}
           handlerScrollSection={handlerScrollSection}
           position={index + 1}
-          loading={index === 0 ? 'eager' : 'lazy'} // Optimización de carga de imágenes
+          loading={index === 0 ? 'eager' : 'lazy'}
         />
       </div>
     ))
-  ), [carouselData, currentIndex, handlerScrollSection]);
+  ), [currentIndex, handlerScrollSection]);
 
   return (
     <section

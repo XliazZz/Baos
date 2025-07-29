@@ -32,6 +32,13 @@ const SliderCarousel = ({ title, subtitle, image, handlerScrollSection, position
     </>
   ), [title, subtitle]);
 
+  // Extrae path relativo desde la URL de Cloudinary
+  const cloudinaryBase = 'https://res.cloudinary.com';
+  const cloudinaryPath = image?.replace(`${cloudinaryBase}/`, '').split('/upload/')[1];
+
+  const getCloudinaryUrl = (width) =>
+    `${cloudinaryBase}/${image?.split('/upload/')[0].split(cloudinaryBase + '/')[1]}/upload/f_auto,q_auto,w_${width}/${cloudinaryPath}`;
+
   return (
     <div
       className="relative w-full h-full overflow-hidden"
@@ -47,7 +54,19 @@ const SliderCarousel = ({ title, subtitle, image, handlerScrollSection, position
       />
 
       <img
-        src={image}
+        src={getCloudinaryUrl(1920)} // fallback
+        srcSet={`
+          ${getCloudinaryUrl(480)} 480w,
+          ${getCloudinaryUrl(768)} 768w,
+          ${getCloudinaryUrl(1024)} 1024w,
+          ${getCloudinaryUrl(1280)} 1280w,
+          ${getCloudinaryUrl(1920)} 1920w
+        `}
+        sizes="(max-width: 480px) 480px,
+               (max-width: 768px) 768px,
+               (max-width: 1024px) 1024px,
+               (max-width: 1280px) 1280px,
+               1920px"
         className="w-full h-full object-cover"
         alt={`Imagen promocional: ${title}`}
         itemProp="contentUrl"
