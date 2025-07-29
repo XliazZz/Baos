@@ -13,7 +13,7 @@ const FloatButton = () => {
         className="flex items-center justify-center w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 transition-all shadow-lg hover:shadow-xl"
         aria-label="Contactar por WhatsApp"
       >
-        <span class="icon-[logos--whatsapp-icon] size-8"></span>
+        <span className="icon-[logos--whatsapp-icon] size-8"></span>
       </a>
     </div>
   );

@@ -14,6 +14,15 @@ const Card = ({ image, title, description, gr, size, schemaType = "Product" }) =
     specs: "flex items-start justify-between mt-auto text-gray-500 dark:text-gray-400 sm:mt-auto"
   }), []);
 
+  const getCloudinaryUrl = (imageUrl, width) => {
+    if (!imageUrl) return '';
+    const base = 'https://res.cloudinary.com';
+    const [prefix, suffix] = imageUrl.split('/upload/');
+    const path = suffix;
+    const cloudName = prefix.replace(base + '/', '');
+    return `${base}/${cloudName}/upload/f_auto,q_auto,w_${width}/${path}`;
+  };
+
   return (
     <div
       className={cardStyles.container}
@@ -24,7 +33,14 @@ const Card = ({ image, title, description, gr, size, schemaType = "Product" }) =
       <div className={cardStyles.imageContainer}>
         <img
           className="w-full block h-full object-cover"
-          src={image}
+          src={getCloudinaryUrl(image, 400)} // fallback
+          srcSet={`
+            ${getCloudinaryUrl(image, 200)} 200w,
+            ${getCloudinaryUrl(image, 300)} 300w,
+            ${getCloudinaryUrl(image, 400)} 400w,
+            ${getCloudinaryUrl(image, 600)} 600w
+          `}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           alt={`Imagen de ${title}`}
           itemProp="image"
           loading="lazy"
