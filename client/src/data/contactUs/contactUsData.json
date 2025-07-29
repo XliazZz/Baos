@@ -10,8 +10,8 @@
   {
     "icon": "icon-[mynaui--telephone]",
     "title": "Contáctanos",
-    "subtitle": "Teléfono: +54 11 6457-6321",
-    "optional": "Mail: panificadoraandinasa@gmail.com",
+    "subtitle": "+54 11 6457-6321",
+    "optional": "panificadoraandinasa@gmail.com",
     "schemaType": "ContactPoint",
     "itemProp": "contactPoint"
   },

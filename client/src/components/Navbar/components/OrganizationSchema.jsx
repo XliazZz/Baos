@@ -5,7 +5,7 @@ export const OrganizationSchema = () => (
     {JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "Panificadora Andina SA",
+      "name": "Panificadora Andina S.A.",
       "url": typeof window !== 'undefined' ? window.location.href : '',
       "logo": "https://tu-sitio.com/logo.png",
       "sameAs": [
