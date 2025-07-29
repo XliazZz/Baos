@@ -9,7 +9,7 @@ const CardAbout = ({ image, title, description, description2, description3, butt
 
   return (
     <article
-      className="mx-auto overflow-hidden h-full flex max-w-screen-xl w-full flex-col 
+      className="mx-auto overflow-hidden h-[50%] flex  w-[100%] flex-col 
         sm:min-h-full sm:max-h-full
         lg:mx-auto lg:overflow-hidden lg:min-h-[300px] lg:max-h-[350px] lg:flex-row lg:max-w-screen-xl lg:w-full lg:h-[300px]
         xl:mx-auto xl:overflow-hidden xl:min-h-[300px] xl:max-h-[350px] xl:flex-row xl:max-w-screen-xl xl:w-full xl:h-[300px]
@@ -28,6 +28,7 @@ const CardAbout = ({ image, title, description, description2, description3, butt
           className="w-full h-full object-cover rounded-2xl"
           src={getCloudinaryUrl(800)} // fallback
           srcSet={`
+            ${getCloudinaryUrl(200)} 200w,
             ${getCloudinaryUrl(400)} 400w,
             ${getCloudinaryUrl(600)} 600w,
             ${getCloudinaryUrl(800)} 800w,

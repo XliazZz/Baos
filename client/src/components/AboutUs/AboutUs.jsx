@@ -41,7 +41,7 @@ const AboutUs = ({ handlerScrollSection }) => {
       "@type": "ContactPoint",
       "telephone": "+54 11 6457-6321",
       "contactType": "customer service",
-      "email": "panificadoraandinasa@gmail.com.ar",
+      "email": "panificadoraandinasa@gmail.com",
       "availableLanguage": "es"
     },
     "foundingDate": "2023",

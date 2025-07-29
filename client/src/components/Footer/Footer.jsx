@@ -6,7 +6,7 @@ const Footer = () => {
   const schemaMarkup = useMemo(() => ({
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Wow Bao",
+    "name": "Panificadora Andina S.A.",
     "url": "https://www.wowbao.com.ar",
     "description": "Hechos con amor y al vapor 🥢 ¡Disfruta cada bocado!",
     "foundingDate": "2023",
@@ -33,7 +33,7 @@ const Footer = () => {
       "@type": "ContactPoint",
       "telephone": "+54 11 6457-6321",
       "contactType": "customer service",
-      "email": "panificadoraandinasa@gmail.com.ar",
+      "email": "panificadoraandinasa@gmail.com",
       "availableLanguage": "es"
     },
     "openingHoursSpecification": {

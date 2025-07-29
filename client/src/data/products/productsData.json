@@ -7,7 +7,29 @@
     "gr": "40gr",
     "size": "10cm",
     "itemProp": "itemListElement",
-    "schemaType": "Product"
+    "schemaType": "Product",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "ARS",
+      "price": "850",
+      "availability": "https://schema.org/InStock"
+    },
+    "review": {
+      "@type": "Review",
+      "author": "Lucía Fernández",
+      "datePublished": "2025-07-20",
+      "reviewBody": "Delicioso y suave, se nota que es artesanal.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "32"
+    }
   },
   {
     "title": "Pan Bao Vegano",
@@ -17,7 +39,29 @@
     "gr": "40gr",
     "size": "10cm",
     "itemProp": "itemListElement",
-    "schemaType": "Product"
+    "schemaType": "Product",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "ARS",
+      "price": "850",
+      "availability": "https://schema.org/InStock"
+    },
+    "review": {
+      "@type": "Review",
+      "author": "Marcos Giménez",
+      "datePublished": "2025-07-21",
+      "reviewBody": "Ideal para quienes no consumen productos animales. Muy esponjoso.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.6",
+      "reviewCount": "24"
+    }
   },
   {
     "title": "Pan Bao Hamburguesa de Sésamo",
@@ -27,7 +71,29 @@
     "gr": "60gr",
     "size": "15cm",
     "itemProp": "itemListElement",
-    "schemaType": "Product"
+    "schemaType": "Product",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "ARS",
+      "price": "850",
+      "availability": "https://schema.org/InStock"
+    },
+    "review": {
+      "@type": "Review",
+      "author": "Sofía López",
+      "datePublished": "2025-07-18",
+      "reviewBody": "Perfecto para hamburguesas. El sésamo le da un toque único.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "4",
+        "bestRating": "5"
+      }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.5",
+      "reviewCount": "19"
+    }
   },
   {
     "title": "Pan Bao Hamburguesa de Chía",
@@ -37,7 +103,29 @@
     "gr": "60gr",
     "size": "15cm",
     "itemProp": "itemListElement",
-    "schemaType": "Product"
+    "schemaType": "Product",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "ARS",
+      "price": "880",
+      "availability": "https://schema.org/InStock"
+    },
+    "review": {
+      "@type": "Review",
+      "author": "Valentina Ríos",
+      "datePublished": "2025-07-22",
+      "reviewBody": "Muy original, la chía le aporta una textura interesante.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "4.7",
+        "bestRating": "5"
+      }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.6",
+      "reviewCount": "21"
+    }
   },
   {
     "title": "Pan Bao XL",
@@ -47,6 +135,28 @@
     "gr": "90gr",
     "size": "20cm",
     "itemProp": "itemListElement",
-    "schemaType": "Product"
+    "schemaType": "Product",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "ARS",
+      "price": "1200",
+      "availability": "https://schema.org/InStock"
+    },
+    "review": {
+      "@type": "Review",
+      "author": "Carlos Medina",
+      "datePublished": "2025-07-19",
+      "reviewBody": "Excelente para rellenos grandes. Sorprende el tamaño y sabor.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "40"
+    }
   }
 ]

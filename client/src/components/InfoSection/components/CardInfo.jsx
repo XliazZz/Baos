@@ -15,6 +15,7 @@ const CardInfo = ({
         return (
           <>
             <a
+              href="mailto:panificadoraandinasa@gmail.com"
               className="text-lg text-muted-foreground font-semibold text-gray-600 dark:text-gray-300 sm:text-lg md:text-base lg:text-base 2xl:text-lg select-text"
               itemProp="email"
             >

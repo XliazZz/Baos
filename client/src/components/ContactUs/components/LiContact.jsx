@@ -54,10 +54,10 @@ const LiContact = ({ icon, title, subtitle, optional, schemaType, itemProp }) =>
               Teléfono: <span className='hover:text-indigo-500'>+54 11 6457-6321</span>
             </a>
             {optional &&
-              <a className="text-gray-600 dark:text-slate-400 text-[17px] sm:text-base md:m-0 lg:text-base 2xl:text-lg block"
+              <a href="mailto:panificadoraandinasa@gmail.com" className="text-gray-600 dark:text-slate-400 text-[17px] sm:text-base md:m-0 lg:text-base 2xl:text-lg block"
                 itemProp="email"
               >
-                {optional}
+                Email: <span className='hover:text-indigo-500'>{optional}</span>
               </a>}
           </>
         ) : (

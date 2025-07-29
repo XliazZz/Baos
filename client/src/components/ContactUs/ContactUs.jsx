@@ -18,6 +18,8 @@ const ContactUs = () => {
     "name": "Panificadora Andina S.A.",
     "url": "https://www.wowbao.com.ar",
     "description": "Panadería artesanal. Calidad y sabor en cada producto. 🥖",
+    "telephone": "+54 11 6457-6321",
+    "email": "panificadoraandinasa@gmail.com",
     "logo": {
       "@type": "ImageObject",
       "url": "https://res.cloudinary.com/.../TdesignBread_1_tggczo.png",
@@ -52,7 +54,7 @@ const ContactUs = () => {
     },
     "sameAs": [
       "https://www.facebook.com/profile.php?id=61577301479995",
-      "https://www.instagram.com/panificadora_andina/",
+      "https://www.instagram.com/panificadora_andina/"
     ]
   }), []);
 
