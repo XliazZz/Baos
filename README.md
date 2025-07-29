@@ -61,6 +61,7 @@ Este proyecto fue diseñado y desarrollado desde cero, tomando inspiración visu
 - Estética limpia y profesional
 - Adaptabilidad a distintos temas y pantallas
 
+<img width="951" height="499" alt="image" src="https://github.com/user-attachments/assets/a7de1a62-baa2-454c-ab77-b5ef6c5ea843" />
 
 ---
 
