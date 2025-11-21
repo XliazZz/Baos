@@ -11,7 +11,7 @@ const CardAbout = ({ image, title, description, description2, description3, butt
     <article
       className="mx-auto overflow-hidden h-[50%] flex  w-[100%] flex-col 
         sm:min-h-full sm:max-h-full
-        lg:mx-auto lg:overflow-hidden lg:min-h-[300px] lg:max-h-[350px] lg:flex-row lg:max-w-screen-xl lg:w-full lg:h-[300px]
+        lg:mx-auto lg:overflow-hidden lg:min-h-[400px] lg:max-h-[500px] lg:flex-row lg:max-w-screen-xl lg:w-full lg:h-[300px]
         xl:mx-auto xl:overflow-hidden xl:min-h-[300px] xl:max-h-[350px] xl:flex-row xl:max-w-screen-xl xl:w-full xl:h-[300px]
         2xl:max-w-screen-2xl 2xl:min-h-[350px] 2xl:max-h-[400px]"
       itemScope itemType="https://schema.org/AboutPage"
@@ -20,13 +20,13 @@ const CardAbout = ({ image, title, description, description2, description3, butt
         className="w-full h-[25em] flex-shrink-0
           sm:h-[28em]
           md:h-[35em] md:mx-auto 
-          lg:w-[40%] lg:h-full lg:mx-0
+          lg:w-[40%] lg:h-auto lg:mx-0
           xl:w-[35%]
           2xl:w-[45%]"
       >
         <img
           className="w-full h-full object-cover rounded-2xl"
-          src={getCloudinaryUrl(800)} // fallback
+          src={getCloudinaryUrl(800)}
           srcSet={`
             ${getCloudinaryUrl(200)} 200w,
             ${getCloudinaryUrl(400)} 400w,
