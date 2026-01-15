@@ -16,7 +16,7 @@ const AboutUs = ({ handlerScrollSection }) => {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Panificadora Andina SA",
-    "description": "Fabricantes especializados en panes Bao artesanales tailandeses",
+    "description": "Fabricantes especializados en panes Bao artesanales",
     "url": "https://www.wowbao.com.ar",
     "logo": {
       "@type": "ImageObject",
@@ -63,7 +63,7 @@ const AboutUs = ({ handlerScrollSection }) => {
         title="Sobre Nosotros"
         description={
           <>
-            Sumérgete en el mundo de los auténticos <span className="font-semibold">Baos al vapor</span>. Hechos con los <span className="font-semibold">mejores ingredientes</span>, su suavidad y sabor te transportarán a <span className="font-semibold">Tailandia</span> con cada bocado.
+            Sumérgete en el mundo de los auténticos <span className="font-semibold">Baos al vapor</span>. Hechos con los <span className="font-semibold">mejores ingredientes</span>, su suavidad y sabor te transportarán a <span className="font-semibold">Asia</span> con cada bocado.
           </>
         }
       />

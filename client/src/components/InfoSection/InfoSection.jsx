@@ -7,7 +7,7 @@ const InfoSection = () => {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Panificadora Andina SA",
-    "description": "Fabricantes especializados en panes Bao artesanales tailandeses",
+    "description": "Fabricantes especializados en panes Gua Bao artesanales",
     "logo": {
       "@type": "ImageObject",
       "url": "https://res.cloudinary.com/.../TdesignBread_1_tggczo.png",
