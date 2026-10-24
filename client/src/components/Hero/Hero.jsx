@@ -9,13 +9,13 @@ const Hero = () => (
   <section id="inicio" className="pt-10 pb-16 sm:pt-16 lg:pt-20 lg:pb-24">
     <div className="wrap grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-10">
       <div className="lg:col-span-6">
-        <p className="chip">Fábrica de pan bao en Villa Luro</p>
+        <p className="chip">Fábrica y venta mayorista de pan bao</p>
         <h1 className="mt-6 text-5xl sm:text-6xl xl:text-7xl">
-          Pan bao al vapor, <span className="text-accent">listo</span> para tu carta
+          Pan bao mayorista, <span className="text-accent">listo</span> para tu carta
         </h1>
         <p className="mt-6 max-w-lg text-lg">
-          Elaboramos pan bao artesanal y lo entregamos congelado a restaurantes de toda CABA.
-          Vos lo calentás al vapor y le ponés tu relleno.
+          Somos proveedores de pan bao al vapor para restaurantes y locales gastronómicos de CABA.
+          Lo entregamos congelado: vos lo calentás y le ponés tu relleno.
         </p>
 
         <div className="mt-9 flex flex-wrap gap-3">
@@ -48,10 +48,10 @@ const Hero = () => (
           </figcaption>
         </figure>
 
-        <div className="col-span-2 flex flex-col justify-between gap-6 rounded-panel bg-accent p-5 text-on-accent sm:p-6">
+        <div className="col-span-2 flex flex-col justify-between gap-6 rounded-panel bg-accent p-4 text-on-accent sm:p-6">
           <span className="icon-[mdi--truck-fast-outline] size-7" aria-hidden="true" />
           <p>
-            <span className="block font-display text-3xl font-bold tracking-tight sm:text-4xl">Lun a sáb</span>
+            <span className="block font-display text-[clamp(1.125rem,6vw,2.25rem)] font-bold tracking-tight whitespace-nowrap">Lun–Sáb</span>
             <span className="mt-1 block text-sm leading-snug font-medium">entregas en toda CABA</span>
           </p>
         </div>

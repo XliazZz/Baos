@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
 
 test('el HTML llega prerenderizado con el contenido principal', async ({ request }) => {
   const html = await (await request.get('/')).text();
-  expect(html).toContain('Pan bao al vapor');
+  expect(html).toContain('Pan bao mayorista');
   expect(html).toContain('Pedido mínimo');
 });
 

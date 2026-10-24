@@ -4,25 +4,6 @@ import Header from '../Header/Header';
 import productsData from '../../data/products/productsData.json';
 import { samplesUrl, terms, whatsappUrl } from '../../data/business';
 
-const schemaMarkup = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Variedades de pan bao Wow Bao",
-  "url": "https://www.wowbao.com.ar/",
-  "numberOfItems": productsData.length,
-  "itemListElement": productsData.map((item, index) => ({
-    "@type": "ListItem",
-    "position": index + 1,
-    "item": {
-      "@type": "Product",
-      "name": item.title,
-      "description": item.description,
-      "image": item.image,
-      "sku": `WB-${item.id}`,
-      "brand": { "@type": "Brand", "name": "Wow Bao" },
-    },
-  })),
-};
 
 const highlights = [
   { icon: 'icon-[mdi--bread-slice-outline]', title: 'Solo el pan', detail: 'Sin relleno: le ponés tu receta' },
@@ -36,7 +17,7 @@ const ProductsCollection = () => (
     <div className="wrap">
       <Header
         eyebrow="Variedades"
-        title="Cinco formatos para armar tu carta"
+        title="Pan bao por mayor, en cinco formatos"
         action={
           <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="btn btn-secondary self-start md:self-auto">
             Consultar por WhatsApp
@@ -83,8 +64,6 @@ const ProductsCollection = () => (
         </li>
       </ul>
     </div>
-
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }} />
   </section>
 );
 

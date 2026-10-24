@@ -50,7 +50,7 @@ const AboutUs = () => (
       <div className="lg:col-span-6">
         <Header eyebrow="Quiénes somos" title="Una fábrica dedicada solo al pan bao">
           Somos {business.legalName}, la fábrica detrás de Wow Bao. Elaboramos el gua bao en nuestra planta de Villa Luro
-          y lo llevamos directo a tu cocina.
+          y abastecemos a restaurantes de toda la ciudad.
         </Header>
 
         <ul className="reveal mt-10 grid gap-x-8 gap-y-6 sm:grid-cols-2">
