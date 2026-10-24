@@ -3,8 +3,8 @@ import { whatsappUrl } from '../../data/business';
 
 const links = [
   { href: '#productos', label: 'Variedades' },
+  { href: '#nosotros', label: 'Quiénes somos' },
   { href: '#como-trabajamos', label: 'Cómo trabajamos' },
-  { href: '#nosotros', label: 'Nosotros' },
   { href: '#preguntas', label: 'Preguntas' },
   { href: '#contacto', label: 'Contacto' },
 ];

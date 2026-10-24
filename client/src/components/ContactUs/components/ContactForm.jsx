@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import FormInput from './FormInput';
 import { sendEmailService } from '../../../services/emailService';
 import { business } from '../../../data/business';
+import { track } from '../../../utils/analytics';
 
 // 10 dígitos (11 6457-6321) hasta 13 (+54 9 11 ... / 011 15 ...); se ignoran espacios, guiones y "+"
 const isValidPhone = (phone) => /^\d{10,13}$/.test(phone.replace(/\D/g, ''));
@@ -12,7 +13,14 @@ const ContactForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { user_name, user_phone } = form.current;
+    const { user_name, user_phone, website } = form.current;
+
+    // Trampa para bots: el campo "website" es invisible para personas; si viene completo, se descarta en silencio
+    if (website.value) {
+      setStatus({ type: 'success', message: '¡Gracias! Recibimos tu mensaje.' });
+      form.current.reset();
+      return;
+    }
 
     if (!isValidPhone(user_phone.value)) {
       setStatus({ type: 'error', field: 'phone', message: 'Revisá el teléfono: ingresalo con código de área, por ejemplo 11 1234-5678.' });
@@ -23,6 +31,7 @@ const ContactForm = () => {
     setStatus({ type: 'sending', message: 'Enviando…' });
     try {
       await sendEmailService(form.current);
+      track('generate_lead', { method: 'form' });
       setStatus({ type: 'success', message: `¡Gracias, ${user_name.value}! Recibimos tu mensaje y te contactamos pronto.` });
       form.current.reset();
     } catch (error) {
@@ -35,6 +44,10 @@ const ContactForm = () => {
 
   return (
     <form ref={form} onSubmit={handleSubmit} className="mt-6 grid gap-5 sm:grid-cols-2">
+      <div className="absolute -left-[9999px] size-px overflow-hidden" aria-hidden="true">
+        <label htmlFor="website">Sitio web</label>
+        <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
       <FormInput id="name" name="user_name" label="Nombre" autoComplete="name" required />
       <FormInput
         id="phone"

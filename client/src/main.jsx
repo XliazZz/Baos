@@ -1,11 +1,18 @@
-import React from 'react'
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import React, { StrictMode } from 'react'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
+import { initAnalytics } from './utils/analytics'
 
-createRoot(document.getElementById('root')).render(
+const container = document.getElementById('root')
+const app = (
   <StrictMode>
     <App />
-  </StrictMode>,
+  </StrictMode>
 )
+
+// En producción el HTML ya viene prerenderizado (scripts/prerender.js); en desarrollo el contenedor está vacío
+if (container.hasChildNodes()) hydrateRoot(container, app)
+else createRoot(container).render(app)
+
+initAnalytics()

@@ -1,0 +1,23 @@
+{
+  "name": "baos",
+  "version": "1.0.0",
+  "description": "<img width=\"2543\" height=\"1334\" alt=\"image\" src=\"https://github.com/user-attachments/assets/44c0bc28-b9cb-419a-b08c-e3a5b4afed19\" /># 🥢 Wow Bao - Página Web Oficial",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XliazZz/Baos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/XliazZz/Baos/issues"
+  },
+  "homepage": "https://github.com/XliazZz/Baos#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^26.6.5"
+  }
+}

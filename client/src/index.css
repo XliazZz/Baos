@@ -43,14 +43,6 @@
 
   --radius-card: 1.25rem;
   --radius-panel: 2rem;
-
-  --animate-marquee: marquee 40s linear infinite;
-
-  @keyframes marquee {
-    to {
-      transform: translateX(-50%);
-    }
-  }
 }
 
 @media (prefers-color-scheme: dark) {

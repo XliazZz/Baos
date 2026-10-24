@@ -3,8 +3,9 @@ import { business } from '../../data/business';
 
 const links = [
   { href: '#productos', label: 'Variedades' },
+  { href: '#nosotros', label: 'Quiénes somos' },
   { href: '#como-trabajamos', label: 'Cómo trabajamos' },
-  { href: '#nosotros', label: 'Nosotros' },
+  { href: '#condiciones', label: 'Condiciones comerciales' },
   { href: '#preguntas', label: 'Preguntas frecuentes' },
   { href: '#contacto', label: 'Contacto' },
 ];

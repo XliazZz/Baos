@@ -15,3 +15,15 @@ export const business = {
 // 549 = Argentina + prefijo de celular que WhatsApp exige
 export const whatsappUrl = (text = 'Hola, quiero hacer un pedido de pan bao para mi restaurante.') =>
   `https://wa.me/5491164576321?text=${encodeURIComponent(text)}`;
+
+export const samplesUrl = whatsappUrl('Hola, quiero pedir muestras de pan bao para mi restaurante.');
+
+// Condiciones comerciales: se muestran en la sección Condiciones y se repiten en Preguntas frecuentes
+export const terms = {
+  minimumOrder: '25 unidades por variedad',
+  deliveryDays: 'De lunes a sábado',
+  payment: 'Efectivo o transferencia',
+  invoice: 'Emitimos factura A',
+  shelfLife: 'Hasta 6 meses en freezer',
+  samples: '1 o 2 panes de cada variedad',
+};

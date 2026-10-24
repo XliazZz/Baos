@@ -1,15 +1,19 @@
 import React from 'react';
 import Header from '../Header/Header';
-import { business, whatsappUrl } from '../../data/business';
+import { business, terms, whatsappUrl } from '../../data/business';
 
 const faqs = [
   {
-    question: '¿Hacen entregas en toda CABA?',
-    answer: 'Sí. Entregamos en cualquier barrio de la Ciudad de Buenos Aires y coordinamos con vos el día y el horario.',
+    question: '¿Venden los baos rellenos?',
+    answer: 'No. Vendemos solo el pan bao, sin relleno, para que cada cocina le ponga su propia receta. Las fotos con relleno son ilustrativas.',
   },
   {
-    question: '¿Cómo llegan los baos y cómo se conservan?',
-    answer: 'Llegan congelados, para mantener la textura y el sabor. Guardalos en el freezer y calentalos al vapor antes de servir.',
+    question: '¿Cómo se calientan?',
+    answer: 'Directo del freezer, sin descongelar: al vapor, con el agua ya hirviendo, entre 6 y 12 minutos según el tamaño. Una vez descongelados, no se vuelven a congelar.',
+  },
+  {
+    question: '¿Envían muestras?',
+    answer: `Sí. Te enviamos ${terms.samples} para que los pruebes en tu cocina. El envío se abona aparte.`,
   },
   {
     question: '¿Tienen una opción vegana?',

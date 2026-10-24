@@ -1,11 +1,9 @@
 import React from 'react';
-import { whatsappUrl } from '../../data/business';
+import { samplesUrl, whatsappUrl } from '../../data/business';
 import { cld, cldSrcSet } from '../../utils/cloudinary';
 
-const productionImage = 'https://res.cloudinary.com/do5ubt5g0/image/upload/v1745620672/9a5da060-6d18-4ea7-a0f9-d82d3ebef3c7_fq1lnr.jpg';
 const productImage = 'https://res.cloudinary.com/do5ubt5g0/image/upload/v1745619779/IMG_5521_jgidge.jpg';
 
-const highlights = ['Hechos a mano', 'Congelados en su punto', 'Entrega en toda CABA'];
 
 const Hero = () => (
   <section id="inicio" className="pt-10 pb-16 sm:pt-16 lg:pt-20 lg:pb-24">
@@ -16,8 +14,8 @@ const Hero = () => (
           Pan bao al vapor, <span className="text-accent">listo</span> para tu carta
         </h1>
         <p className="mt-6 max-w-lg text-lg">
-          Elaboramos baos artesanales y los entregamos congelados a restaurantes de toda CABA.
-          Vos solo los calentás al vapor y servís.
+          Elaboramos pan bao artesanal y lo entregamos congelado a restaurantes de toda CABA.
+          Vos lo calentás al vapor y le ponés tu relleno.
         </p>
 
         <div className="mt-9 flex flex-wrap gap-3">
@@ -25,44 +23,36 @@ const Hero = () => (
             <span className="icon-[mdi--whatsapp] size-5" aria-hidden="true" />
             Hacer un pedido
           </a>
-          <a href="#productos" className="btn btn-secondary">
-            Ver variedades
+          <a href={samplesUrl} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
+            Pedir muestras
           </a>
         </div>
 
-        <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium text-ink">
-          {highlights.map((item) => (
-            <li key={item} className="flex items-center gap-2">
-              <span className="icon-[heroicons--check-circle-20-solid] size-5 text-accent" aria-hidden="true" />
-              {item}
-            </li>
-          ))}
-        </ul>
       </div>
 
       <div className="grid grid-cols-5 gap-3 sm:gap-4 lg:col-span-6">
-        <div className="relative col-span-3 row-span-2">
+        <figure className="relative col-span-3 row-span-2">
+          {/* Foto: Sandie Clarke en Unsplash (licencia Unsplash) */}
           <img
-            src={cld(productionImage, 900)}
-            srcSet={cldSrcSet(productionImage, [480, 720, 900, 1200])}
+            src="/images/bao-relleno-800.webp"
+            srcSet="/images/bao-relleno-480.webp 480w, /images/bao-relleno-800.webp 800w, /images/bao-relleno-1200.webp 1200w"
             sizes="(min-width: 1024px) 380px, 60vw"
-            alt="Bandejas de producción con panes bao en la fábrica"
-            width="900"
+            alt="Pan bao relleno con carne braseada y cilantro"
+            width="800"
             height="1200"
             fetchPriority="high"
             className="absolute inset-0 size-full rounded-panel object-cover"
           />
-          <p className="absolute bottom-3 left-3 flex items-center gap-2 rounded-full bg-canvas/85 px-3 py-1.5 text-xs font-semibold text-ink backdrop-blur sm:bottom-4 sm:left-4 sm:text-sm">
-            <span className="icon-[mdi--snowflake] size-4 text-accent" aria-hidden="true" />
-            Se entregan congelados
-          </p>
-        </div>
+          <figcaption className="absolute right-3 bottom-3 left-3 rounded-2xl bg-canvas/90 px-3 py-2 text-xs leading-snug text-ink backdrop-blur sm:right-auto sm:bottom-4 sm:left-4 sm:rounded-full sm:py-1.5">
+            <strong>Imagen ilustrativa:</strong> vendemos solo el pan, sin relleno
+          </figcaption>
+        </figure>
 
         <div className="col-span-2 flex flex-col justify-between gap-6 rounded-panel bg-accent p-5 text-on-accent sm:p-6">
-          <span className="icon-[tdesign--bread] size-7" aria-hidden="true" />
+          <span className="icon-[mdi--truck-fast-outline] size-7" aria-hidden="true" />
           <p>
-            <span className="block font-display text-4xl font-bold tracking-tight sm:text-5xl">5</span>
-            <span className="mt-1 block text-sm leading-snug font-medium">variedades, de 10 a 20 cm</span>
+            <span className="block font-display text-3xl font-bold tracking-tight sm:text-4xl">Lun a sáb</span>
+            <span className="mt-1 block text-sm leading-snug font-medium">entregas en toda CABA</span>
           </p>
         </div>
 

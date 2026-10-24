@@ -1,10 +1,8 @@
 import React from 'react';
 import { NavBar } from './components/Navbar';
 import Hero from './components/Hero/Hero';
-import Marquee from './components/Marquee/Marquee';
 import ProductsCollection from './components/ProductsCollection/ProductsCollection';
 import HowItWorks from './components/HowItWorks/HowItWorks';
-import WhyUs from './components/WhyUs/WhyUs';
 import AboutUs from './components/AboutUs/AboutUs';
 import Faq from './components/Faq/Faq';
 import ContactUs from './components/ContactUs/ContactUs';
@@ -20,11 +18,9 @@ function App() {
       <NavBar />
       <main id="contenido">
         <Hero />
-        <Marquee />
         <ProductsCollection />
-        <HowItWorks />
-        <WhyUs />
         <AboutUs />
+        <HowItWorks />
         <Faq />
         <ContactUs />
       </main>
