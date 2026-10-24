@@ -43,47 +43,51 @@ const ContactForm = () => {
   const isSending = status.type === 'sending';
 
   return (
-    <form ref={form} onSubmit={handleSubmit} className="mt-6 grid gap-5 sm:grid-cols-2">
+    <form ref={form} onSubmit={handleSubmit} className="space-y-4">
       <div className="absolute -left-[9999px] size-px overflow-hidden" aria-hidden="true">
         <label htmlFor="website">Sitio web</label>
         <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
       </div>
-      <FormInput id="name" name="user_name" label="Nombre" autoComplete="name" required />
-      <FormInput
-        id="phone"
-        name="user_phone"
-        label="Teléfono"
-        type="tel"
-        autoComplete="tel"
-        placeholder="11 1234-5678"
-        aria-invalid={status.field === 'phone'}
-        aria-describedby="form-status"
-        required
-      />
-      <FormInput id="email" name="user_email" label="Email" type="email" autoComplete="email" className="sm:col-span-2" required />
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <FormInput id="name" name="user_name" label="Nombre y apellido" autoComplete="name" placeholder="Ej: Juan Pérez" required />
+        <FormInput
+          id="phone"
+          name="user_phone"
+          label="Teléfono (WhatsApp)"
+          type="tel"
+          autoComplete="tel"
+          placeholder="11 1234-5678"
+          aria-invalid={status.field === 'phone'}
+          aria-describedby="form-status"
+          required
+        />
+      </div>
+      <FormInput id="email" name="user_email" label="Email" type="email" autoComplete="email" placeholder="tu-email@restaurante.com" required />
       <FormInput
         id="message"
         name="message"
-        label="Mensaje"
+        label="Mensaje sobre tu restaurante o local"
         textarea
-        rows="5"
-        placeholder="Contanos sobre tu restaurante, qué variedades te interesan y qué volumen necesitás."
-        className="sm:col-span-2"
+        rows="4"
+        placeholder="Contanos qué local tenés, en qué barrio estás y qué variedades te gustaría probar..."
         required
       />
 
-      <div className="flex flex-col gap-4 sm:col-span-2 sm:flex-row sm:items-center">
-        <button type="submit" className="btn btn-primary disabled:opacity-60" disabled={isSending}>
-          {isSending ? 'Enviando…' : 'Enviar mensaje'}
-        </button>
-        <p
-          id="form-status"
-          role="status"
-          className={`text-sm font-semibold ${status.type === 'error' ? 'text-accent' : 'text-ink'}`}
-        >
-          {status.type === 'sending' ? '' : status.message}
-        </p>
-      </div>
+      <button
+        type="submit"
+        className="w-full rounded-xl bg-brand-600 py-4 text-base font-bold text-white shadow-md transition hover:bg-brand-700 dark:hover:bg-brand-500 hover:shadow-lg disabled:opacity-60"
+        disabled={isSending}
+      >
+        {isSending ? 'Enviando…' : 'Enviar mensaje a la fábrica'}
+      </button>
+      <p
+        id="form-status"
+        role="status"
+        className={`text-center text-sm font-semibold empty:hidden ${status.type === 'error' ? 'text-brand-700' : 'text-emerald-700'}`}
+      >
+        {status.type === 'sending' ? '' : status.message}
+      </p>
+      <p className="mt-2 text-center text-[11px] text-stone-500">Usamos tus datos solo para responder tu consulta. No hacemos spam.</p>
     </form>
   );
 };

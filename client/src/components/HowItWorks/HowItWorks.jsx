@@ -1,75 +1,79 @@
 import React from 'react';
 import Header from '../Header/Header';
-import { samplesUrl, terms } from '../../data/business';
+import { terms } from '../../data/business';
 
 const steps = [
   {
-    icon: 'icon-[mdi--whatsapp]',
+    icon: 'icon-[heroicons--chat-bubble-oval-left-ellipsis]',
     title: 'Escribinos',
-    description: 'Contanos qué platos tenés en carta y qué volumen necesitás. Si querés, primero te mandamos muestras.',
+    description: 'Contanos sobre tu local, qué platos tenés en carta y qué volumen necesitás por semana. Si querés, primero te mandamos muestras.',
+    note: 'Por WhatsApp o formulario',
   },
   {
-    icon: 'icon-[mdi--truck-fast-outline]',
+    icon: 'icon-[heroicons--calendar]',
     title: 'Coordinamos la entrega',
-    description: 'Acordamos día y horario, y te llevamos los panes congelados a tu local, en cualquier punto de CABA.',
+    description: 'Acordamos día y horario, y te llevamos los panes congelados hasta la puerta de tu local en CABA.',
+    note: terms.deliveryDays,
   },
   {
-    icon: 'icon-[mdi--pot-steam-outline]',
+    icon: 'icon-[lucide--cooking-pot]',
     title: 'Al vapor y a la carta',
-    description: 'Los guardás en el freezer y los calentás al vapor, sin descongelar, a medida que los necesitás.',
+    description: 'Los guardás en el freezer y, al momento del servicio, los calentás al vapor sin descongelar.',
+    note: terms.shelfLife,
+    positive: true,
   },
 ];
 
 const conditions = [
-  { icon: 'icon-[mdi--package-variant-closed]', label: 'Pedido mínimo', value: terms.minimumOrder },
-  { icon: 'icon-[mdi--truck-outline]', label: 'Entregas', value: terms.deliveryDays },
-  { icon: 'icon-[mdi--cash-multiple]', label: 'Pago', value: terms.payment },
-  { icon: 'icon-[mdi--file-document-outline]', label: 'Facturación', value: terms.invoice },
-  { icon: 'icon-[mdi--snowflake]', label: 'Vida útil', value: terms.shelfLife },
+  { label: 'Pedido mínimo', value: terms.minimumOrder },
+  { label: 'Entregas', value: terms.deliveryDays },
+  { label: 'Medios de pago', value: terms.payment },
+  { label: 'Facturación', value: terms.invoice },
+  { label: 'Vida útil', value: terms.shelfLife },
 ];
 
 const HowItWorks = () => (
-  <section id="como-trabajamos" className="section">
+  <section id="como-trabajamos" className="py-20 lg:py-24">
     <div className="wrap">
-      <Header
-        eyebrow="Cómo trabajamos"
-        title="Empezar a trabajar con nosotros es simple"
-        action={
-          <a href={samplesUrl} target="_blank" rel="noopener noreferrer" className="btn btn-secondary self-start md:self-auto">
-            <span className="icon-[mdi--gift-outline] size-4" aria-hidden="true" />
-            Pedir muestras
-          </a>
-        }
-      />
+      <div className="mb-16">
+        <Header eyebrow="Cómo trabajamos" title="Empezar a trabajar con nosotros es simple" center>
+          Un circuito ágil, pensado para el ritmo de una cocina profesional.
+        </Header>
+      </div>
 
-      <ol className="mt-12 grid gap-4 md:grid-cols-3">
+      <ol className="grid grid-cols-1 gap-8 md:grid-cols-3">
         {steps.map((step, index) => (
-          <li key={step.title} className="reveal rounded-card border border-line bg-surface p-6 sm:p-8">
-            <div className="flex items-center justify-between">
-              <span className="grid size-11 place-items-center rounded-full bg-accent-soft text-accent sm:size-12">
+          <li key={step.title} className="reveal relative flex flex-col justify-between rounded-3xl border border-stone-200 bg-surface p-8 shadow-subtle">
+            {/* Número decorativo dibujado con CSS: no cuenta como texto */}
+            <span
+              data-step={`0${index + 1}`}
+              className="pointer-events-none absolute top-4 right-6 text-6xl font-black text-stone-100 select-none before:content-[attr(data-step)]"
+              aria-hidden="true"
+            />
+            <div>
+              <span className="relative mb-6 grid size-12 place-items-center rounded-2xl bg-brand-50 text-brand-600 dark:text-brand-400">
                 <span className={`${step.icon} size-6`} aria-hidden="true" />
               </span>
-              <span className="font-display text-4xl font-bold tracking-tight text-line sm:text-5xl" aria-hidden="true">
-                0{index + 1}
-              </span>
+              <h3 className="relative text-xl font-bold text-stone-900">{step.title}</h3>
+              <p className="relative mt-3 text-sm leading-relaxed text-stone-600">{step.description}</p>
             </div>
-            <h3 className="mt-5 text-xl sm:mt-8 sm:text-2xl">{step.title}</h3>
-            <p className="mt-2 sm:mt-3">{step.description}</p>
+            <p className={`mt-6 flex items-center gap-1.5 border-t border-stone-100 pt-4 text-xs font-semibold ${step.positive ? 'text-emerald-700' : 'text-brand-600 dark:text-brand-400'}`}>
+              {step.positive && <span className="size-2 rounded-full bg-emerald-500" aria-hidden="true" />}
+              {step.note}
+            </p>
           </li>
         ))}
       </ol>
 
-      {/* Condiciones: misma sección, porque responden la misma pregunta ("¿cómo empiezo?") */}
-      <div id="condiciones" className="reveal mt-4 rounded-card bg-card p-6 sm:p-8">
-        <h3 className="font-sans text-sm font-semibold tracking-normal text-muted">Condiciones comerciales</h3>
-        <dl className="mt-5 grid grid-cols-2 gap-x-6 gap-y-6 md:grid-cols-3 lg:grid-cols-5">
+      <div id="condiciones" className="reveal mt-12 rounded-3xl border border-stone-200 bg-surface p-6 shadow-subtle sm:p-8">
+        <h3 className="mb-6 text-center text-xs font-extrabold tracking-wider text-stone-500 uppercase sm:text-left">
+          Condiciones comerciales claras
+        </h3>
+        <dl className="grid grid-cols-2 gap-6 text-stone-800 md:grid-cols-5">
           {conditions.map((item) => (
             <div key={item.label}>
-              <dt className="flex items-center gap-2 text-sm">
-                <span className={`${item.icon} size-4 text-accent`} aria-hidden="true" />
-                {item.label}
-              </dt>
-              <dd className="mt-1.5 font-display text-lg leading-snug font-semibold tracking-tight text-ink">{item.value}</dd>
+              <dt className="block text-xs font-semibold text-stone-500 uppercase">{item.label}</dt>
+              <dd className="mt-1 block text-sm font-bold text-stone-900 sm:text-base">{item.value}</dd>
             </div>
           ))}
         </dl>

@@ -2,41 +2,52 @@ import React from 'react';
 import { whatsappUrl } from '../../../data/business';
 import { cld, cldSrcSet } from '../../../utils/cloudinary';
 
-const Card = ({ image, title, description, gr, size }) => (
-  <article className="group flex h-full flex-col rounded-card bg-card p-2">
-    <div className="overflow-hidden rounded-[0.875rem]">
-      <img
-        src={cld(image, 480)}
-        srcSet={cldSrcSet(image, [320, 480, 720])}
-        sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 82vw"
-        alt={title}
-        width="480"
-        height="360"
-        loading="lazy"
-        decoding="async"
-        className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
-      />
+const badgeStyles = {
+  green: 'border border-emerald-200 bg-emerald-50 text-emerald-800',
+  dark: 'bg-ink/90 text-white',
+  light: 'badge-blur bg-surface/90 text-stone-800',
+};
+
+const Card = ({ image, title, description, gr, size, category, badge }) => (
+  <article className="group flex h-full flex-col justify-between rounded-3xl border border-stone-200/90 bg-surface p-6 shadow-subtle transition duration-200 hover:-translate-y-1 hover:shadow-card">
+    <div>
+      <div className="relative mb-6 aspect-[4/3] w-full overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+        <img
+          src={cld(image, 480)}
+          srcSet={cldSrcSet(image, [320, 480, 720])}
+          sizes="(min-width: 1024px) 360px, (min-width: 768px) 45vw, 90vw"
+          alt={title}
+          width="480"
+          height="360"
+          loading="lazy"
+          decoding="async"
+          className="size-full object-cover transition duration-300 group-hover:scale-105"
+        />
+        {badge && (
+          <span className={`absolute top-3 left-3 rounded-full px-2.5 py-1 text-[11px] font-bold tracking-wider uppercase shadow-sm ${badgeStyles[badge.tone]}`}>
+            {badge.label}
+          </span>
+        )}
+      </div>
+      <p className="mb-2 text-xs font-bold tracking-wider text-stone-500 uppercase">{category}</p>
+      <h3 className="text-xl font-bold text-stone-900 transition group-hover:text-brand-600 dark:group-hover:text-brand-400">{title}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-stone-600">{description}</p>
     </div>
 
-    <div className="flex flex-1 flex-col px-3 pt-5 pb-3">
-      <h3 className="text-xl">{title}</h3>
-      <p className="mt-2 text-[0.9375rem] leading-relaxed">{description}</p>
-
-      <div className="mt-auto flex items-center justify-between gap-4 pt-5">
-        <ul className="flex gap-2 text-xs font-semibold text-ink tabular-nums">
-          <li className="rounded-full bg-surface px-3 py-1.5"><span className="sr-only">Peso: </span>{gr.replace('gr', ' g')}</li>
-          <li className="rounded-full bg-surface px-3 py-1.5"><span className="sr-only">Tamaño: </span>{size.replace('cm', ' cm')}</li>
-        </ul>
-        <a
-          href={whatsappUrl(`Hola, quiero consultar por el ${title} para mi restaurante.`)}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`Consultar por ${title} en WhatsApp`}
-          className="grid size-10 shrink-0 place-items-center rounded-full bg-ink text-canvas transition-colors group-hover:bg-accent group-hover:text-on-accent"
-        >
-          <span className="icon-[heroicons--arrow-up-right-20-solid] size-5" aria-hidden="true" />
-        </a>
-      </div>
+    <div className="mt-6 flex items-center justify-between border-t border-stone-100 pt-4">
+      <ul className="flex items-center gap-2 text-xs font-bold text-stone-700 tabular-nums">
+        <li className="rounded-lg bg-stone-100 px-2.5 py-1"><span className="sr-only">Peso: </span>{gr.replace('gr', ' g')}</li>
+        <li className="rounded-lg bg-stone-100 px-2.5 py-1"><span className="sr-only">Tamaño: </span>{size.replace('cm', ' cm')}</li>
+      </ul>
+      <a
+        href={whatsappUrl(`Hola, quiero consultar por el ${title} para mi restaurante.`)}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Consultar por ${title} en WhatsApp`}
+        className="grid size-9 place-items-center rounded-full bg-stone-100 text-stone-700 transition group-hover:bg-brand-600 group-hover:text-white"
+      >
+        <span className="icon-[heroicons--arrow-right] size-4" aria-hidden="true" />
+      </a>
     </div>
   </article>
 );

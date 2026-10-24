@@ -2,73 +2,79 @@
 @plugin "@iconify/tailwind4";
 
 @font-face {
-  font-family: 'Bricolage Grotesque';
+  font-family: 'Plus Jakarta Sans';
   font-style: normal;
-  font-weight: 500 800;
+  font-weight: 400 800;
   font-display: swap;
-  src: url('/fonts/bricolage/bricolage-latin-var.woff2') format('woff2');
+  src: url('/fonts/jakarta/plus-jakarta-sans-latin-var.woff2') format('woff2');
 }
 
-@font-face {
-  font-family: 'Geist';
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url('/fonts/geist/geist-latin-var.woff2') format('woff2');
-}
-
-/* Un solo lienzo cálido para toda la página; las secciones se separan con espacio y paneles, no con franjas */
+/* Tokens del diseño de Stitch: terracota de marca sobre neutros "stone" de Tailwind */
 @theme {
-  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
-  --font-sans: 'Geist', system-ui, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
 
-  --color-canvas: #faf7f2;
-  --color-card: #f2ede4;
-  --color-surface: #ffffff;
-  --color-ink: #16130f;
-  --color-ink-soft: #4d463f;
-  --color-muted: #6f665c;
-  --color-line: #e6dfd3;
-  --color-accent: #c93a22;
-  --color-accent-strong: #a82e19;
-  --color-accent-soft: #fbe3dc;
-  --color-on-accent: #ffffff;
+  --color-brand-50: #fdf7f4;
+  --color-brand-100: #fbece7;
+  --color-brand-200: #f7d6cb;
+  --color-brand-300: #efb8a6;
+  --color-brand-400: #e47a5c;
+  --color-brand-500: #d94e28;
+  --color-brand-600: #c23e19;
+  --color-brand-700: #a43212;
+  --color-brand-800: #85280e;
+  --color-brand-900: #6c210c;
 
-  /* Panel oscuro (contacto, tarjeta destacada) */
-  --color-panel: #16130f;
-  --color-panel-line: #2f2a24;
-  --color-on-panel: #faf7f2;
-  --color-on-panel-soft: #bdb3a6;
-  --color-accent-on-panel: #ff8a6b;
+  --color-canvas: #faf8f5;
+  --color-surface: #fff;
+  --color-ink: #1c1917;
 
-  --radius-card: 1.25rem;
-  --radius-panel: 2rem;
+  --shadow-subtle: 0 4px 20px -2px rgb(0 0 0 / 0.05);
+  --shadow-card: 0 10px 30px -4px rgb(0 0 0 / 0.06);
+  --shadow-hover: 0 20px 35px -4px rgb(194 62 25 / 0.12);
+
+  --ease-out-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
+/* Modo oscuro según el sistema: se invierte la escala stone y se oscurecen los tintes de marca,
+   así text-stone-900, bg-stone-50, bg-brand-50, etc. se adaptan sin repetir clases dark: en cada componente.
+   Los botones bg-brand-600 y los paneles bg-ink con texto blanco quedan iguales */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-canvas: #12100d;
-    --color-card: #1c1915;
-    --color-surface: #221e19;
-    --color-ink: #f5f0e8;
-    --color-ink-soft: #cdc4b7;
-    --color-muted: #9d9385;
-    --color-line: #2e2923;
-    --color-accent: #ff7a5c;
-    --color-accent-strong: #ff967e;
-    --color-accent-soft: #3a1f17;
-    --color-on-accent: #12100d;
-    --color-panel: #201b16;
-  }
-}
+    --color-canvas: #121010;
+    --color-surface: #1c1917;
+    --color-ink: #0c0a09;
 
-:root {
-  color-scheme: light dark;
+    --color-stone-50: #231f1d;
+    --color-stone-100: #292524;
+    --color-stone-200: #3a3532;
+    --color-stone-300: #4a4440;
+    --color-stone-400: #78716c;
+    --color-stone-500: #a8a29e;
+    --color-stone-600: #c7c1bc;
+    --color-stone-700: #d6d3d1;
+    --color-stone-800: #e7e5e4;
+    --color-stone-900: #f5f5f4;
+
+    --color-brand-50: #2a1913;
+    --color-brand-100: #3a1f15;
+    --color-brand-200: #55291a;
+    --color-brand-300: #7a3a24;
+    --color-brand-700: #f29c83;
+
+    --color-emerald-50: #0f2a20;
+    --color-emerald-200: #1d4d3a;
+    --color-emerald-700: #5fd3a5;
+    --color-emerald-800: #8de3c0;
+
+    --shadow-subtle: 0 4px 20px -2px rgb(0 0 0 / 0.4);
+    --shadow-card: 0 10px 30px -4px rgb(0 0 0 / 0.5);
+  }
 }
 
 @layer base {
   html {
-    /* la barra de navegación flota arriba: anclas y campos enfocados no quedan tapados */
+    color-scheme: light dark;
+    /* el header es sticky (h-20): anclas y campos enfocados no quedan tapados */
     scroll-padding-top: 6rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -82,22 +88,22 @@
 
   body {
     background-color: var(--color-canvas);
-    color: var(--color-ink-soft);
+    color: var(--color-stone-800);
     font-family: var(--font-sans);
-    line-height: 1.6;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    background-color: var(--color-brand-500);
+    color: #fff;
   }
 
   h1, h2, h3 {
-    color: var(--color-ink);
-    font-family: var(--font-display);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.05;
     text-wrap: balance;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-brand-600);
     outline-offset: 3px;
   }
 }
@@ -106,103 +112,106 @@
   .wrap {
     margin-inline: auto;
     max-width: 80rem;
-    padding-inline: 1.25rem;
+    padding-inline: 1rem;
 
     @media (width >= 40rem) {
+      padding-inline: 1.5rem;
+    }
+
+    @media (width >= 64rem) {
       padding-inline: 2rem;
     }
   }
 
-  .section {
-    padding-block: 4rem;
-
-    @media (width >= 64rem) {
-      padding-block: 6rem;
-    }
-  }
-
-  .panel {
-    background-color: var(--color-panel);
-    color: var(--color-on-panel-soft);
-
-    & h2, & h3 {
-      color: var(--color-on-panel);
-    }
-
-    & .chip {
-      border-color: var(--color-panel-line);
-      color: var(--color-on-panel);
-    }
-  }
-
+  /* Etiqueta de sección: variante neutra por defecto, .chip-brand en terracota */
   .chip {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    border: 1px solid var(--color-line);
     border-radius: 9999px;
-    padding: 0.375rem 0.875rem;
-    color: var(--color-ink);
-    font-size: 0.8125rem;
-    font-weight: 600;
+    background-color: color-mix(in srgb, var(--color-stone-200) 70%, transparent);
+    padding: 0.25rem 0.75rem;
+    color: var(--color-stone-700);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 
     &::before {
       content: '';
       width: 0.375rem;
       height: 0.375rem;
       border-radius: 9999px;
-      background-color: var(--color-accent);
+      background-color: var(--color-brand-600);
     }
   }
 
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    border: 1px solid transparent;
-    border-radius: 9999px;
-    padding: 0.8125rem 1.5rem;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    line-height: 1.25;
-    transition: background-color 150ms, color 150ms, border-color 150ms;
+  .chip-brand {
+    border: 1px solid color-mix(in srgb, var(--color-brand-200) 80%, transparent);
+    background-color: var(--color-brand-50);
+    color: var(--color-brand-700);
   }
 
-  .btn-primary {
-    background-color: var(--color-accent);
-    color: var(--color-on-accent);
+  /* Sobre paneles bg-ink: usa blancos translúcidos para no depender del tema */
+  .chip-dark {
+    border: 1px solid rgb(255 255 255 / 0.15);
+    background-color: rgb(255 255 255 / 0.08);
+    color: rgb(255 255 255 / 0.8);
 
-    &:hover {
-      background-color: var(--color-accent-strong);
+    &::before {
+      background-color: var(--color-brand-500);
     }
   }
 
-  .btn-secondary {
-    border-color: var(--color-line);
-    background-color: var(--color-surface);
-    color: var(--color-ink);
-
-    &:hover {
-      border-color: var(--color-ink);
-    }
+  .badge-blur {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
-  /* Aparición al hacer scroll sin JS; donde no hay soporte, el contenido simplemente se ve */
+  /* Marca decorativa del footer dibujada con CSS: no cuenta como texto para lectores ni auditorías */
+  .watermark::before {
+    content: attr(data-text);
+  }
+
+  /* Todo el movimiento vive acá: con "reducir movimiento" activado la página queda estática */
   @media (prefers-reduced-motion: no-preference) {
-    @supports (animation-timeline: view()) {
-      .reveal {
-        animation: reveal linear both;
-        animation-timeline: view();
-        animation-range: entry 0% entry 60%;
+    :root {
+      interpolate-size: allow-keywords;
+    }
+
+    /* Entrada escalonada del hero; cada elemento define su --delay */
+    .rise {
+      animation: rise 700ms var(--ease-out-soft) both;
+      animation-delay: var(--delay, 0ms);
+    }
+
+    /* Acordeón de Preguntas: abre y cierra con altura animada donde el navegador lo soporta */
+    details::details-content {
+      height: 0;
+      overflow: clip;
+      transition: height 350ms var(--ease-out-soft), content-visibility 350ms allow-discrete;
+    }
+
+    details[open]::details-content {
+      height: auto;
+    }
+
+    /* Aparición al hacer scroll: utils/reveal.js agrega .reveal-on al <html> y .is-visible a cada bloque.
+       Sin JS no se agrega nada y todo queda visible */
+    .reveal-on .reveal {
+      transition: opacity 800ms var(--ease-out-soft), transform 800ms var(--ease-out-soft);
+
+      &:not(.is-visible) {
+        opacity: 0;
+        transform: translateY(2.5rem);
       }
     }
   }
 
-  @keyframes reveal {
+  @keyframes rise {
     from {
       opacity: 0;
-      transform: translateY(1.5rem);
+      transform: translateY(1.25rem);
     }
   }
 }

@@ -43,10 +43,18 @@ test('el formulario rechaza un teléfono inválido sin enviar', async ({ page })
   await expect(page.getByLabel('Teléfono')).toHaveAttribute('aria-invalid', 'true');
 });
 
-test('el menú móvil abre, navega y se cierra', async ({ page }) => {
+test('en móvil el menú abre, navega y se cierra', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole('button', { name: 'Abrir menú' }).click();
-  await page.locator('#menu-movil').getByRole('link', { name: 'Contacto' }).click();
-  await expect(page.locator('#menu-movil')).toHaveCount(0);
-  await expect(page.getByRole('heading', { name: 'Armemos tu primer pedido' })).toBeInViewport();
+  await expect(page.getByRole('button', { name: 'Cerrar menú' })).toHaveAttribute('aria-expanded', 'true');
+  await page.locator('#menu-movil').getByRole('link', { name: 'Cómo trabajamos' }).click();
+  await expect(page.locator('#menu-movil')).toBeHidden();
+  await expect(page.locator('#como-trabajamos h2')).toBeInViewport();
+});
+
+test('el botón flotante de WhatsApp queda a mano al bajar', async ({ page }) => {
+  const float = page.getByRole('link', { name: 'Hacer un pedido por WhatsApp' });
+  await expect(float).toHaveAttribute('href', /wa\.me\/5491164576321/);
+  await page.mouse.wheel(0, 3000);
+  await expect(float).toBeInViewport();
 });

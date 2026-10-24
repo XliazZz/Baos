@@ -4,63 +4,62 @@ import Header from '../Header/Header';
 import productsData from '../../data/products/productsData.json';
 import { samplesUrl, terms, whatsappUrl } from '../../data/business';
 
-
-const highlights = [
-  { icon: 'icon-[mdi--bread-slice-outline]', title: 'Solo el pan', detail: 'Sin relleno: le ponés tu receta' },
-  { icon: 'icon-[mdi--pot-steam-outline]', title: 'Al vapor', detail: 'Elaborado de forma artesanal' },
-  { icon: 'icon-[mdi--snowflake]', title: 'Congelado', detail: terms.shelfLife },
-  { icon: 'icon-[mdi--package-variant-closed]', title: 'Desde 25 unidades', detail: 'por variedad' },
-];
-
 const ProductsCollection = () => (
-  <section id="productos" className="section">
+  <section id="variedades" className="py-20 lg:py-24">
     <div className="wrap">
       <Header
         eyebrow="Variedades"
         title="Pan bao por mayor, en cinco formatos"
         action={
-          <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="btn btn-secondary self-start md:self-auto">
+          <a
+            href={whatsappUrl('Hola, quisiera consultar la lista de precios mayorista de pan bao.')}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2.5 self-start rounded-xl border border-stone-300 bg-surface px-5 py-3 text-sm font-semibold text-stone-700 shadow-subtle transition hover:border-emerald-500 hover:text-emerald-700 hover:shadow-md md:self-auto"
+          >
+            <span className="icon-[mdi--whatsapp] size-5 text-emerald-500" aria-hidden="true" />
             Consultar por WhatsApp
-            <span className="icon-[heroicons--arrow-up-right-20-solid] size-4" aria-hidden="true" />
+            <span className="text-stone-400" aria-hidden="true">→</span>
           </a>
         }
       >
-        Pan bao artesanal en cinco formatos, del clásico de 10 cm al XL de 20 cm.
+        Pan bao artesanal elaborado en nuestra planta de Villa Luro, del clásico de 10 cm al XL de 20 cm.
       </Header>
 
-      <ul className="reveal mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-card border border-line bg-line lg:grid-cols-4">
-        {highlights.map((item) => (
-          <li key={item.title} className="flex items-start gap-3 bg-surface p-4 sm:items-center sm:gap-4 sm:p-6">
-            <span className="grid size-10 shrink-0 place-items-center rounded-full bg-accent-soft text-accent sm:size-12">
-              <span className={`${item.icon} size-5 sm:size-6`} aria-hidden="true" />
-            </span>
-            <span>
-              <span className="block font-display text-base font-semibold tracking-tight text-ink sm:text-lg">{item.title}</span>
-              <span className="block text-xs leading-snug sm:text-sm">{item.detail}</span>
-            </span>
-          </li>
-        ))}
-      </ul>
-
-      {/* En móvil, carrusel horizontal con scroll-snap; desde sm, grilla.
+      {/* En móvil, carrusel horizontal con scroll-snap; desde md, grilla.
           contain:paint evita que Chrome móvil ensanche la página con el contenido del carrusel */}
-      <ul className="-mx-5 mt-6 flex snap-x max-sm:[contain:paint] snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3">
+      <ul className="-mx-4 mt-12 flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 pb-2 max-md:[contain:paint] sm:-mx-6 sm:scroll-px-6 sm:px-6 md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3 lg:gap-8">
         {productsData.map((item) => (
-          <li key={item.id} className="reveal w-[82%] shrink-0 snap-start sm:w-auto">
+          <li key={item.id} className="reveal w-[82%] shrink-0 snap-start sm:w-[60%] md:w-auto">
             <Card {...item} />
           </li>
         ))}
-        <li className="reveal w-[82%] shrink-0 snap-start sm:w-auto">
-          <div className="flex h-full flex-col justify-between gap-8 rounded-card bg-accent-soft p-7 sm:p-8">
-            <span className="icon-[mdi--gift-outline] size-10 text-accent" aria-hidden="true" />
+
+        <li className="reveal w-[82%] shrink-0 snap-start sm:w-[60%] md:w-auto">
+          <aside className="flex h-full flex-col justify-between rounded-3xl border-2 border-dashed border-brand-300 bg-gradient-to-br from-brand-50 to-brand-100/70 p-8">
             <div>
-              <h3 className="text-2xl sm:text-3xl">¿Querés probarlos primero?</h3>
-              <p className="mt-3">Te enviamos {terms.samples} a tu cocina. El envío se abona aparte.</p>
-              <a href={samplesUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-6">
-                Pedir muestras
-              </a>
+              <span className="mb-6 grid size-14 place-items-center rounded-2xl bg-brand-600 text-white shadow-md shadow-brand-600/30">
+                <span className="icon-[heroicons--cube] size-7" aria-hidden="true" />
+              </span>
+              <p className="text-xs font-extrabold tracking-wider text-brand-700 uppercase">Para probar en tu cocina</p>
+              <h3 className="mt-1 text-2xl font-black text-stone-900">¿Querés probarlos primero en tu cocina?</h3>
+              <p className="mt-3 text-sm leading-relaxed text-stone-700">
+                Antes de sumar un producto a tu carta, necesitás ver cómo responde al vapor y cómo combina con tu propuesta.
+                Te enviamos {terms.samples}. El envío se abona aparte.
+              </p>
             </div>
-          </div>
+            <div className="mt-8">
+              <a
+                href={samplesUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full rounded-xl bg-brand-600 px-6 py-3.5 text-center text-sm font-bold text-white shadow-md transition hover:bg-brand-700 dark:hover:bg-brand-500 hover:shadow-lg"
+              >
+                Pedir muestras para mi local
+              </a>
+              <p className="mt-2.5 text-center text-xs text-stone-600">Coordinamos por WhatsApp o formulario</p>
+            </div>
+          </aside>
         </li>
       </ul>
     </div>

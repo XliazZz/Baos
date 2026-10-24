@@ -23,7 +23,7 @@ export const terms = {
   minimumOrder: '25 unidades por variedad',
   deliveryDays: 'De lunes a sábado',
   payment: 'Efectivo o transferencia',
-  invoice: 'Emitimos factura A',
+  invoice: 'Emitimos factura A y B',
   shelfLife: 'Hasta 6 meses en freezer',
   samples: '1 o 2 panes de cada variedad',
 };

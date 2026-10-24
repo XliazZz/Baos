@@ -29,6 +29,11 @@
       "@type": "AggregateRating",
       "ratingValue": "4.8",
       "reviewCount": "32"
+    },
+    "category": "Formato clásico",
+    "badge": {
+      "label": "El más pedido",
+      "tone": "light"
     }
   },
   {
@@ -61,6 +66,11 @@
       "@type": "AggregateRating",
       "ratingValue": "4.6",
       "reviewCount": "24"
+    },
+    "category": "Apto vegano",
+    "badge": {
+      "label": "100 % vegetal",
+      "tone": "green"
     }
   },
   {
@@ -93,7 +103,8 @@
       "@type": "AggregateRating",
       "ratingValue": "4.5",
       "reviewCount": "19"
-    }
+    },
+    "category": "Formato hamburguesa"
   },
   {
     "title": "Pan Bao Hamburguesa de Chía",
@@ -125,7 +136,8 @@
       "@type": "AggregateRating",
       "ratingValue": "4.6",
       "reviewCount": "21"
-    }
+    },
+    "category": "Formato hamburguesa"
   },
   {
     "title": "Pan Bao XL",
@@ -157,6 +169,11 @@
       "@type": "AggregateRating",
       "ratingValue": "4.9",
       "reviewCount": "40"
+    },
+    "category": "Formato XL",
+    "badge": {
+      "label": "Gran formato",
+      "tone": "dark"
     }
   }
 ]
