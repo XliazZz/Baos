@@ -1,93 +1,59 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import Card from './components/Card';
 import Header from '../Header/Header';
 import productsData from '../../data/products/productsData.json';
+import { whatsappUrl } from '../../data/business';
 
-const ProductsCollection = () => {
-  const schemaMarkup = useMemo(() => ({
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Nuestra Colección de Productos Wow Bao",
-    "description": "Descubre nuestra variedad de panes Bao artesanales y productos frescos",
-    "url": "https://www.wowbao.com.ar",
-    "numberOfItems": productsData.length,
-    "itemListElement": productsData.map((item, index) => ({
-      "@type": "ListItem",
-      "position": index + 1,
+const schemaMarkup = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Variedades de pan bao Wow Bao",
+  "url": "https://baos.vercel.app/",
+  "numberOfItems": productsData.length,
+  "itemListElement": productsData.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "Product",
       "name": item.title,
       "description": item.description,
       "image": item.image,
-      "item": {
-        "@type": item.schemaType || "Product",
-        "name": item.title,
-        "description": item.description,
-        "image": item.image,
-        "sku": item.sku || `WB-${item.id}`,
-        "weight": {
-          "@type": "QuantitativeValue",
-          "value": item.gr,
-          "unitText": "g"
-        },
-        "size": item.size,
-      }
-    }))
-  }), [productsData]);
-
-  const productsList = useMemo(() => (
-    productsData.map((item) => (
-      <li
-        key={`product-${item.id}`}
-        className='mx-auto'
-        itemProp={item.itemProp}
-        itemScope
-        itemType="https://schema.org/ListItem"
-      >
-        <meta itemProp="position" content={item.id} />
-        <Card
-          title={item.title}
-          description={item.description}
-          image={item.image}
-          gr={item.gr}
-          size={item.size}
-          schemaType={item.schemaType}
-        />
-      </li>
-    ))
-  ), [productsData]);
-
-  return (
-    <section
-      itemScope
-      itemType="https://schema.org/ItemList"
-      aria-labelledby="products-heading"
-    >
-      <Header
-        title="Menú de Panes"
-        description={
-          <>
-            Explora nuestra selección de panes bao al vapor, hechos con ingredientes de la más alta calidad.
-            Su <span className="font-semibold">textura esponjosa</span> y su <span className="font-semibold">sabor auténtico</span> te transportarán con cada bocado.
-          </>
-        }
-        subtitle="¡Descubre tu favorito y disfruta la experiencia!"
-      />
-
-      <ul className='mt-5 sm:mt-10 grid gap-4 grid-cols-2
-        sm:grid-cols-2 sm:gap-9 
-        md:mt-8 md:grid-cols-3
-        lg:grid-cols-3
-        xl:grid-cols-4 xl:gap-6
-        2xl:gap-10'
-      >
-        {productsList}
-      </ul>
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-      />
-    </section>
-  );
+      "sku": `WB-${item.id}`,
+      "brand": { "@type": "Brand", "name": "Wow Bao" },
+    },
+  })),
 };
 
-export default React.memo(ProductsCollection);
+const ProductsCollection = () => (
+  <section id="productos" className="section">
+    <div className="wrap">
+      <Header eyebrow="Variedades" title="Cinco formatos para armar tu carta">
+        Todos se elaboran al vapor y se entregan congelados. Elegí según el plato: del bao clásico
+        de 10 cm al XL de 20 cm.
+      </Header>
+
+      <ul className="mt-12 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+        {productsData.map((item) => (
+          <li key={item.id}>
+            <Card {...item} />
+          </li>
+        ))}
+        <li className="flex flex-col justify-between gap-6 rounded-lg border border-dashed border-muted/50 p-6 sm:p-8">
+          <div>
+            <h3 className="text-2xl">¿Querés probarlos en tu cocina?</h3>
+            <p className="mt-3">
+              Contanos qué platos hacés y qué volumen necesitás, y te ayudamos a armar el primer pedido.
+            </p>
+          </div>
+          <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="btn btn-primary self-start">
+            Escribinos por WhatsApp
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }} />
+  </section>
+);
+
+export default ProductsCollection;

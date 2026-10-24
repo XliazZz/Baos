@@ -1,87 +1,47 @@
-import React, { useMemo } from 'react';
-import IconCard from './IconCard';
+import React from 'react';
+import { whatsappUrl } from '../../../data/business';
+import { cld, cldSrcSet } from '../../../utils/cloudinary';
 
-const Card = ({ image, title, description, gr, size, schemaType = "Product" }) => {
-  // Memoizar las clases de iconos y estilos para evitar recreación en cada render
-  const iconClass = useMemo(() => ["icon-[ri--scales-2-line]", "icon-[ion--resize-sharp]"], []);
+const Card = ({ image, title, description, gr, size }) => (
+  <article className="flex h-full overflow-hidden rounded-lg border border-line bg-surface sm:flex-col">
+    <img
+      src={cld(image, 480)}
+      srcSet={cldSrcSet(image, [240, 480, 720])}
+      sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 112px"
+      alt={title}
+      width="480"
+      height="360"
+      loading="lazy"
+      decoding="async"
+      className="w-28 shrink-0 object-cover sm:aspect-[4/3] sm:w-full"
+    />
 
-  const cardStyles = useMemo(() => ({
-    container: "bg-white rounded-lg overflow-hidden shadow-md shadow-blue-500/20 max-w-sm flex flex-col h-full dark:bg-slate-800",
-    imageContainer: "relative h-56 rounded-lg sm:h-72 md:h-60 lg:h-[20.5rem] xl:h-64 2xl:h-80",
-    content: "p-2 sm:p-4 flex flex-col flex-grow sm:w-full",
-    title: "text-[16px] font-medium mb-0 text-black dark:text-white sm:text-lg sm:mb-2 lg:text-xl xl:text-lg 2xl:text-xl",
-    description: "text-gray-600 text-[14.5px] mb-2 dark:text-gray-200 sm:text-base sm:w-full sm:mb-4 md:text-[15px] lg:text-[17px] xl:text-base xl:text-gray-700 2xl:text-lg",
-    specs: "flex items-start justify-between mt-auto text-gray-500 dark:text-gray-400 sm:mt-auto"
-  }), []);
+    <div className="flex flex-1 flex-col p-4 sm:p-6">
+      <h3 className="text-lg sm:text-xl">{title}</h3>
+      <p className="mt-2 text-[0.9375rem] leading-relaxed">{description}</p>
 
-  const getCloudinaryUrl = (imageUrl, width) => {
-    if (!imageUrl) return '';
-    const base = 'https://res.cloudinary.com';
-    const [prefix, suffix] = imageUrl.split('/upload/');
-    const path = suffix;
-    const cloudName = prefix.replace(base + '/', '');
-    return `${base}/${cloudName}/upload/f_auto,q_auto,w_${width}/${path}`;
-  };
-
-  return (
-    <div
-      className={cardStyles.container}
-      itemScope
-      itemType={`https://schema.org/${schemaType}`}
-      aria-labelledby={`card-${title.replace(/\s+/g, '-').toLowerCase()}-heading`}
-    >
-      <div className={cardStyles.imageContainer}>
-        <img
-          className="w-full block h-full object-cover"
-          src={getCloudinaryUrl(image, 400)} // fallback
-          srcSet={`
-            ${getCloudinaryUrl(image, 200)} 200w,
-            ${getCloudinaryUrl(image, 300)} 300w,
-            ${getCloudinaryUrl(image, 400)} 400w,
-            ${getCloudinaryUrl(image, 600)} 600w
-          `}
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          alt={`Imagen de ${title}`}
-          itemProp="image"
-          loading="lazy"
-          decoding="async"
-          width="400"
-          height="300"
-        />
-      </div>
-
-      <div className={cardStyles.content}>
-        <h3
-          id={`card-${title.replace(/\s+/g, '-').toLowerCase()}-heading`}
-          className={cardStyles.title}
-          itemProp="name"
+      <div className="mt-auto flex flex-wrap items-center justify-between gap-x-4 gap-y-2 pt-4">
+        <dl className="flex gap-4 text-sm tabular-nums">
+          <div className="flex gap-1">
+            <dt className="text-muted">Peso</dt>
+            <dd className="font-bold text-ink">{gr.replace('gr', ' g')}</dd>
+          </div>
+          <div className="flex gap-1">
+            <dt className="text-muted">Tamaño</dt>
+            <dd className="font-bold text-ink">{size.replace('cm', ' cm')}</dd>
+          </div>
+        </dl>
+        <a
+          href={whatsappUrl(`Hola, quiero consultar por el ${title} para mi restaurante.`)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm font-bold text-accent underline-offset-4 hover:underline"
         >
-          {title}
-        </h3>
-        <p
-          className={cardStyles.description}
-          itemProp="description"
-        >
-          {description}
-        </p>
-
-        <div className={cardStyles.specs}>
-          <IconCard
-            icon={iconClass[0]}
-            unit={gr}
-            itemProp="weight"
-            aria-label={`Peso: ${gr}`}
-          />
-          <IconCard
-            icon={iconClass[1]}
-            unit={size}
-            itemProp="size"
-            aria-label={`Tamaño: ${size}`}
-          />
-        </div>
+          Consultar<span className="sr-only"> por {title}</span> →
+        </a>
       </div>
     </div>
-  );
-};
+  </article>
+);
 
-export default React.memo(Card);
+export default Card;

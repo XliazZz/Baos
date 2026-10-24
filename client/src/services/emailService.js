@@ -1,15 +1,10 @@
 import emailjs from '@emailjs/browser';
 
-export const sendEmailService = async (form, userEmail, userName, userPhone) => {
-  return emailjs.sendForm(
+// El template de EmailJS usa los "name" del formulario: user_name, user_phone, user_email, message
+export const sendEmailService = (formElement) =>
+  emailjs.sendForm(
     import.meta.env.VITE_SERVICEID,
     import.meta.env.VITE_TEMPLATEID,
-    form.current,
-    import.meta.env.VITE_PUBLICKEY,
-    {
-      reply_to: userEmail,
-      from_name: userName,
-      user_phone: userPhone
-    }
+    formElement,
+    { publicKey: import.meta.env.VITE_PUBLICKEY }
   );
-}
