@@ -27,27 +27,38 @@ const schemaMarkup = {
 const ProductsCollection = () => (
   <section id="productos" className="section">
     <div className="wrap">
-      <Header eyebrow="Variedades" title="Cinco formatos para armar tu carta">
-        Todos se elaboran al vapor y se entregan congelados. Elegí según el plato: del bao clásico
-        de 10 cm al XL de 20 cm.
+      <Header
+        eyebrow="Variedades"
+        title="Cinco formatos para armar tu carta"
+        action={
+          <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="btn btn-secondary self-start md:self-auto">
+            Consultar por WhatsApp
+            <span className="icon-[heroicons--arrow-up-right-20-solid] size-4" aria-hidden="true" />
+          </a>
+        }
+      >
+        Todos se elaboran al vapor y se entregan congelados. Del bao clásico de 10 cm al XL de 20 cm.
       </Header>
 
-      <ul className="mt-12 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+      {/* En móvil, carrusel horizontal con scroll-snap; desde sm, grilla.
+          contain:paint evita que Chrome móvil ensanche la página con el contenido del carrusel */}
+      <ul className="-mx-5 mt-12 flex snap-x max-sm:[contain:paint] snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3">
         {productsData.map((item) => (
-          <li key={item.id}>
+          <li key={item.id} className="reveal w-[82%] shrink-0 snap-start sm:w-auto">
             <Card {...item} />
           </li>
         ))}
-        <li className="flex flex-col justify-between gap-6 rounded-lg border border-dashed border-muted/50 p-6 sm:p-8">
-          <div>
-            <h3 className="text-2xl">¿Querés probarlos en tu cocina?</h3>
-            <p className="mt-3">
-              Contanos qué platos hacés y qué volumen necesitás, y te ayudamos a armar el primer pedido.
-            </p>
+        <li className="reveal w-[82%] shrink-0 snap-start sm:w-auto">
+          <div className="panel flex h-full flex-col justify-between gap-8 rounded-card p-7 sm:p-8">
+            <span className="icon-[mdi--pot-steam-outline] size-10 text-accent-on-panel" aria-hidden="true" />
+            <div>
+              <h3 className="text-2xl sm:text-3xl">¿Querés probarlos en tu cocina?</h3>
+              <p className="mt-3">Contanos qué platos hacés y qué volumen necesitás, y armamos juntos el primer pedido.</p>
+              <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-6">
+                Escribinos por WhatsApp
+              </a>
+            </div>
           </div>
-          <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="btn btn-primary self-start">
-            Escribinos por WhatsApp
-          </a>
         </li>
       </ul>
     </div>

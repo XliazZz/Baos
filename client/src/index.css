@@ -2,58 +2,71 @@
 @plugin "@iconify/tailwind4";
 
 @font-face {
-  font-family: 'Fraunces';
+  font-family: 'Bricolage Grotesque';
   font-style: normal;
-  font-weight: 500 700;
+  font-weight: 500 800;
   font-display: swap;
-  src: url('/fonts/fraunces/fraunces-latin-var.woff2') format('woff2');
+  src: url('/fonts/bricolage/bricolage-latin-var.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Mulish';
+  font-family: 'Geist';
   font-style: normal;
-  font-weight: 400 800;
+  font-weight: 400 700;
   font-display: swap;
-  src: url('/fonts/mulish/mulish-latin-var.woff2') format('woff2');
+  src: url('/fonts/geist/geist-latin-var.woff2') format('woff2');
 }
 
-/* Paleta: papel de arroz, tinta de soja y rojo chile. Todo color de la UI sale de acá. */
+/* Un solo lienzo cálido para toda la página; las secciones se separan con espacio y paneles, no con franjas */
 @theme {
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-sans: 'Mulish', system-ui, sans-serif;
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-sans: 'Geist', system-ui, sans-serif;
 
-  --color-paper: #f6f1e7;
-  --color-paper-2: #ede4d3;
-  --color-surface: #fffcf6;
-  --color-ink: #1e1a15;
-  --color-ink-soft: #4a4239;
-  --color-muted: #6e6457;
-  --color-line: #ddd2bf;
-  --color-accent: #b8361f;
-  --color-accent-strong: #952915;
+  --color-canvas: #faf7f2;
+  --color-card: #f2ede4;
+  --color-surface: #ffffff;
+  --color-ink: #16130f;
+  --color-ink-soft: #4d463f;
+  --color-muted: #6f665c;
+  --color-line: #e6dfd3;
+  --color-accent: #c93a22;
+  --color-accent-strong: #a82e19;
+  --color-accent-soft: #fbe3dc;
   --color-on-accent: #ffffff;
 
-  /* Franjas oscuras (por qué elegirnos, footer): se mantienen oscuras en ambos modos */
-  --color-band: #1e1a15;
-  --color-band-line: #3a332a;
-  --color-on-band: #f6f1e7;
-  --color-on-band-soft: #c9bfae;
-  --color-accent-on-band: #f08a6c;
+  /* Panel oscuro (contacto, tarjeta destacada) */
+  --color-panel: #16130f;
+  --color-panel-line: #2f2a24;
+  --color-on-panel: #faf7f2;
+  --color-on-panel-soft: #bdb3a6;
+  --color-accent-on-panel: #ff8a6b;
+
+  --radius-card: 1.25rem;
+  --radius-panel: 2rem;
+
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-paper: #15120e;
-    --color-paper-2: #1c1813;
-    --color-surface: #211c16;
-    --color-ink: #f3ece0;
-    --color-ink-soft: #cfc6b8;
-    --color-muted: #a39887;
-    --color-line: #3a332a;
-    --color-accent: #e8664a;
-    --color-accent-strong: #f08a6c;
-    --color-on-accent: #15120e;
-    --color-band: #0e0c09;
+    --color-canvas: #12100d;
+    --color-card: #1c1915;
+    --color-surface: #221e19;
+    --color-ink: #f5f0e8;
+    --color-ink-soft: #cdc4b7;
+    --color-muted: #9d9385;
+    --color-line: #2e2923;
+    --color-accent: #ff7a5c;
+    --color-accent-strong: #ff967e;
+    --color-accent-soft: #3a1f17;
+    --color-on-accent: #12100d;
+    --color-panel: #201b16;
   }
 }
 
@@ -63,8 +76,8 @@
 
 @layer base {
   html {
-    /* el header es sticky (h-16): anclas y campos enfocados no quedan tapados */
-    scroll-padding-top: 5rem;
+    /* la barra de navegación flota arriba: anclas y campos enfocados no quedan tapados */
+    scroll-padding-top: 6rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -76,7 +89,7 @@
   }
 
   body {
-    background-color: var(--color-paper);
+    background-color: var(--color-canvas);
     color: var(--color-ink-soft);
     font-family: var(--font-sans);
     line-height: 1.6;
@@ -85,8 +98,9 @@
   h1, h2, h3 {
     color: var(--color-ink);
     font-family: var(--font-display);
-    font-weight: 600;
-    letter-spacing: -0.015em;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
     text-wrap: balance;
   }
 
@@ -99,7 +113,7 @@
 @layer components {
   .wrap {
     margin-inline: auto;
-    max-width: 72rem;
+    max-width: 80rem;
     padding-inline: 1.25rem;
 
     @media (width >= 40rem) {
@@ -108,41 +122,44 @@
   }
 
   .section {
-    padding-block: 5rem;
+    padding-block: 4rem;
 
     @media (width >= 64rem) {
-      padding-block: 7rem;
+      padding-block: 6rem;
     }
   }
 
-  .band {
-    background-color: var(--color-band);
-    color: var(--color-on-band-soft);
+  .panel {
+    background-color: var(--color-panel);
+    color: var(--color-on-panel-soft);
 
     & h2, & h3 {
-      color: var(--color-on-band);
+      color: var(--color-on-panel);
     }
 
-    & .eyebrow {
-      color: var(--color-accent-on-band);
+    & .chip {
+      border-color: var(--color-panel-line);
+      color: var(--color-on-panel);
     }
   }
 
-  .eyebrow {
-    display: flex;
+  .chip {
+    display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
-    color: var(--color-accent);
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    gap: 0.5rem;
+    border: 1px solid var(--color-line);
+    border-radius: 9999px;
+    padding: 0.375rem 0.875rem;
+    color: var(--color-ink);
+    font-size: 0.8125rem;
+    font-weight: 600;
 
     &::before {
       content: '';
-      width: 1.5rem;
-      height: 1px;
-      background-color: currentColor;
+      width: 0.375rem;
+      height: 0.375rem;
+      border-radius: 9999px;
+      background-color: var(--color-accent);
     }
   }
 
@@ -152,10 +169,10 @@
     justify-content: center;
     gap: 0.5rem;
     border: 1px solid transparent;
-    border-radius: 0.375rem;
-    padding: 0.75rem 1.25rem;
+    border-radius: 9999px;
+    padding: 0.8125rem 1.5rem;
     font-size: 0.9375rem;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.25;
     transition: background-color 150ms, color 150ms, border-color 150ms;
   }
@@ -170,12 +187,30 @@
   }
 
   .btn-secondary {
-    border-color: var(--color-ink);
+    border-color: var(--color-line);
+    background-color: var(--color-surface);
     color: var(--color-ink);
 
     &:hover {
-      background-color: var(--color-ink);
-      color: var(--color-paper);
+      border-color: var(--color-ink);
+    }
+  }
+
+  /* Aparición al hacer scroll sin JS; donde no hay soporte, el contenido simplemente se ve */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .reveal {
+        animation: reveal linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 60%;
+      }
+    }
+  }
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(1.5rem);
     }
   }
 }

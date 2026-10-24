@@ -3,43 +3,54 @@ import Header from '../Header/Header';
 
 const reasons = [
   {
+    icon: 'icon-[mdi--calendar-sync-outline]',
     title: 'Abastecimiento sin cortes',
-    description: 'Entregas puntuales y constantes en toda CABA, para que nunca te quedes sin stock en pleno servicio.',
+    description: 'Entregas puntuales y constantes, para que nunca te quedes sin stock en pleno servicio.',
   },
   {
+    icon: 'icon-[mdi--cash-multiple]',
     title: 'Precio mayorista',
     description: 'Precios por volumen pensados para que el bao deje un buen margen en tu carta.',
   },
   {
+    icon: 'icon-[mdi--hand-heart-outline]',
     title: 'Hechos a mano, al vapor',
-    description: 'Cada pan se elabora artesanalmente en nuestra fábrica de Villa Luro, con ingredientes seleccionados.',
+    description: 'Cada pan se elabora artesanalmente en nuestra fábrica, con ingredientes seleccionados.',
   },
   {
+    icon: 'icon-[mdi--snowflake]',
     title: 'Congelados en su punto',
-    description: 'Los entregamos congelados para conservar la textura esponjosa y el sabor hasta el momento de servir.',
+    description: 'Conservan la textura esponjosa y el sabor hasta el momento de servir.',
   },
 ];
 
-const WhyUs = () => (
-  <section id="por-que" className="band section">
-    <div className="wrap grid gap-12 lg:grid-cols-12 lg:gap-16">
-      <div className="lg:col-span-5">
-        <Header eyebrow="Por qué Wow Bao" title="Un proveedor pensado para cocinas que no pueden parar">
-          Más de 3.000 baos por semana salen de nuestra fábrica hacia restaurantes asiáticos de la ciudad.
-        </Header>
-      </div>
+const ReasonCard = ({ icon, title, description }) => (
+  <li className="reveal rounded-card bg-card p-7 sm:p-8">
+    <span className={`${icon} size-7 text-accent`} aria-hidden="true" />
+    <h3 className="mt-6 text-xl">{title}</h3>
+    <p className="mt-2">{description}</p>
+  </li>
+);
 
-      <ol className="grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:col-span-7">
-        {reasons.map((reason, index) => (
-          <li key={reason.title} className="border-t border-band-line pt-6">
-            <span className="font-display text-sm font-semibold text-accent-on-band" aria-hidden="true">
-              {String(index + 1).padStart(2, '0')}
+const WhyUs = () => (
+  <section id="por-que" className="section">
+    <div className="wrap">
+      <Header eyebrow="Por qué Wow Bao" title="Un proveedor pensado para cocinas que no pueden parar" />
+
+      <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <li className="panel reveal flex flex-col justify-between gap-10 rounded-card p-8 sm:col-span-2 sm:p-10">
+          <span className="icon-[tdesign--bread] size-9 text-accent-on-panel" aria-hidden="true" />
+          <p className="max-w-md">
+            <span className="block font-display text-6xl font-bold tracking-tight text-on-panel sm:text-7xl">+3.000</span>
+            <span className="mt-3 block text-lg">
+              baos por semana salen de nuestra fábrica hacia restaurantes asiáticos de la ciudad.
             </span>
-            <h3 className="mt-3 text-xl">{reason.title}</h3>
-            <p className="mt-2">{reason.description}</p>
-          </li>
+          </p>
+        </li>
+        {reasons.map((reason) => (
+          <ReasonCard key={reason.title} {...reason} />
         ))}
-      </ol>
+      </ul>
     </div>
   </section>
 );
