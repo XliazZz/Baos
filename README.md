@@ -1,4 +1,4 @@
-<img width="2543" height="1334" alt="image" src="https://github.com/user-attachments/assets/44c0bc28-b9cb-419a-b08c-e3a5b4afed19" /># 🥢 Wow Bao - Página Web Oficial
+🥢 Wow Bao - Página Web Oficial
 
 **Sitio web moderno, simple y responsive para el negocio familiar de panes baos tailandeses.**
 
@@ -8,7 +8,7 @@
 
 ## 🧾 Descripción
 
-**Wow Bao** es una landing page desarrollada para el emprendimiento familiar de panes baos tailandeses artesanales. Con un enfoque limpio y moderno, esta página busca transmitir la calidad, tradición y el sabor auténtico de nuestros productos al vapor.
+**Wow Bao** es una landing page desarrollada para el emprendimiento familiar de panes baos artesanales. Con un enfoque limpio y moderno, esta página busca transmitir la calidad, tradición y el sabor auténtico de nuestros productos al vapor.
 
 > _"Nuestros panes bao destacan por su textura esponjosa y sabor auténtico, elaborados artesanalmente con ingredientes selectos para ofrecer una experiencia gastronómica única en cada bocado."_
 
