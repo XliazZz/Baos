@@ -1,7 +1,7 @@
 import React from 'react';
 import { samplesUrl, terms, whatsappUrl } from '../../data/business';
 
-const trust = [`Entregas ${terms.deliveryDays.toLowerCase()} en toda CABA`, terms.shelfLife];
+const trust = [`Entregas ${terms.deliveryDays.toLowerCase()} en toda CABA`, 'Envíos al interior del país', terms.shelfLife];
 
 const Hero = () => (
   <section id="inicio" className="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
@@ -25,7 +25,7 @@ const Hero = () => (
           </h1>
 
           <p className="rise max-w-2xl text-lg leading-relaxed text-stone-600 [--delay:160ms] sm:text-xl">
-            Somos proveedores de pan bao al vapor para restaurantes y locales gastronómicos de CABA. Te lo entregamos
+            Somos proveedores de pan bao al vapor para restaurantes y locales gastronómicos de CABA y del interior del país. Te lo entregamos
             congelado: vos lo calentás en minutos y le ponés tu propio relleno.
           </p>
 

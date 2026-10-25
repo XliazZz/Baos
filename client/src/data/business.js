@@ -26,4 +26,5 @@ export const terms = {
   invoice: 'Emitimos factura A y B',
   shelfLife: 'Hasta 6 meses en freezer',
   samples: '1 o 2 panes de cada variedad',
+  interior: 'Hasta tu transporte refrigerado',
 };

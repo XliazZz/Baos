@@ -26,6 +26,16 @@ const faqs = [
     answer: `Sí. Te enviamos ${terms.samples} para que los pruebes en tu cocina. El envío se abona aparte.`,
   },
   {
+    question: '¿Hacen envíos al interior del país?',
+    answer: (
+      <>
+        Sí. Contratás un <strong>transporte refrigerado</strong> que salga desde Buenos Aires y nosotros llevamos los panes
+        congelados hasta ese vehículo; desde ahí lo recibe tu local. Nuestra parte termina en la carga:{' '}
+        <strong>el costo del transporte corre por tu cuenta</strong>.
+      </>
+    ),
+  },
+  {
     question: '¿Tienen opción apta para veganos?',
     answer: (
       <>

@@ -12,7 +12,7 @@ const steps = [
   {
     icon: 'icon-[heroicons--calendar]',
     title: 'Coordinamos la entrega',
-    description: 'Acordamos día y horario, y te llevamos los panes congelados hasta la puerta de tu local en CABA.',
+    description: 'Acordamos día y horario, y te llevamos los panes congelados hasta la puerta de tu local en CABA. Para el interior, los cargamos en tu transporte refrigerado.',
     note: terms.deliveryDays,
   },
   {
@@ -27,6 +27,7 @@ const steps = [
 const conditions = [
   { label: 'Pedido mínimo', value: terms.minimumOrder },
   { label: 'Entregas', value: terms.deliveryDays },
+  { label: 'Interior del país', value: terms.interior },
   { label: 'Medios de pago', value: terms.payment },
   { label: 'Facturación', value: terms.invoice },
   { label: 'Vida útil', value: terms.shelfLife },
@@ -69,11 +70,11 @@ const HowItWorks = () => (
         <h3 className="mb-6 text-center text-xs font-extrabold tracking-wider text-stone-500 uppercase sm:text-left">
           Condiciones comerciales claras
         </h3>
-        <dl className="grid grid-cols-2 gap-6 text-stone-800 md:grid-cols-5">
+        <dl className="grid grid-cols-2 gap-6 text-stone-800 md:grid-cols-3 lg:grid-cols-6">
           {conditions.map((item) => (
             <div key={item.label}>
               <dt className="block text-xs font-semibold text-stone-500 uppercase">{item.label}</dt>
-              <dd className="mt-1 block text-sm font-bold text-stone-900 sm:text-base">{item.value}</dd>
+              <dd className="mt-1 block text-sm font-bold text-balance text-stone-900 sm:text-base">{item.value}</dd>
             </div>
           ))}
         </dl>
